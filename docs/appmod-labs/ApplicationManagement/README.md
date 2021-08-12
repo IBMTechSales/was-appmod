@@ -470,9 +470,9 @@ When the Customer Order Services application was modernized, we used MicroProfil
 
 1. Custom resource [GrafanaDashboard](dashboards/grafana/grafana-dashboard-cos.yaml) defines a set of dashboards for monitoring the Customer Order Services application and Open Liberty. In your terminal, run the following command to create the dashboard resource:
 
-     a. Change directory to `/openshift-workshop-was/labs/Openshift/ApplicationManagement` if not done so already.
+     a. Change directory to `openshift-workshop-was/labs/Openshift/ApplicationManagement` if not done so already.
 	 ```
-	 cd /openshift-workshop-was/labs/Openshift/ApplicationManagement
+	 cd openshift-workshop-was/labs/Openshift/ApplicationManagement
 	 ```
 	 
 	 

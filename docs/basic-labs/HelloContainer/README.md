@@ -274,6 +274,8 @@ If you need more background on containers: https://www.docker.com/resources/what
 
      **Note:** within the container, each instance behaves as if it's running in its own virtual environment, and has opened the same ports. Outside of the container, different ports are opened.
 
+     <br/>
+
 12. To export the file system of a running container: 
    ```
    docker export hello1 > hello1.tar

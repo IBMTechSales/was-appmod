@@ -596,9 +596,9 @@ Customer Order Services application uses DB2 as its database. To deploy it to Li
       - **TROUBESHOOTING:** If the pod doesn't display the expected `Running` status (for example, after 5 minutes), then delete the pod to restart it.
       ```
 	  oc delete pod <pod name>  
-		
-      Note: pod name is the string under NAME column from the output of `oc get pod`
-      ```
+	    
+	  ```
+      **Note:** pod name is the string under NAME column from the output of `oc get pod`
 
 
 ## Access the application (Hands-on)
@@ -764,9 +764,9 @@ Customer Order Services application uses DB2 as its database. To deploy it to Li
 		 
       - Navigate to the `YAML` tab to view the content of yaml.  
             
-			**Note** the service is created through the controller of OpenLibertyApplication custom resource.
+		  **Note:** the service is created through the controller of OpenLibertyApplication custom resource.
          
-           ![ola network service2](extras/images/ola-net-service2.jpg)   
+          ![ola network service2](extras/images/ola-net-service2.jpg)   
          
           <br/> 		 
 		 
