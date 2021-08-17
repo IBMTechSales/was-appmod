@@ -158,7 +158,8 @@ This lab will introduce you to the basic concepts of containerization, including
 <li>You have access to the internet.</li>
 <li>You have cloned this lab from github. If not, follows these steps:</li>
 </ul>
-<pre class="highlight"><code>git clone https://github.com/IBM/openshift-workshop-was.git
+<pre class="highlight"><code>git clone https://github.com/IBMTechSales/openshift-workshop-was
+
 cd openshift-workshop-was/labs/Openshift/HelloContainer</code></pre>
 
 <p><a name="What_is_Container"> </a></p>
@@ -202,7 +203,7 @@ For example, docker hub, or registry.access.redhat.com, or your own internal reg
 </li>
 </ol>
 <p><a name="Check_Environment"> </a></p>
-<h2 id="check-your-environment">Check your environment</h2>
+<h2 id="check-your-environment-and-clone-the-workshop-github-project">Check your environment and clone the workshop GitHub project</h2>
 <ol>
 <li>
 <p>Open a terminal window from within your VM.</p>
@@ -216,9 +217,18 @@ For example, docker hub, or registry.access.redhat.com, or your own internal reg
 <p>Example output:</p>
 <pre><code>Docker version 20.10.7, build f0df350
 </code></pre>
+<ul>
+<li>For more background on docker command line: <a href="https://docs.docker.com/engine/reference/commandline/cli/">https://docs.docker.com/engine/reference/commandline/cli/</a></li>
+</ul>
+<p><br/></p>
 </li>
 <li>
-<p>For more background on docker command line: <a href="https://docs.docker.com/engine/reference/commandline/cli/">https://docs.docker.com/engine/reference/commandline/cli/</a></p>
+<p>From the terminal window  in the VM, and clone the lab to your local directory via:
+<pre class="highlight"><code>git clone https://github.com/IBMTechSales/openshift-workshop-was</code></pre></p>
+</li>
+<li>
+<p>Change directory to:  <code>openshift-workshop-was/labs/Openshift/IntroOpenshift</code>
+<pre class="highlight"><code>cd openshift-workshop-was/labs/Openshift/IntroOpenshift</code></pre></p>
 </li>
 </ol>
 <p><a name="Run_Prebuilt"> </a></p>
@@ -808,5 +818,5 @@ docker tag app app:1.4.0</code></pre>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-08-13 19:50:32
+Build Date UTC : 2021-08-17 16:43:31
 -->
