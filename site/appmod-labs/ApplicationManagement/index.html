@@ -271,7 +271,7 @@ cos-was-7d5ff6945-4hjzr   1/1     Running   0          88s</code></pre></p>
 <ol>
 <li>
 <p>From the top level directory, change to the lab's directory <code>RuntimeModernization</code> folder:
-   <pre class="highlight"><code>cd openshift-workshop-was/labs/Openshift/RuntimeModernization</code></pre></p>
+   <pre class="highlight"><code>cd /home/ibmuser/openshift-workshop-was/labs/Openshift/RuntimeModernization</code></pre></p>
 </li>
 <li>
 <p>Create and switch over to the project <code>apps</code>. Also, enable monitoring for the project. </p>
@@ -341,13 +341,13 @@ cos-54975b94c6-rh6kt   1/1     Running   0          3m11s</code></pre></p>
 <p>Let's look at application logging with log aggregation using EFK <strong>(Elasticsearch, Fluentd, and Kibana)</strong>. </p>
 <ul>
 <li>
-<p>Elasticsearch is a search and analytics engine. </p>
+<p><strong>Elasticsearch</strong> is a search and analytics engine. </p>
 </li>
 <li>
-<p>Fluentd receives, cleans and parses the log data. </p>
+<p><strong>Fluentd</strong> receives, cleans and parses the log data. </p>
 </li>
 <li>
-<p>Kibana lets users visualize data stored in Elasticsearch with charts and graphs.</p>
+<p><strong>Kibana</strong> lets users visualize data stored in Elasticsearch with charts and graphs.</p>
 </li>
 </ul>
 <p><strong>Tip:</strong> If it has been a long time (more than 15 minutes) since the Liberty or WebSphere pods last started, you may want to delete each pod and let a new one start, to ensure that Liberty and WebSphere create some recent logs for Kibana to find.</p>
@@ -399,13 +399,9 @@ cos-54975b94c6-rh6kt   1/1     Running   0          3m11s</code></pre></p>
 </li>
 </ol>
 <h3 id="import-dashboards-hands-on">Import dashboards (Hands-on)</h3>
-<p>A sample Kabana Dashboard for Liberty has been provided for this lab. </p>
+<p>A sample Kabana Dashboard for Liberty has been provided for this lab, and included in GitHub repository for this workshop.</p>
+<p><strong>Tip:</strong> The dashboards are located in <code>/home/ibmuser/openshift-workshop-was/labs/Openshift/ApplicationManagement/dashboards</code> on the desktop VM</p>
 <ol>
-<li>
-<p>Download <a href="dashboards/dashboards.zip">this zip file</a> containing dashboards to your VM and unzip it to a local directory. This will extract the <strong>grafana</strong> and <strong>kibana</strong> folders.</p>
-<p><img alt="unzip" src="extras/images/applogging5.png" /></p>
-<p><br/></p>
-</li>
 <li>
 <p>Let's import dashboards for Liberty and WAS. From the left-panel, click on <strong>Management</strong>. Click on the <strong>Saved Objects</strong> tab and then click on <strong>Import</strong>.</p>
 <p><img alt="import saved objects" src="extras/images/applogging3.png" /></p>
@@ -417,7 +413,12 @@ cos-54975b94c6-rh6kt   1/1     Running   0          3m11s</code></pre></p>
 <p><br/></p>
 </li>
 <li>
-<p>This will open your VM's files. Navigate to where you unzipped the dashboards file. Open the <strong>kibana</strong> folder and select the <code>ibm-open-liberty-kibana5-problems-dashboard.json</code> file. Click <strong>Open</strong>.</p>
+<p>This will open your VM's files. Navigate to the location of the dashboard files.  </p>
+<pre><code>/home/ibmuser/openshift-workshop-was/labs/Openshift/ApplicationManagement/dashboards
+</code></pre>
+</li>
+<li>
+<p>Open the <strong>kibana</strong> folder and select the <code>ibm-open-liberty-kibana5-problems-dashboard.json</code> file. Click <strong>Open</strong>.</p>
 <p><img alt="import saved objects" src="extras/images/applogging6.png" /></p>
 <p><br/></p>
 </li>
@@ -437,7 +438,10 @@ cos-54975b94c6-rh6kt   1/1     Running   0          3m11s</code></pre></p>
 <p><br/></p>
 </li>
 <li>
-<p>Repeat the steps 3 - 7 to import the <code>ibm-open-liberty-kibana5-traffic-dashboard.json</code> and <code>ibm-websphere-traditional-kibana5-dashboard.json</code> files from the <strong>kibana</strong> folder of the unzipped file.</p>
+<p>Repeat the steps 2- 7 to import the <code>ibm-open-liberty-kibana5-traffic-dashboard.json</code> and <code>ibm-websphere-traditional-kibana5-dashboard.json</code> files from the <strong>kibana</strong> folder from the dashboards directroy.</p>
+</li>
+<li>
+<p>Click <strong>Done</strong> when the dashboards have been imported. </p>
 </li>
 </ol>
 <h3 id="explore-dashboards-hands-on">Explore dashboards (Hands-on)</h3>
@@ -544,7 +548,7 @@ The first 2 are for Liberty. The last one is for WAS traditional. </p>
 <li>
 <p>Custom resource <a href="dashboards/grafana/grafana-dashboard-cos.yaml">GrafanaDashboard</a> defines a set of dashboards for monitoring the Customer Order Services application and Open Liberty. In your terminal, run the following command to create the dashboard resource:</p>
 <p>a. Change directory to <code>openshift-workshop-was/labs/Openshift/ApplicationManagement</code> if not done so already.
- <pre class="highlight"><code>cd openshift-workshop-was/labs/Openshift/ApplicationManagement</code></pre></p>
+ <pre class="highlight"><code>cd /home/ibmuser/openshift-workshop-was/labs/Openshift/ApplicationManagement</code></pre></p>
 <p>b. Run the following command to define the dashboards for monitoring
  <pre class="highlight"><code>oc apply -f dashboards/grafana/grafana-dashboard-cos.yaml</code></pre>
 Example output: 
@@ -552,7 +556,7 @@ Example output:
 <p><br/></p>
 </li>
 <li>
-<p>The following steps to access the created dashboard are illustrated in the screen recording at the end of this section: </p>
+<p>Use the following steps to access the created dashboard. See the illustrated screen recording at the end of this section: </p>
 <p>a. In the OpenShift console, from the left-panel, select <strong>Networking</strong> &gt; <strong>Routes</strong>.</p>
 <p>b. From the Project drop-down list, select <code>app-monitoring</code>. </p>
 <p>c. In the <code>grafana-route</code> route, click on the URL listed under the <strong>Location</strong> column.</p>
@@ -560,6 +564,9 @@ Example output:
 <p>e. In the Grafana home page, from the left-panel, hover over the dashboard icon and click on <strong>Manage</strong>.</p>
 <p>f. You should see <code>Liberty-Metrics-Dashboard</code> listed. Click on it.</p>
 <p>g. Explore the dashboards. The first 2 are for the Customer Order Services application. The rest are for Liberty.</p>
+<blockquote>
+<p><strong>TIP:</strong> Adjust the the time range for the metrics dashboard, in order to see data. It has probably been a while since you ran the Operder app.  </p>
+</blockquote>
 <p>h. Click on <strong>Customer Order Services - Shopping Cart</strong>. By default, it'll show data from the last 15 minutes. Adjust the time-range from the top-right as necessary. </p>
 <p>i. You should see the frequency of requests, number of requests, pod information, and min/max request times.</p>
 <p>j. Scroll-down to expand the <strong>CPU</strong> section. You'll see information about process CPU time and CPU system load for pods.</p>
@@ -570,7 +577,7 @@ Example output:
 </ol>
 <h2 id="day-2-operations-hands-on">Day-2 Operations (Hands-on)</h2>
 <p>It is often nessarry to gather server <strong>traces</strong> and/or <strong>dumps</strong> for analyzing some problems with an application. Open Liberty Operator makes it easy to gather these on a server running inside a container.</p>
-<p>A storage must be configured so the generated artifacts can persist, even after the Pod is deleted. This storage can be shared by all instances of the Open Liberty applications. 
+<p>Storage must be configured so the generated artifacts can persist, even after the Pod is deleted. This storage can be shared by all instances of the Open Liberty applications. 
 RedHat OpenShift on IBM Cloud utilizes the storage capabilities provided by IBM Cloud. </p>
 <p>In the lab environment, you will attach storage using the storage class backed by NFS storage that we configured for the lab environment. </p>
 <p>Let's create a request for storage.</p>
@@ -668,7 +675,7 @@ The value under <code>RECONCILED</code> should be <code>True</code>. </p>
 </ol>
 <h3 id="request-server-dump-hands-on">Request server dump (Hands-on)</h3>
 <p>You can request a snapshot of the server status including different types of server dumps, from an instance of Open Liberty server running inside a Pod, using Open Liberty Operator and <code>OpenLibertyDump</code> custom resource (CR). </p>
-<p>The following steps to request a server dump are illustrated in the screen recording below:</p>
+<p>Use the following steps to request a server dump, which are also illustrated in the screen recording below:</p>
 <ol>
 <li>
 <p>From the left-panel of the OpenShift console, click on <strong>Operators</strong> &gt; <strong>Installed Operators</strong>.</p>
@@ -697,9 +704,15 @@ The value under <code>RECONCILED</code> should be <code>True</code>. </p>
 <p><br/></p>
 </li>
 </ol>
+<p>Once the dumps are completed, a zipfile containing the <strong>heap dump</strong> and <strong>thread dump</strong> is created on the storage volume that was attached to the pod. </p>
+<p>From inside of the pod, the dumpfile is in the <code>/serviceability/apps</code> folder, as illustrated below. </p>
+<p><img alt="server dump" src="extras/images/dumpfile.png" /></p>
+<p>Additionally, the dumpfile is persisted in the NFS storage location defined by the persistent volume claim.  In this case, the storage is on a separate NFS server. </p>
+<p>For your reference , here is a view of the NFS storage location, where the dumpfile was persisted on the NFS server.</p>
+<p><img alt="NFS storage" src="extras/images/nfs-dump.png" /></p>
 <h3 id="request-server-traces-hands-on">Request server traces (Hands-on)</h3>
 <p>You can also request server traces from an instance of Open Liberty server running inside a Pod using the <code>OpenLibertyTrace</code> custom resource (CR).</p>
-<p>The following steps to request a server trace are illustrated in the screen recording below:</p>
+<p>Use the following steps to request a server trace, which is also illustrated in the screen recording below:</p>
 <ol>
 <li>
 <p>From the left-panel of the OpenShift console, click on <strong>Operators</strong> &gt; <strong>Installed Operators</strong>.</p>
@@ -738,7 +751,8 @@ The value under <code>RECONCILED</code> should be <code>True</code>. </p>
 </li>
 </ul>
 <h3 id="accessing-the-generated-files-hands-on">Accessing the generated files (Hands-on)</h3>
-<p>The generated trace and dump files should now be in the persistent volume. You used storage from IBM Cloud, and we have to go through a number of steps using a different tool to access those files. Since the volume is attached to the Pod, we can instead use the Pod's terminal to easily verify that the trace and dump files are present.</p>
+<p>The generated trace and dump files should now be in the persistent volume. You used storage from the NFS Server that is included in the lab environment. </p>
+<p>in this lab environment, the NFS server is on the <strong>nfs</strong> VM. You will not access that VM in this lab. However, since the volume is attached to the Pod, you can instead use the Pod's terminal to easily verify that the trace and dump files are present.</p>
 <p>The following steps to access the files are illustrated in the screen recording below:</p>
 <ol>
 <li>
@@ -746,7 +760,11 @@ The value under <code>RECONCILED</code> should be <code>True</code>. </p>
 <ul>
 <li>
 <p>From your terminal:
-  <pre class="highlight"><code>oc rsh &lt;pod-name&gt;</code></pre></p>
+  <pre class="highlight"><code>oc project apps
+
+oc get pods
+
+oc rsh &lt;pod-name&gt;</code></pre></p>
 </li>
 <li>
 <p>From OpenShift console: click on <strong>Workloads</strong> &gt; <strong>Pods</strong>. Click on the pod and then click on <strong>Terminal</strong> tab. </p>
@@ -808,5 +826,5 @@ serviceability/apps/cos-dc4cf7fdd-mvbs7:
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-08-17 16:43:31
+Build Date UTC : 2021-08-17 18:29:20
 -->
