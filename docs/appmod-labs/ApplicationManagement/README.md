@@ -57,7 +57,7 @@ In this lab, you'll learn about managing your running applications efficiently u
 
 3. If you have not yet cloned the GitHub repo with the lab artifacts, then run the following command on your terminal:
     ```
-    git clone https://github.com/IBM/openshift-workshop-was.git
+    git clone https://github.com/IBMTechSales/openshift-workshop-was
     ```
 
 

@@ -34,7 +34,8 @@ This lab will introduce you to the basic concepts of containerization, including
 - You have cloned this lab from github. If not, follows these steps:
 
 ```
-git clone https://github.com/IBM/openshift-workshop-was.git
+git clone https://github.com/IBMTechSales/openshift-workshop-was
+
 cd openshift-workshop-was/labs/Openshift/HelloContainer
 ```
 
@@ -85,7 +86,7 @@ If you need more background on containers: https://www.docker.com/resources/what
       ![fit to size icon](images/loginvm4.png)
 
 <a name="Check_Environment"> </a>
-## Check your environment
+## Check your environment and clone the workshop GitHub project 
 
 1. Open a terminal window from within your VM.
 
@@ -104,7 +105,21 @@ If you need more background on containers: https://www.docker.com/resources/what
         Docker version 20.10.7, build f0df350
     
    
-   - For more background on docker command line: [https://docs.docker.com/engine/reference/commandline/cli/](https://docs.docker.com/engine/reference/commandline/cli/)
+    - For more background on docker command line: [https://docs.docker.com/engine/reference/commandline/cli/](https://docs.docker.com/engine/reference/commandline/cli/)
+
+    <br/>
+
+3. From the terminal window  in the VM, and clone the lab to your local directory via:
+```
+git clone https://github.com/IBMTechSales/openshift-workshop-was
+```
+
+
+
+4. Change directory to:  `openshift-workshop-was/labs/Openshift/IntroOpenshift`
+```
+cd openshift-workshop-was/labs/Openshift/IntroOpenshift
+```
 
 <a name="Run_Prebuilt"> </a>
 ## Run a pre-built image

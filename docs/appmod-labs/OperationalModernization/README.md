@@ -197,7 +197,7 @@ Building this image could take around ~8 minutes. So, let's kick that process of
 
 3. If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
     ```
-    git clone https://github.com/IBM/openshift-workshop-was.git
+    git clone https://github.com/IBMTechSales/openshift-workshop-was
     ```
 
 4. Change directory to where this lab is located:

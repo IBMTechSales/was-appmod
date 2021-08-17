@@ -490,7 +490,7 @@ Open a terminal window from the VM and clone the lab to your local directory via
 ![terminal](images/checkenv1.png)
 
 ```
-git clone https://github.com/IBM/openshift-workshop-was.git
+git clone https://github.com/IBMTechSales/openshift-workshop-was
 ```
 
 Change directory to:  `openshift-workshop-was/labs/Openshift/IntroOpenshift`
