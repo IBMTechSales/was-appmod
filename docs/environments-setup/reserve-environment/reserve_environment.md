@@ -115,7 +115,7 @@ The login credentials for the **desktop** image is:
 
   - User ID: **ibmuser**
  
-  - Password: **engageibm\!**
+  - Password: **engageibm**
 
 
 Now you are ready to use the specific lab guides to setup for demos or self-enablement. 
