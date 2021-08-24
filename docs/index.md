@@ -57,13 +57,13 @@ Basic knowledge about containers, OpenShift, and BM Transfromation Advisor is re
 
 <h3 style="color:green">Appplication Modernization Labs</h3>
 
-- Lab 3: [Operational Modernization](./appmod-labs/OperationalModernization/README.md)
-- Lab 4: [Runtime Modernization](./appmod-labs/RuntimeModernization/README.md)
-- Lab 5: [Application Management](./appmod-labs/ApplicationManagement/README.md)
+- Lab 4: [Operational Modernization](./appmod-labs/OperationalModernization/README.md)
+- Lab 5: [Runtime Modernization](./appmod-labs/RuntimeModernization/README.md)
+- Lab 6: [Application Management](./appmod-labs/ApplicationManagement/README.md)
 
 
 <h3 style="color:green">DevOps Modernization Labs</h3>
 
-- Lab 6: [Openshift Pipelines](./devops-labs/pipelines/README.md)
-- Lab 7: [GitOps with ArgoCD](./devops-labs/argocd/README.md)
+- Lab 7: [Openshift Pipelines](./devops-labs/pipelines/README.md)
+- Lab 8: [GitOps with ArgoCD](./devops-labs/argocd/README.md)
 

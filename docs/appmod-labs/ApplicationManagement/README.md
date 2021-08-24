@@ -748,4 +748,11 @@ The following steps to access the files are illustrated in the screen recording 
 
 Congratulations! You've completed **Application Management** lab! 
 
+## Next
+Please follow the link to do the next lab **Devops - Pipelines**:
+
+  - [Devops - OpenShift Pipelines](https://ibmtechsales.github.io/was-appmod/devops-labs/pipelines/)
+
+
+
 

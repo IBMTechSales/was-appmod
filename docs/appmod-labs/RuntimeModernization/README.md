@@ -1194,9 +1194,8 @@ Congratulations! You've completed **Runtime Modernization** lab!
 
 This application has been modified from the initial WebSphere ND v8.5.5 version to run on modern & cloud-native runtime Open Liberty and deployed by IBM Cloud Pak for Applications to RedHat OpenShift.
 
-
 ## Next
+Please follow the link to do the next lab **Application Management**:
 
-Follow the link to the next lab **Application Management**:
-- [Application Management](../ApplicationManagement)
+  - [Application Management](https://ibmtechsales.github.io/was-appmod/appmod-labs/ApplicationManagement/)
 

@@ -515,7 +515,16 @@ In this lab, you learned how to create the Tekton resources to automate CI/CD fo
 
   - PipelineRun
 
-##  End of Lab: Using Tekton pipelines for CI/CD of microservices to RedHat OpenShift Container Platform
+####  End of Lab: Using Tekton pipelines for CI/CD of microservices to RedHat OpenShift Container Platform
+
+
+## Next
+Please follow the link to do the next lab **Devops - Argo CD**:
+
+  - [Devops - Gitops with Argo CD](https://ibmtechsales.github.io/was-appmod/devops-labs/argocd/)
+
+
+
 
 -----------------------------------------------------------------------------------------------------------
 

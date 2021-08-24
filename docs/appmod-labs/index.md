@@ -5,12 +5,8 @@ description: App Mod and DevOps Hands on Labs
 
 ## Application Modernization Labs
 
-1. [Operational Modernization Lab](./OperationalModernization/README.md)
-
-
-2. [Runtime Modernization Lab](./RuntimeModernization/README.md)
-
-
-3. [Application Management Lab](./ApplicationManagement/README.md)
+- Lab 4. [Operational Modernization Lab](./OperationalModernization/README.md)
+- Lab 5. [Runtime Modernization Lab](./RuntimeModernization/README.md)
+- Lab 6. [Application Management Lab](./ApplicationManagement/README.md)
 
 

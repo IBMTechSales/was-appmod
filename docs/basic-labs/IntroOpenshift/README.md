@@ -1099,5 +1099,6 @@ Congratulations, you have deployed your first application to Openshift via the c
 
 ## Next
 
-Please follow the link to the next lab **Operational Modernization**:
-- [Operational Modernization](https://github.com/IBM/openshift-workshop-was/tree/master/labs/Openshift/OperationalModernization)
+Please follow the link to the next lab **Transformation Advisor - Application Assesssment**:
+
+- [Transformation Advisor - Application Assesssment](https://ibmtechsales.github.io/was-appmod/basic-labs/TA/)

@@ -1093,6 +1093,6 @@ Congratulations! You've completed the **Operational Modernization** lab. You con
 
 <a name="next"></a>
 ## Next
-Please follow the link to the next lab **Runtime Modernization**:
-- [Runtime Modernization](../RuntimeModernization)
+Please follow the link to do the next lab **Runtime Modernization**:
 
+  - [Runtime Modernization](https://ibmtechsales.github.io/was-appmod/appmod-labs/RuntimeModernization/)
