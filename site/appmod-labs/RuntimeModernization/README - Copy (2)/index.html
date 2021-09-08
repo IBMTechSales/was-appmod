@@ -5,26 +5,26 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="None">
   
-  <link rel="shortcut icon" href="../../img/favicon.ico">
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
   <title>Runtime Modernization - WebSphere Application Modernization</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  <link href="../../stylesheets/klp.css" rel="stylesheet">
+  <link href="../../../stylesheets/klp.css" rel="stylesheet">
   
   <script>
     // Current page data
     var mkdocs_page_name = "Runtime Modernization";
-    var mkdocs_page_input_path = "appmod-labs\\RuntimeModernization\\README.md";
+    var mkdocs_page_input_path = "appmod-labs\\RuntimeModernization\\README - Copy (2).md";
     var mkdocs_page_url = null;
   </script>
   
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
@@ -37,9 +37,9 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> WebSphere Application Modernization</a>
+        <a href="../../.." class="icon icon-home"> WebSphere Application Modernization</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -51,27 +51,27 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../..">Home</a>
+    <a class="" href="../../..">Home</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../environments-setup/">Reserve lab environment or workshop</a>
+    <a class="" href="../../../environments-setup/">Reserve lab environment or workshop</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../basic-labs/">Basic Containerization & App Mod Tools Labs</a>
+    <a class="" href="../../../basic-labs/">Basic Containerization & App Mod Tools Labs</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../">App Modernization Labs</a>
+    <a class="" href="../../">App Modernization Labs</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../devops-labs/">DevOps Labs</a>
+    <a class="" href="../../../devops-labs/">DevOps Labs</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -80,15 +80,15 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../OpenshiftConcepts/">Openshift Concepts</a>
+    <a class="" href="../../../OpenshiftConcepts/">Openshift Concepts</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../WebSphereCloud/">Moving WebSphere applications to Cloud</a>
+    <a class="" href="../../../WebSphereCloud/">Moving WebSphere applications to Cloud</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../resources/">Additional Resources</a>
+    <a class="" href="../../../resources/">Additional Resources</a>
                 </li>
     </ul>
 	    </li>
@@ -103,7 +103,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">WebSphere Application Modernization</a>
+        <a href="../../..">WebSphere Application Modernization</a>
       </nav>
 
       
@@ -111,7 +111,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
+    <li><a href="../../..">Docs</a> &raquo;</li>
     
       
     
@@ -144,7 +144,7 @@
 <p><strong>This path gets the application on to a cloud-ready runtime container which is easy to use and portable. In addition to the necessary library changes, some aspects of the application were modernized. However, it has not been 'modernized' to a newer architecture such as micro-services</strong>.</p>
 <p>This lab demonstrates <strong>runtime modernization</strong>.
 It uses the <strong>Customer Order Services</strong> application, which originates from WebSphere ND V8.5.5. 
-Click <a href="extras/application/">here</a> to get to know the application, including its architecture and components.
+Click <a href="../extras/application/">here</a> to get to know the application, including its architecture and components.
 The application will go through the <strong>analysis</strong>, <strong>build</strong> and <strong>deploy</strong> phases. 
 It is modernized to run on the Liberty runtime, and
 deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Platform (OCP).</p>
@@ -153,11 +153,11 @@ deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Pl
 <ol>
 <li>
 <p>If the VM is not already started, start it by clicking the Play button.</p>
-<p><img alt="start VM" src="extras/images/loginvm1.png" /></p>
+<p><img alt="start VM" src="../extras/images/loginvm1.png" /></p>
 </li>
 <li>
 <p>After the VM is started, click the <strong>desktop</strong> VM to access it.</p>
-<p><img alt="desktop VM" src="extras/images/loginvm2.png" /></p>
+<p><img alt="desktop VM" src="../extras/images/loginvm2.png" /></p>
 </li>
 <li>
 <p>Login with <strong>ibmuser</strong> ID.</p>
@@ -165,14 +165,14 @@ deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Pl
 <li>Click on the <strong>ibmuser</strong> icon on the Ubuntu screen.</li>
 <li>When prompted for the password for <strong>ibmuser</strong>, enter "<strong>engageibm</strong>" as the password: </li>
 </ul>
-<p><img alt="login VM" src="extras/images/loginvm3.png" /></p>
+<p><img alt="login VM" src="../extras/images/loginvm3.png" /></p>
 <p><br/> </p>
 </li>
 <li>
 <p>Resize the Skytap environment window for a larger viewing area while doing the lab. From the Skytap menu bar, click on the "<strong>Fit to Size</strong>" icon. This will enlarge the viewing area to fit the size of your browser window. </p>
 </li>
 </ol>
-<p><img alt="fit to size icon" src="extras/images/loginvm4.png" /></p>
+<p><img alt="fit to size icon" src="../extras/images/loginvm4.png" /></p>
 <p><a name="analysis"></a></p>
 <h2 id="analysis-hands-on">Analysis (Hands-on)</h2>
 <p>In this lab, we will demonstrate how the Transformation Advisor can be used specifically in the <strong>runtime modernization</strong> process, using Liberty in containers on OpenShift. </p>
@@ -180,12 +180,12 @@ deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Pl
 <ol>
 <li>
 <p>Open a Firefox browser window from within the VM. </p>
-<p><img alt="firefox" src="extras/images/analysis1.png" /></p>
+<p><img alt="firefox" src="../extras/images/analysis1.png" /></p>
 <p><br/></p>
 </li>
 <li>
 <p>Click on the <strong>openshift console</strong> bookmark in the top left and log in with the <strong>htpasswd</strong> option.</p>
-<p><img alt="openshift console" src="extras/images/analysis2.png" /></p>
+<p><img alt="openshift console" src="../extras/images/analysis2.png" /></p>
 <p><br/></p>
 </li>
 <li>
@@ -194,52 +194,51 @@ deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Pl
 <li>Username: <strong>ibmadmin</strong></li>
 <li>Password: <strong>engageibm</strong></li>
 </ul>
-<p><img alt="login" src="extras/images/analysis3.png" /></p>
+<p><img alt="login" src="../extras/images/analysis3.png" /></p>
 <p><br/></p>
 </li>
 <li>
 <p>From the Red Hat OpenShift Container Platform console, go to the <strong>Networking</strong> tab and click on <strong>Routes</strong>. Ensure that you are in the <strong>ta</strong> project by using the project drop down and click on the Location URL next to <code>ta-ui-route</code>.</p>
-<p><img alt="ta" src="extras/images/analysis4.png" /></p>
+<p><img alt="ta" src="../extras/images/analysis4.png" /></p>
 <p><br/></p>
 </li>
 <li>
 <p>This will open the Transformation Advisor user interface. Click <strong>Create new</strong> under <strong>Workspaces</strong> to create a new workspace. </p>
-<p><img alt="TA starting page" src="extras/images/ta-create-collection.png" /></p>
+<p><img alt="TA starting page" src="../extras/images/ta-create-collection.png" /></p>
 <p><br/></p>
 </li>
 <li>
 <p>Name it <strong>RuntimeModernization</strong> and click <strong>Next</strong>. </p>
 <p>You'll be asked to create a new <code>collection</code> to store the data collected from the <strong>Customer Order Services</strong> application. Name the new collection <strong>CustomerOrderServices</strong>. Click <strong>Create</strong>. </p>
-<p><img alt="Choose collection name" src="extras/images/ta-name-collection.png" /></p>
+<p><img alt="Choose collection name" src="../extras/images/ta-name-collection.png" /></p>
 <p><br/></p>
 <p>To provide application assessment data and receive recommendations, you would typically download and execute the <strong>Data Collector</strong> against an existing WebSphere environment. The output from the data collector is a <code>zip file</code> containing the application and configuration metadata gathered from the WebSphere Server, and is the input to the IBM Transformation Advsor tool. </p>
-<p>However, for this lab, the data collection archive has already been created for you and the resulting data is located in the cloned Github repo directory on the VM: 
-<pre class="highlight"><code>/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip</code></pre></p>
+<p>However, for this lab, the data collection archive has already been created for you and the resulting data is stored <a href="../resources/datacollection.zip">here</a>. </p>
 <p><br/></p>
 </li>
 <li>
 <p>Click the <strong>Upload</strong> button, as we already have the data collectin archive to upload.</p>
-<p><img alt="TA no recommendations available screen" src="extras/images/ta-upload.png" /></p>
+<p><img alt="TA no recommendations available screen" src="../extras/images/ta-upload.png" /></p>
 <p><br/> </p>
 </li>
 <li>
-<p>Upload the results of the data collection <strong>/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip</strong> file to IBM Cloud Transformation Advisor.</p>
-<p><img alt="TA upload collection screen" src="extras/images/ta-upload-datacollection-dialog.png" /></p>
+<p>Upload the results of the data collection (the <a href="../resources/datacollection.zip"><strong>datacollector.zip</strong></a> file) to IBM Cloud Transformation Advisor.</p>
+<p><img alt="TA upload collection screen" src="../extras/images/ta-upload-datacollection-dialog.png" /></p>
 <p><br/> </p>
 </li>
 <li>
 <p>When the upload is complete, you will see a list of applications analyzed from the source environment. At the top of the page, you can see the <strong>source environment</strong> and the <strong>target environment</strong> settings.  </p>
-<p><img alt="TA recommendations screen for the data collection" src="extras/images/analysis5.png" /></p>
+<p><img alt="TA recommendations screen for the data collection" src="../extras/images/analysis5.png" /></p>
 <p><br/></p>
 </li>
 <li>
 <p>Under the <strong>Migration target</strong> field, click the <strong>down arrow</strong> and select <strong>Compatible runtimes</strong>. This shows an entry for each application for each compatible destination runtime you can migrate it to.</p>
-<p><img alt="TA choosing compatible runtimes" src="extras/images/ta-compatible-runtimes.png" /></p>
+<p><img alt="TA choosing compatible runtimes" src="../extras/images/ta-compatible-runtimes.png" /></p>
 </li>
 <li>
 <p>Click the <strong>CustomerOrderServicesApp.ear</strong> application with the <strong>Open Liberty</strong> migration target to open the <strong>Application details page</strong>. </p>
 <p>This lab covers runtime modernization, so the application will be re-platformed to run on Open Liberty, and will be placed in a container and deployed to OCP.</p>
-<p><img alt="TA choosing CustomerOrderServices Open Liberty target" src="extras/images/ta-cos-ol.png" /></p>
+<p><img alt="TA choosing CustomerOrderServices Open Liberty target" src="../extras/images/ta-cos-ol.png" /></p>
 <p><br/></p>
 </li>
 <li>
@@ -247,12 +246,12 @@ deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Pl
 <p>In summary, migration of this application to Open Liberty is of <strong>Moderate</strong> complexity as some code changes may be required. </p>
 <hr />
 <h2 id="note-there-may-be-a-severe-issue-related-to-third-party-apis-but-this-doesnt-apply-as-they-occur-in-test-code"><strong>Note:</strong> There may be a severe issue related to third-party APIs, but this doesn't apply as they occur in test code.</h2>
-<p><img alt="TA detailed analysis for CustomerOrderServices" src="extras/images/analysis6.png" /></p>
+<p><img alt="TA detailed analysis for CustomerOrderServices" src="../extras/images/analysis6.png" /></p>
 <p><br/></p>
 </li>
 <li>
 <p>Click on <strong>View migration plan</strong> in the top right corner of the page. </p>
-<p><img alt="TA migration plan button" src="extras/images/analysis7.png" /></p>
+<p><img alt="TA migration plan button" src="../extras/images/analysis7.png" /></p>
 <p>This page will help you assemble an archive containing the following resources:</p>
 <ul>
 <li>your <strong>application's source or binary files</strong> (you upload these here or specify Maven coordinates to download them)</li>
@@ -263,7 +262,7 @@ deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Pl
 <li>the <strong>deployment artifacts</strong> needed to create the container image and deploy the application to OCP (generated by Transformation Advisor and automatically included)</li>
 </ul>
 <p><br/></p>
-<p><img alt="TA migration plan page" src="extras/images/analysis8.png" /></p>
+<p><img alt="TA migration plan page" src="../extras/images/analysis8.png" /></p>
 <p><strong>Note:</strong> These artifacts have already been provided for you as part of the lab files, so you don't need to download the migration plan. However, you can do so if you wish to look around at the files. These files can also be sent to a Git repository by Transformation Advisor.</p>
 </li>
 </ol>
@@ -274,7 +273,7 @@ deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Pl
 <ol>
 <li>
 <p>Open a new terminal window from the VM desktop.</p>
-<p><img alt="terminal window" src="extras/images/build1.png" /></p>
+<p><img alt="terminal window" src="../extras/images/build1.png" /></p>
 <p><br/></p>
 </li>
 <li>
@@ -283,7 +282,7 @@ deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Pl
 <li>Username: <strong>ibmadmin</strong></li>
 <li>Password: <strong>engageibm</strong></li>
 </ul>
-<p><img alt="oc login" src="extras/images/build2.png" /></p>
+<p><img alt="oc login" src="../extras/images/build2.png" /></p>
 <p><br/></p>
 </li>
 <li>
@@ -308,12 +307,12 @@ ls</code></pre></p>
 <p>We implemented the following health checks:</p>
 <ul>
 <li>
-<p><a href="app/CustomerOrderServicesWeb/src/org/pwte/example/health/ReadinessCheck.java#L17">ReadinessCheck</a>: The application reports it is ready as long as the readiness check endpoint can be reached. Connections to other services and any other required conditions for the application to be considered ready are checked here.</p>
+<p><a href="../app/CustomerOrderServicesWeb/src/org/pwte/example/health/ReadinessCheck.java#L17">ReadinessCheck</a>: The application reports it is ready as long as the readiness check endpoint can be reached. Connections to other services and any other required conditions for the application to be considered ready are checked here.</p>
 <pre class="highlight"><code class="language-java">return HealthCheckResponse.named("Readiness").up().build();</code></pre>
 
 </li>
 <li>
-<p><a href="app/CustomerOrderServicesWeb/src/org/pwte/example/health/LivenessCheck.java#L15">LivenessCheck</a>: The requests should be processed within a reasonable amount of time. Monitor thread block times to identify potential deadlocks which can cause the application to hang.</p>
+<p><a href="../app/CustomerOrderServicesWeb/src/org/pwte/example/health/LivenessCheck.java#L15">LivenessCheck</a>: The requests should be processed within a reasonable amount of time. Monitor thread block times to identify potential deadlocks which can cause the application to hang.</p>
 <pre class="highlight"><code class="language-java">ThreadMXBean tBean = ManagementFactory.getThreadMXBean();
 long ids[] = tBean.findMonitorDeadlockedThreads();
 if (ids !=null) {
@@ -385,13 +384,13 @@ maven                                                       latest              
 <li>Under the <strong>Home</strong> tab on the left menu, click <strong>Projects</strong>. </li>
 <li>Click on the <strong>Create Project</strong> button.</li>
 </ul>
-<p><img alt="createproject" src="extras/images/buildimage1.png" /></p>
+<p><img alt="createproject" src="../extras/images/buildimage1.png" /></p>
 <p><br/></p>
 <ul>
 <li>Enter <code>apps</code> for the <em>Name</em> field and click on <strong>Create</strong>.</li>
 </ul>
 <p><br/></p>
-<p><img alt="createproject" src="extras/images/buildimage2.png" /></p>
+<p><img alt="createproject" src="../extras/images/buildimage2.png" /></p>
 <p><br/></p>
 <ul>
 <li>Return to your terminal window.</li>
@@ -420,7 +419,7 @@ maven                                                       latest              
 <li>Copy and paste <code>app-monitoring=true</code> into the text box .</li>
 <li>Click <strong>Save</strong>.</li>
 </ul>
-<p><img alt="Add label to namespace" src="extras/images/add-monitor-label.gif" /></p>
+<p><img alt="Add label to namespace" src="../extras/images/add-monitor-label.gif" /></p>
 <p><br/></p>
 </li>
 </ul>
@@ -491,13 +490,13 @@ cos    default-route-openshift-image-registry.apps.demo.ibmdte.net/apps/cos   la
 <li>Select project <code>apps</code> from the <strong>Project</strong> drop-down list. </li>
 <li>Click on <code>cos</code> from the list. </li>
 </ul>
-<p><img alt="imagestream" src="extras/images/buildimage3.png" /></p>
+<p><img alt="imagestream" src="../extras/images/buildimage3.png" /></p>
 <p><br/> </p>
 <ul>
 <li>Scroll down to the bottom to see the image that you pushed.</li>
 </ul>
 <p><br/></p>
-<p><img alt="apps imagestream" src="extras/images/apps-imagestream.png" /></p>
+<p><img alt="apps imagestream" src="../extras/images/apps-imagestream.png" /></p>
 </li>
 </ol>
 <p><a name="deploy"></a></p>
@@ -644,23 +643,23 @@ cos-596b4f849f-2fg4h   1/1     Running   0          18m</code></pre></p>
 <li>You'll be shown a login dialog.</li>
 <li>Login with user <code>skywalker</code> and password <code>force</code>. (The user is pre-created/registered in the <code>basicRegistry</code> configured in Liberty.)</li>
 </ul>
-<p><img alt="accessapplication1" src="extras/images/accessapplication1.png" /></p>
+<p><img alt="accessapplication1" src="../extras/images/accessapplication1.png" /></p>
 <ul>
 <li>After login, the application page titled <em>Electronic and Movie Depot</em> will be displayed.</li>
 </ul>
 <p><br/></p>
-<p><img alt="accessapplication2" src="extras/images/accessapplication2.png" /></p>
+<p><img alt="accessapplication2" src="../extras/images/accessapplication2.png" /></p>
 <p><br/></p>
 <ul>
 <li>From the <code>Shop</code> tab, click on an item (a movie) and on the next pop-up panel, drag and drop the item into the shopping cart. </li>
 </ul>
-<p><img alt="accessapplication3" src="extras/images/accessapplication3.png" /></p>
+<p><img alt="accessapplication3" src="../extras/images/accessapplication3.png" /></p>
 <p><br/></p>
 <ul>
 <li>Add a few items to the cart. </li>
 <li>As the items are added, they’ll be shown under <em>Current Shopping Cart</em> (on the upper right) with <em>Order Total</em>.</li>
 </ul>
-<p><img alt="accessapplication4" src="extras/images/accessapplication4.png" /></p>
+<p><img alt="accessapplication4" src="../extras/images/accessapplication4.png" /></p>
 <p><br/></p>
 <ul>
 <li>Close the browser.</li>
@@ -679,12 +678,12 @@ cos-596b4f849f-2fg4h   1/1     Running   0          18m</code></pre></p>
 <ul>
 <li>
 <p>Click on the <strong>Deployments</strong> tab under <strong>Workloads</strong> from the left menu and select <code>open-liberty-operator</code></p>
-<p><img alt="olo deploy1" src="extras/images/olo_deploy1.jpg" /></p>
+<p><img alt="olo deploy1" src="../extras/images/olo_deploy1.jpg" /></p>
 <p><br/></p>
 </li>
 <li>
 <p>Navigate to the <code>YAML</code> tab to view the content of yaml</p>
-<p><img alt="olo deploy2" src="extras/images/olo_deploy2.jpg" /></p>
+<p><img alt="olo deploy2" src="../extras/images/olo_deploy2.jpg" /></p>
 <p><br/> </p>
 </li>
 </ul>
@@ -692,17 +691,17 @@ cos-596b4f849f-2fg4h   1/1     Running   0          18m</code></pre></p>
 <ul>
 <li>
 <p>Click on the <strong>Pods</strong> tab under <strong>Workloads</strong> from the left menu, and select the pod starting with <code>open-liberty-operator</code></p>
-<p><img alt="olo pod1" src="extras/images/olo_pod1.jpg" /></p>
+<p><img alt="olo pod1" src="../extras/images/olo_pod1.jpg" /></p>
 <p><br/></p>
 </li>
 <li>
 <p>Navigate to the <code>Logs</code> tab to view the <code>open-liberty-operator</code> container log</p>
-<p><img alt="olo pod2" src="extras/images/olo_pod2.jpg" /></p>
+<p><img alt="olo pod2" src="../extras/images/olo_pod2.jpg" /></p>
 <p><br/></p>
 </li>
 <li>
 <p>Navigate to the <code>Terminal</code> tab to view the files in the container</p>
-<p><img alt="olo pod3" src="extras/images/olo_pod3.jpg" />   </p>
+<p><img alt="olo pod3" src="../extras/images/olo_pod3.jpg" />   </p>
 <p><br/>   </p>
 </li>
 </ul>
@@ -715,22 +714,22 @@ cos-596b4f849f-2fg4h   1/1     Running   0          18m</code></pre></p>
 <li>
 <p>Click on the <strong>Installed Operators</strong> tab under <strong>Operators</strong> from the left menu and select <code>Open Liberty Operator</code>.  </p>
 <p><strong>Note:</strong> The operator is installed at cluster level and is visible to all existing projects, but Open Liberty Application instance is created under the project <code>apps</code>.</p>
-<p><img alt="olo op1" src="extras/images/olo-op1.jpg" /></p>
+<p><img alt="olo op1" src="../extras/images/olo-op1.jpg" /></p>
 <ul>
 <li>Navigate to the <code>Open Liberty Application</code> tab and select <code>cos</code> to view the details of the Open Liberty Application instance</li>
 </ul>
 <p><br/></p>
-<p><img alt="olo op2" src="extras/images/olo-op2.jpg" /></p>
+<p><img alt="olo op2" src="../extras/images/olo-op2.jpg" /></p>
 <ul>
 <li>Navigate to the <code>YAML</code> tab to view the content of yaml</li>
 </ul>
 <p><br/></p>
-<p><img alt="ola instance" src="extras/images/ola-instance.jpg" /></p>
+<p><img alt="ola instance" src="../extras/images/ola-instance.jpg" /></p>
 <ul>
 <li>Navigate to the <code>Resources</code> tab to view the resources of Open Liberty Application instance</li>
 </ul>
 <p><br/></p>
-<p><img alt="ola resources" src="extras/images/ola-resources.jpg" /></p>
+<p><img alt="ola resources" src="../extras/images/ola-resources.jpg" /></p>
 <p><br/></p>
 </li>
 </ul>
@@ -738,13 +737,13 @@ cos-596b4f849f-2fg4h   1/1     Running   0          18m</code></pre></p>
 <ul>
 <li>
 <p>Click on the <strong>Deployments</strong> tab under <strong>Workloads</strong> from the left menu and select <code>cos</code></p>
-<p><img alt="ola workload deploy1" src="extras/images/ola-workload-deploy1.jpg" /></p>
+<p><img alt="ola workload deploy1" src="../extras/images/ola-workload-deploy1.jpg" /></p>
 <p><br/></p>
 </li>
 <li>
 <p>Navigate to the <code>YAML</code> tab to view the content of yaml.     </p>
 <p><strong>Note:</strong> the deployment is created through the controller of the OpenLibertyApplication custom resource.</p>
-<p><img alt="ola workload deploy2" src="extras/images/ola-workload-deploy2.jpg" /></p>
+<p><img alt="ola workload deploy2" src="../extras/images/ola-workload-deploy2.jpg" /></p>
 <p><br/> </p>
 </li>
 </ul>
@@ -752,15 +751,15 @@ cos-596b4f849f-2fg4h   1/1     Running   0          18m</code></pre></p>
 <ul>
 <li>
 <p>Click on the <strong>Pods</strong> tab under <strong>Workloads</strong> from the left menu and select the pod starting with <code>cos-</code></p>
-<p><img alt="ola workload pod1" src="extras/images/ola-workload-pod1.jpg" />  </p>
+<p><img alt="ola workload pod1" src="../extras/images/ola-workload-pod1.jpg" />  </p>
 <p><br/>   </p>
 </li>
 <li>
 <p>Navigate to the <code>Logs</code> tab to view the liberty access log</p>
-<p><img alt="ola workload pod2" src="extras/images/ola-workload-pod2.jpg" />      </p>
+<p><img alt="ola workload pod2" src="../extras/images/ola-workload-pod2.jpg" />      </p>
 <p><strong>Note:</strong> by default, the Open Liberty Application instance is configured with liberty access log:</p>
 <p><br/>     </p>
-<p><img alt="ola workload pod3" src="extras/images/ola-workload-pod3.jpg" /></p>
+<p><img alt="ola workload pod3" src="../extras/images/ola-workload-pod3.jpg" /></p>
 <p><br/>          </p>
 </li>
 </ul>
@@ -768,13 +767,13 @@ cos-596b4f849f-2fg4h   1/1     Running   0          18m</code></pre></p>
 <ul>
 <li>
 <p>Click on the <strong>Services</strong> tab under <strong>Networking</strong> from the left menu and select <code>cos</code></p>
-<p><img alt="ola network service1" src="extras/images/ola-net-service1.jpg" /> </p>
+<p><img alt="ola network service1" src="../extras/images/ola-net-service1.jpg" /> </p>
 <p><br/>          </p>
 </li>
 <li>
 <p>Navigate to the <code>YAML</code> tab to view the content of yaml.  </p>
 <p><strong>Note:</strong> the service is created through the controller of OpenLibertyApplication custom resource.</p>
-<p><img alt="ola network service2" src="extras/images/ola-net-service2.jpg" />   </p>
+<p><img alt="ola network service2" src="../extras/images/ola-net-service2.jpg" />   </p>
 <p><br/>          </p>
 </li>
 </ul>
@@ -782,14 +781,14 @@ cos-596b4f849f-2fg4h   1/1     Running   0          18m</code></pre></p>
 <ul>
 <li>
 <p>Click on the <strong>Routes</strong> tab under <strong>Networking</strong> from the left menu and select <code>cos</code></p>
-<p><img alt="ola network route1" src="extras/images/ola-net-route1.jpg" /> </p>
+<p><img alt="ola network route1" src="../extras/images/ola-net-route1.jpg" /> </p>
 <p><br/> </p>
 </li>
 <li>
 <p>Navigate to the <code>YAML</code> tab to view the content of yaml.  </p>
 <pre><code>**Note** the route is created through the controller of OpenLibertyApplication custom resource.
 </code></pre>
-<p><img alt="ola network route2" src="extras/images/ola-net-route2.jpg" />   </p>
+<p><img alt="ola network route2" src="../extras/images/ola-net-route2.jpg" />   </p>
 <p><br/>    </p>
 </li>
 </ul>
@@ -797,15 +796,15 @@ cos-596b4f849f-2fg4h   1/1     Running   0          18m</code></pre></p>
 <ul>
 <li>
 <p>First, return to the YAML of the Open Liberty Application instance to view the configured secrets:</p>
-<p><img alt="ola workload secret1" src="extras/images/ola-workload-secret1.jpg" /> </p>
-<p><img alt="ola workload secret2" src="extras/images/ola-workload-secret2.jpg" /> </p>
-<p><img alt="ola workload secret3" src="extras/images/ola-workload-secret3.jpg" /> </p>
+<p><img alt="ola workload secret1" src="../extras/images/ola-workload-secret1.jpg" /> </p>
+<p><img alt="ola workload secret2" src="../extras/images/ola-workload-secret2.jpg" /> </p>
+<p><img alt="ola workload secret3" src="../extras/images/ola-workload-secret3.jpg" /> </p>
 <p><br/> </p>
 </li>
 <li>
 <p>Click on the <strong>Secrets</strong> tab under <strong>Workloads</strong> from the left menu and select the respective secrets and view the details </p>
-<p><img alt="ola workload secret4" src="extras/images/ola-workload-secret4.jpg" /> </p>
-<p><img alt="ola workload secret5" src="extras/images/ola-workload-secret5.jpg" /></p>
+<p><img alt="ola workload secret4" src="../extras/images/ola-workload-secret4.jpg" /> </p>
+<p><img alt="ola workload secret5" src="../extras/images/ola-workload-secret5.jpg" /></p>
 <p><br/>            </p>
 </li>
 </ul>
@@ -817,12 +816,12 @@ cos-596b4f849f-2fg4h   1/1     Running   0          18m</code></pre></p>
 <ul>
 <li>
 <p>Click on the <strong>Deployments</strong> tab under <strong>Workloads</strong> from the left menu and select <code>cos-db-liberty</code></p>
-<p><img alt="ol-db deploy1" src="extras/images/oldb_deploy_1.jpg" /></p>
+<p><img alt="ol-db deploy1" src="../extras/images/oldb_deploy_1.jpg" /></p>
 <p><br/>  </p>
 </li>
 <li>
 <p>Navigate to the <code>YAML</code> tab to view the content of yaml</p>
-<p><img alt="ol-db deploy2" src="extras/images/oldb_deploy_2.jpg" /></p>
+<p><img alt="ol-db deploy2" src="../extras/images/oldb_deploy_2.jpg" /></p>
 <p><br/>         </p>
 </li>
 </ul>
@@ -830,7 +829,7 @@ cos-596b4f849f-2fg4h   1/1     Running   0          18m</code></pre></p>
 <ul>
 <li>
 <p>Click on the <strong>Pods</strong> tab under <strong>Workloads</strong> from the left menu and select the pod starting with <code>cos-db-liberty</code></p>
-<p><img alt="ol-db pod1" src="extras/images/oldb_pod_1.jpg" /></p>
+<p><img alt="ol-db pod1" src="../extras/images/oldb_pod_1.jpg" /></p>
 <p><br/>       </p>
 </li>
 <li>
@@ -838,7 +837,7 @@ cos-596b4f849f-2fg4h   1/1     Running   0          18m</code></pre></p>
 </li>
 <li>
 <p>Navigate to the <code>Terminal</code> tab to view the files in the database container</p>
-<p><img alt="ol-db pod2" src="extras/images/oldb_pod_2.jpg" /></p>
+<p><img alt="ol-db pod2" src="../extras/images/oldb_pod_2.jpg" /></p>
 <p><br/>         </p>
 </li>
 </ul>
@@ -846,8 +845,8 @@ cos-596b4f849f-2fg4h   1/1     Running   0          18m</code></pre></p>
 <ul>
 <li>
 <p>Click on the <strong>Services</strong> tab under <strong>Networking</strong> from the left menu and select  <code>cos-db-liberty</code></p>
-<p><img alt="ol-db service1" src="extras/images/oldb_service_1.jpg" /></p>
-<p><img alt="ol-db service2" src="extras/images/oldb_service_2.jpg" /></p>
+<p><img alt="ol-db service1" src="../extras/images/oldb_service_1.jpg" /></p>
+<p><img alt="ol-db service2" src="../extras/images/oldb_service_2.jpg" /></p>
 </li>
 </ul>
 </li>
@@ -982,10 +981,10 @@ type: Opaque</code></pre></p>
 <p>a. Return to the OpenShift console through a <strong>Firefox</strong> browser window.</p>
 <p>b. Select the <code>apps</code> project from the project drop down menu.</p>
 <p>c. Click on the <strong>Secrets</strong> tab under <strong>Workloads</strong> from the left menu and search for the <code>liberty-creds</code> secret.</p>
-<p><img alt="secrets1" src="extras/images/secrets1.png" /></p>
+<p><img alt="secrets1" src="../extras/images/secrets1.png" /></p>
 <p><br/></p>
 <p>d. Navigate to the <code>YAML</code> tab. Note that the <code>data</code> field contains the credentials in encoded form.</p>
-<p><img alt="secrets2" src="extras/images/secrets2.png" /></p>
+<p><img alt="secrets2" src="../extras/images/secrets2.png" /></p>
 </li>
 </ol>
 <h2 id="configmap">Configmap</h2>
@@ -1162,14 +1161,9 @@ oc get route</code></pre>
       
     </span>
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="../../search/main.js" defer></script>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
 
 </body>
 </html>
-
-<!--
-MkDocs version : 1.0.4
-Build Date UTC : 2021-09-08 21:10:36
--->

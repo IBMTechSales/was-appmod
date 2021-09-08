@@ -99,10 +99,7 @@ In this lab, we'll use **Customer Order Services** application as an example. In
 
     To provide application assessment data and receive recommendations, you would typically download and execute the **Data Collector** against an existing WebSphere environment. The output from the data collector is a `zip file` containing the application and configuration metadata gathered from the WebSphere Server, and is the input to the IBM Transformation Advsor tool. 
 
-	However, for this lab, the data collection archive has already been created for you and the resulting data is located in the cloned Github repo directory on the VM: 
-	```
-	/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip
-    ```
+	However, for this lab, the data collection archive has already been created for you and the resulting data is stored [here](resources/datacollection.zip). 
 
     <br/>
 
@@ -112,7 +109,7 @@ In this lab, we'll use **Customer Order Services** application as an example. In
     
      <br/> 
 	
-8. Upload the results of the data collection **/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip** file to IBM Cloud Transformation Advisor.
+8. Upload the results of the data collection (the [**datacollector.zip**](resources/datacollection.zip) file) to IBM Cloud Transformation Advisor.
     
     ![TA upload collection screen](extras/images/ta-upload-datacollection-dialog.png)
 
@@ -122,8 +119,6 @@ In this lab, we'll use **Customer Order Services** application as an example. In
 
     ![TA recommendations screen for the data collection](extras/images/ta-migration-target.png)
     
-	<br/>
-	
 10. Under the **Migration target** field, click the down arrow and select **Compatible runtimes**. This will show you an entry for each application for each compatible destination runtime you can migrate it to.
     
     ![TA choosing compatible runtimes](extras/images/ta-compatible-runtimes.png)

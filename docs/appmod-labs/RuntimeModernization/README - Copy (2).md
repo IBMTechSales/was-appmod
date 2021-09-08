@@ -99,11 +99,8 @@ The steps needed to analyze the existing Customer Order Services application are
 
     To provide application assessment data and receive recommendations, you would typically download and execute the **Data Collector** against an existing WebSphere environment. The output from the data collector is a `zip file` containing the application and configuration metadata gathered from the WebSphere Server, and is the input to the IBM Transformation Advsor tool. 
 
-	However, for this lab, the data collection archive has already been created for you and the resulting data is located in the cloned Github repo directory on the VM: 
-	```
-	/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip
-    ```
-	
+	However, for this lab, the data collection archive has already been created for you and the resulting data is stored [here](resources/datacollection.zip). 
+
     <br/>
 
 7. Click the **Upload** button, as we already have the data collectin archive to upload.
@@ -112,7 +109,7 @@ The steps needed to analyze the existing Customer Order Services application are
     
      <br/> 
 	
-8. Upload the results of the data collection **/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip** file to IBM Cloud Transformation Advisor.
+8. Upload the results of the data collection (the [**datacollector.zip**](resources/datacollection.zip) file) to IBM Cloud Transformation Advisor.
     
     ![TA upload collection screen](extras/images/ta-upload-datacollection-dialog.png)
 
