@@ -175,8 +175,17 @@ deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Pl
 <p><img alt="fit to size icon" src="extras/images/loginvm4.png" /></p>
 <p><a name="analysis"></a></p>
 <h2 id="analysis-hands-on">Analysis (Hands-on)</h2>
+<h3 id="clone-the-github-repo-for-this-workshop">Clone the GitHub repo for this workshop</h3>
 <p>In this lab, we will demonstrate how the Transformation Advisor can be used specifically in the <strong>runtime modernization</strong> process, using Liberty in containers on OpenShift. </p>
-<p>The steps needed to analyze the existing Customer Order Services application are:</p>
+<p>The steps needed to analyze the existing Customer Order Services application are:   </p>
+<ol>
+<li>If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:<pre><code>git clone https://github.com/IBMTechSales/openshift-workshop-was
+</code></pre>
+</li>
+</ol>
+<h3 id="use-ta-to-facilitate-your-runtime-modernization">Use TA to facilitate your runtime modernization</h3>
+<p>In this lab, we will demonstrate how the Transformation Advisor can be used specifically in the <strong>runtime modernization</strong> process, using Liberty in containers on OpenShift. </p>
+<p>The steps needed to analyze the existing Customer Order Services application are:   </p>
 <ol>
 <li>
 <p>Open a Firefox browser window from within the VM. </p>
@@ -214,7 +223,7 @@ deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Pl
 <p><br/></p>
 <p>To provide application assessment data and receive recommendations, you would typically download and execute the <strong>Data Collector</strong> against an existing WebSphere environment. The output from the data collector is a <code>zip file</code> containing the application and configuration metadata gathered from the WebSphere Server, and is the input to the IBM Transformation Advsor tool. </p>
 <p>However, for this lab, the data collection archive has already been created for you and the resulting data is located in the cloned Github repo directory on the VM: 
-<pre class="highlight"><code>/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip</code></pre></p>
+<pre class="highlight"><code>/home/ibmuser/openshift-workshop-was/labs/Openshift/RuntimeModernization/resources/datacollection.zip</code></pre></p>
 <p><br/></p>
 </li>
 <li>
@@ -223,7 +232,7 @@ deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Pl
 <p><br/> </p>
 </li>
 <li>
-<p>Upload the results of the data collection <strong>/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip</strong> file to IBM Cloud Transformation Advisor.</p>
+<p>Upload the results of the data collection <strong>/home/ibmuser/openshift-workshop-was/labs/Openshift/RuntimeModernization/resources/datacollection.zip/datacollection.zip</strong> file to IBM Cloud Transformation Advisor.</p>
 <p><img alt="TA upload collection screen" src="extras/images/ta-upload-datacollection-dialog.png" /></p>
 <p><br/> </p>
 </li>
@@ -285,19 +294,19 @@ deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Pl
 </ul>
 <p><img alt="oc login" src="extras/images/build2.png" /></p>
 <p><br/></p>
+<!--
+3. If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
+    <pre class="highlight"><code>git clone https://github.com/IBMTechSales/openshift-workshop-was</code></pre>
+-->
+
 </li>
 <li>
-<p>If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
-    <pre class="highlight"><code>git clone https://github.com/IBMTechSales/openshift-workshop-was</code></pre></p>
-</li>
-<li>
-<p>Change directory to where this lab is located:
-   <pre class="highlight"><code>cd openshift-workshop-was
-cd labs/Openshift/RuntimeModernization
+<p>Change directory to where this lab is located, from the cloned Github repo directory:
+   <pre class="highlight"><code>cd /home/ibmuser/openshift-workshop-was/labs/Openshift/RuntimeModernization
 ls</code></pre></p>
 </li>
 </ol>
-<p>5 Run the following command to start building the image. Make sure to copy the entire command, including the <code>"."</code> at the end (indicated as the location of current directory). While the image is building (which takes ~3 minutes), continue with rest of the lab:
+<p>4 Run the following command to start building the image. Make sure to copy the entire command, including the <code>"."</code> at the end (indicated as the location of current directory). While the image is building (which takes ~3 minutes), continue with rest of the lab:
    <pre class="highlight"><code>docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps/cos .</code></pre></p>
 <h2 id="modernize-with-microprofile-for-reading-only">Modernize with MicroProfile (for reading only)</h2>
 <p>Eclipse <strong>MicroProfile</strong> is a modular set of technologies designed so that you can write cloud-native microservices. However, even though our application has not been refactored into microservices, we can still take advantage of some of the technologies from MicroProfile.</p>
@@ -1171,5 +1180,5 @@ oc get route</code></pre>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-09-08 21:10:36
+Build Date UTC : 2021-09-08 21:37:53
 -->
