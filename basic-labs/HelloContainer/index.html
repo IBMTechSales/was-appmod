@@ -478,8 +478,8 @@ c. Check that the image has been removed:
 </ol>
 <p><a name="Build_Your_Own"> </a></p>
 <h2 id="build-and-run-your-own-image">Build and Run Your Own Image</h2>
-<p>We use a <code>Containerfile</code>, which contains the instructions to create the new layers of your image. 
-For those familiar with docker, the <code>Containerfile</code> is equivalent to <code>Dockerfile</code>.</p>
+<p>We use a podman <code>Containerfile</code>, which contains the instructions to create the new layers of your image. 
+For those familiar with docker, the <code>Containerfile</code> is equivalent to a <code>Dockerfile</code>.</p>
 <p>Recall that an image contains the entire file system that you want to use to run your virtual process in a container.
 For this sample, we are building a new image for a Java EE web application <strong>ServletApp.war</strong>.
 It is configured to run on the WebSphere Liberty Runtime. 
@@ -818,5 +818,5 @@ docker tag app app:1.4.0</code></pre>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-09-08 12:54:32
+Build Date UTC : 2021-09-08 15:25:09
 -->
