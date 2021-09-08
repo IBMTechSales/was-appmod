@@ -22,7 +22,7 @@ There are several approaches to application modernization and provided are key r
 
 <h3 style="color:green">Operational Modernization</h3>
 
-- **Repackage** the application to deploy within a container but maintaining a monolith application without changes to the application or runtime. This solution uses IBM Transforation Advisor and the Runtime Component Operator, supported by IBM WebSphere Hybrid Edition, to deploy and manage the containerized application on Red Hat OpenShift.
+- **Repackage** the application to deploy within a container but maintaining a monolith application without changes to the application or runtime. This solution uses IBM Transformation Advisor and the Runtime Component Operator, supported by IBM WebSphere Hybrid Edition, to deploy and manage the containerized application on Red Hat OpenShift.
 
 <h3 style="color:green">Runtime Modernization</h3>
 
