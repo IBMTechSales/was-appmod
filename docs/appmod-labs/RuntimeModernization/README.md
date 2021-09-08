@@ -53,9 +53,24 @@ deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Pl
 <a name="analysis"></a>
 ## Analysis (Hands-on)
 
+
+### Clone the GitHub repo for this workshop 
+	
 In this lab, we will demonstrate how the Transformation Advisor can be used specifically in the **runtime modernization** process, using Liberty in containers on OpenShift. 
 
-The steps needed to analyze the existing Customer Order Services application are:
+The steps needed to analyze the existing Customer Order Services application are:	
+	
+1. If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
+    
+        git clone https://github.com/IBMTechSales/openshift-workshop-was
+	
+	
+### Use TA to facilitate your runtime modernization	
+
+In this lab, we will demonstrate how the Transformation Advisor can be used specifically in the **runtime modernization** process, using Liberty in containers on OpenShift. 
+
+The steps needed to analyze the existing Customer Order Services application are:	
+	
 
 1. Open a Firefox browser window from within the VM. 
 
@@ -101,7 +116,7 @@ The steps needed to analyze the existing Customer Order Services application are
 
 	However, for this lab, the data collection archive has already been created for you and the resulting data is located in the cloned Github repo directory on the VM: 
 	```
-	/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip
+	/home/ibmuser/openshift-workshop-was/labs/Openshift/RuntimeModernization/resources/datacollection.zip
     ```
 	
     <br/>
@@ -112,7 +127,7 @@ The steps needed to analyze the existing Customer Order Services application are
     
      <br/> 
 	
-8. Upload the results of the data collection **/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip** file to IBM Cloud Transformation Advisor.
+8. Upload the results of the data collection **/home/ibmuser/openshift-workshop-was/labs/Openshift/RuntimeModernization/resources/datacollection.zip/datacollection.zip** file to IBM Cloud Transformation Advisor.
     
     ![TA upload collection screen](extras/images/ta-upload-datacollection-dialog.png)
 
@@ -190,19 +205,20 @@ Building this image could take around ~3 minutes so let's kick that process off 
 
       <br/>
 
-3. If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
-    ```
-    git clone https://github.com/IBMTechSales/openshift-workshop-was
-    ```
+    <!--
+    3. If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
+        ```
+        git clone https://github.com/IBMTechSales/openshift-workshop-was
+        ```
+    -->
     
-4. Change directory to where this lab is located:
+3. Change directory to where this lab is located, from the cloned Github repo directory:
    ```
-   cd openshift-workshop-was
-   cd labs/Openshift/RuntimeModernization
+   cd /home/ibmuser/openshift-workshop-was/labs/Openshift/RuntimeModernization
    ls
    ```
 
-5 Run the following command to start building the image. Make sure to copy the entire command, including the `"."` at the end (indicated as the location of current directory). While the image is building (which takes ~3 minutes), continue with rest of the lab:
+4 Run the following command to start building the image. Make sure to copy the entire command, including the `"."` at the end (indicated as the location of current directory). While the image is building (which takes ~3 minutes), continue with rest of the lab:
    ```
    docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps/cos .
    ```

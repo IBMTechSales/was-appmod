@@ -44,14 +44,24 @@ In this lab, we'll use **Customer Order Services** application as an example. In
 4. Resize the Skytap environment window for a larger viewing area while doing the lab. From the Skytap menu bar, click on the "**Fit to Size**" icon. This will enlarge the viewing area to fit the size of your browser window. 
 
     ![fit to size icon](extras/images/loginvm4.png)
+	
 
 <a name="analysis"></a>
 
 ## Analysis (Hands-on)
 
-**IBM Cloud Transformation Advisor (TA)** can be used to analyze the Customer Order Service Application running in the WebSphere ND environment. The Transformation Advisor helps you to analyze your on-premises workloads for modernization. It determines the complexity of your applications, estimates a development cost to perform the move to the cloud, and recommends the best target environment. 
+
+### Clone the GitHub repo for this workshop 
+	
+1. If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
+    
+        git clone https://github.com/IBMTechSales/openshift-workshop-was
+	
 
 #### Let's get started using TA to analyze the existing Customer Order Services application:
+
+**IBM Cloud Transformation Advisor (TA)** can be used to analyze the Customer Order Service Application running in the WebSphere ND environment. The Transformation Advisor helps you to analyze your on-premises workloads for modernization. It determines the complexity of your applications, estimates a development cost to perform the move to the cloud, and recommends the best target environment. 
+
 
 1. Open a **Firefox** browser window from within the VM. 
     
@@ -101,7 +111,7 @@ In this lab, we'll use **Customer Order Services** application as an example. In
 
 	However, for this lab, the data collection archive has already been created for you and the resulting data is located in the cloned Github repo directory on the VM: 
 	```
-	/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip
+	/home/ibmuser/openshift-workshop-was/labs/Openshift/OperationalModernization/resources/datacollection.zip
     ```
 
     <br/>
@@ -112,7 +122,7 @@ In this lab, we'll use **Customer Order Services** application as an example. In
     
      <br/> 
 	
-8. Upload the results of the data collection **/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip** file to IBM Cloud Transformation Advisor.
+8. Upload the results of the data collection **/home/ibmuser/openshift-workshop-was/labs/Openshift/OperationalModernization/resources/datacollection.zip** file to IBM Cloud Transformation Advisor.
     
     ![TA upload collection screen](extras/images/ta-upload-datacollection-dialog.png)
 
@@ -200,12 +210,14 @@ Building this image could take around ~8 minutes. So, let's kick that process of
 
     <br/>
 
-3. If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
-    ```
-    git clone https://github.com/IBMTechSales/openshift-workshop-was
-    ```
+    <!--
+    3. If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
+        ```
+        git clone https://github.com/IBMTechSales/openshift-workshop-was
+        ```
+    -->	
 
-4. Change directory to where this lab is located:
+4. Change directory to where this lab is located, from the cloned Github repo. 
     ```
     cd openshift-workshop-was/labs/Openshift/OperationalModernization
     ls

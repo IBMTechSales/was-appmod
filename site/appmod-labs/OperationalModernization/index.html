@@ -170,8 +170,14 @@ Modernizing from WebSphere Network Deployment (ND) to the <strong>traditional We
 </ol>
 <p><a name="analysis"></a></p>
 <h2 id="analysis-hands-on">Analysis (Hands-on)</h2>
-<p><strong>IBM Cloud Transformation Advisor (TA)</strong> can be used to analyze the Customer Order Service Application running in the WebSphere ND environment. The Transformation Advisor helps you to analyze your on-premises workloads for modernization. It determines the complexity of your applications, estimates a development cost to perform the move to the cloud, and recommends the best target environment. </p>
+<h3 id="clone-the-github-repo-for-this-workshop">Clone the GitHub repo for this workshop</h3>
+<ol>
+<li>If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:<pre><code>git clone https://github.com/IBMTechSales/openshift-workshop-was
+</code></pre>
+</li>
+</ol>
 <h4 id="lets-get-started-using-ta-to-analyze-the-existing-customer-order-services-application">Let's get started using TA to analyze the existing Customer Order Services application:</h4>
+<p><strong>IBM Cloud Transformation Advisor (TA)</strong> can be used to analyze the Customer Order Service Application running in the WebSphere ND environment. The Transformation Advisor helps you to analyze your on-premises workloads for modernization. It determines the complexity of your applications, estimates a development cost to perform the move to the cloud, and recommends the best target environment. </p>
 <ol>
 <li>
 <p>Open a <strong>Firefox</strong> browser window from within the VM. </p>
@@ -211,7 +217,7 @@ Modernizing from WebSphere Network Deployment (ND) to the <strong>traditional We
 <p><br/></p>
 <p>To provide application assessment data and receive recommendations, you would typically download and execute the <strong>Data Collector</strong> against an existing WebSphere environment. The output from the data collector is a <code>zip file</code> containing the application and configuration metadata gathered from the WebSphere Server, and is the input to the IBM Transformation Advsor tool. </p>
 <p>However, for this lab, the data collection archive has already been created for you and the resulting data is located in the cloned Github repo directory on the VM: 
-<pre class="highlight"><code>/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip</code></pre></p>
+<pre class="highlight"><code>/home/ibmuser/openshift-workshop-was/labs/Openshift/OperationalModernization/resources/datacollection.zip</code></pre></p>
 <p><br/></p>
 </li>
 <li>
@@ -220,7 +226,7 @@ Modernizing from WebSphere Network Deployment (ND) to the <strong>traditional We
 <p><br/> </p>
 </li>
 <li>
-<p>Upload the results of the data collection <strong>/home/ibmuser/Instructor/shared/DataCollections/datacollection.zip</strong> file to IBM Cloud Transformation Advisor.</p>
+<p>Upload the results of the data collection <strong>/home/ibmuser/openshift-workshop-was/labs/Openshift/OperationalModernization/resources/datacollection.zip</strong> file to IBM Cloud Transformation Advisor.</p>
 <p><img alt="TA upload collection screen" src="extras/images/ta-upload-datacollection-dialog.png" /></p>
 <p><br/> </p>
 </li>
@@ -292,13 +298,13 @@ IBM Transformation Advisor tool is used to scan WebSphere servers and collect th
 </ul>
 <p><img alt="oc login" src="extras/images/build2.png" /></p>
 <p><br/></p>
+<p><!--
+3. If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
+    <pre class="highlight"><code>git clone https://github.com/IBMTechSales/openshift-workshop-was</code></pre>
+--> </p>
 </li>
 <li>
-<p>If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
-    <pre class="highlight"><code>git clone https://github.com/IBMTechSales/openshift-workshop-was</code></pre></p>
-</li>
-<li>
-<p>Change directory to where this lab is located:
+<p>Change directory to where this lab is located, from the cloned Github repo. 
     <pre class="highlight"><code>cd openshift-workshop-was/labs/Openshift/OperationalModernization
 ls</code></pre></p>
 </li>
@@ -1172,5 +1178,5 @@ oc get Route </code></pre>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-09-08 21:10:36
+Build Date UTC : 2021-09-08 21:37:53
 -->
