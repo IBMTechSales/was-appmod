@@ -82,7 +82,7 @@ First, launch the lab environment and login to the VM.
 ## **1.4.2 Clone the Git repository used for this lab and explore the contents**
 
 
-1.  Clone the **openshift-workshop-was** GitHub repository to the local VM.
+1.  If you have not yet cloned the GitHub repo with the lab artifacts, then run the following command on your terminal:
     
     a.  Open a Terminal window on the VM, and ensure you are in the home directory of the user “ibmuser”
         
