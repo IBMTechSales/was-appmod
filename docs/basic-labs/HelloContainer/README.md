@@ -444,8 +444,8 @@ cd openshift-workshop-was/labs/Openshift/IntroOpenshift
 <a name="Build_Your_Own"> </a>
 ## Build and Run Your Own Image
 
-We use a `Containerfile`, which contains the instructions to create the new layers of your image. 
-For those familiar with docker, the `Containerfile` is equivalent to `Dockerfile`.
+We use a podman `Containerfile`, which contains the instructions to create the new layers of your image. 
+For those familiar with docker, the `Containerfile` is equivalent to a `Dockerfile`.
 
 Recall that an image contains the entire file system that you want to use to run your virtual process in a container.
 For this sample, we are building a new image for a Java EE web application **ServletApp.war**.
