@@ -218,12 +218,15 @@ For example, docker hub, or registry.access.redhat.com, or your own internal reg
 <p><br/></p>
 </li>
 <li>
-<p>From the terminal window  in the VM, and clone the lab to your local directory via:
-<pre class="highlight"><code>git clone https://github.com/IBMTechSales/openshift-workshop-was</code></pre></p>
+<p>From the terminal window  in the VM, and clone the lab to your local directory via:</p>
+<pre><code>cd /home/ibmuser
+
+git clone https://github.com/IBMTechSales/openshift-workshop-was
+</code></pre>
 </li>
 <li>
-<p>Change directory to:  <code>openshift-workshop-was/labs/Openshift/IntroOpenshift</code>
-<pre class="highlight"><code>cd openshift-workshop-was/labs/Openshift/IntroOpenshift</code></pre></p>
+<p>Change directory to:  <code>/home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer</code>
+<pre class="highlight"><code>cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer</code></pre></p>
 </li>
 </ol>
 <p><a name="Run_Prebuilt"> </a></p>
@@ -304,8 +307,8 @@ openshift/hello-openshift   latest              7af3297a3fb4        2 years ago 
 </ul>
 </li>
 <li>
-<p>Run the image in an container:
-   <pre class="highlight"><code>docker run --name hello1 -d -p 8080:8080 -p 8888:8888 openshift/hello-openshift</code></pre>
+<p>Run the image in an container: Notice the exposed ports (8083 and 8888)
+   <pre class="highlight"><code>docker run --name hello1 -d -p 8083:8080 -p 8888:8888 openshift/hello-openshift</code></pre>
    Note that:</p>
 <ul>
 <li>The <code>--name</code> option gives the container a name.</li>
@@ -320,27 +323,27 @@ openshift/hello-openshift   latest              7af3297a3fb4        2 years ago 
 <p>Access the application in the container.</p>
 <p>a. Open the Firefox Web Browser from inside of the VM. </p>
 <p><img alt="firefox" src="images/runprebuilt3.png" /></p>
-<p>b. Go to the URL <code>http://localhost:8080</code></p>
+<p>b. Go to the URL <code>http://localhost:8083</code></p>
 <p>c. Also try port <strong>8888</strong></p>
 <p><img alt="hello openshift" src="images/runprebuilt1.png" /></p>
 </li>
 <li>
-<p>Run another instance of the same image. Note that this new instance is assigned new port numbers 8081 and 8889 on the host. This is so that they don't conflict with the ports 8080 and 8888 already allocated to the first instance.
-   <pre class="highlight"><code>docker run --name hello2 -d -p 8081:8080 -p 8889:8888 openshift/hello-openshift</code></pre>
+<p>Run another instance of the same image. Note that this new instance is assigned new port numbers 8084 and 8889 on the host. This is so that they don't conflict with the ports 8083 and 8888 already allocated to the first instance.
+   <pre class="highlight"><code>docker run --name hello2 -d -p 8084:8080 -p 8889:8888 openshift/hello-openshift</code></pre>
     <strong>Question:</strong> How does this compare to the time it takes to start a new virtual machine?</p>
 <p><br></p>
 </li>
 <li>
 <p>Access the application in the new container the same way. </p>
-<p>a. Return to the Firefox Web Browser but instead go to the URL <code>http://localhost:8081</code></p>
+<p>a. Return to the Firefox Web Browser but instead go to the URL <code>http://localhost:8084</code></p>
 <p>b. Also try port <strong>8889</strong></p>
 <p><img alt="hello openshift" src="images/runprebuilt2.png" /></p>
 </li>
 <li>
 <p>Verify there are two containers running in the same host: <code>docker ps</code>:</p>
 <pre class="highlight"><code>CONTAINER ID        IMAGE                       COMMAND              CREATED              STATUS              PORTS                                            NAMES
-5a62f8527b44        openshift/hello-openshift   "/hello-openshift"   About a minute ago   Up About a minute   0.0.0.0:8081-&gt;8080/tcp, 0.0.0.0:8889-&gt;8888/tcp   hello2
-c9d49aaa01b7        openshift/hello-openshift   "/hello-openshift"   4 minutes ago        Up 4 minutes        0.0.0.0:8080-&gt;8080/tcp, 0.0.0.0:8888-&gt;8888/tcp   hello1</code></pre>
+5a62f8527b44        openshift/hello-openshift   "/hello-openshift"   About a minute ago   Up About a minute   0.0.0.0:8084-&gt;8080/tcp, 0.0.0.0:8889-&gt;8888/tcp   hello2
+c9d49aaa01b7        openshift/hello-openshift   "/hello-openshift"   4 minutes ago        Up 4 minutes        0.0.0.0:8083-&gt;8080/tcp, 0.0.0.0:8888-&gt;8888/tcp   hello1</code></pre>
 
 </li>
 <li>
@@ -390,7 +393,7 @@ drwxr-xr-x 0/0               0 2020-04-29 16:48 sys/</code></pre>
 <p>The typical use case is to run a shell command, so you can use the shell to navigate within the container and run other commands.
 However, our image is tiny, and there is no built-in shell.</p>
 <p>For the purpose of this lab, we'll execute the same command again: </p>
-<pre class="highlight"><code>docker exec -ti hello1 /hello-openshift`. </code></pre>
+<pre class="highlight"><code>docker exec -ti hello1 /hello-openshift . </code></pre>
 
 <p>Running this command again in the same container results in an error, 
 because there is already another copy running in the background that is bound to the ports 8080 and 8888:</p>
@@ -435,7 +438,7 @@ c9d49aaa01b7        openshift/hello-openshift   "/hello-openshift"   31 minutes 
 
 <p>The hello-openshift container is now running again.</p>
 <pre class="highlight"><code>CONTAINER ID        IMAGE                       COMMAND              CREATED             STATUS              PORTS                                            NAMES
-c9d49aaa01b7        openshift/hello-openshift   "/hello-openshift"   33 minutes ago      Up 8 seconds        0.0.0.0:8080-&gt;8080/tcp, 0.0.0.0:8888-&gt;8888/tcp   hello1</code></pre>
+c9d49aaa01b7        openshift/hello-openshift   "/hello-openshift"   33 minutes ago      Up 8 seconds        0.0.0.0:8083-&gt;8080/tcp, 0.0.0.0:8888-&gt;8888/tcp   hello1</code></pre>
 
 </li>
 <li>
@@ -466,7 +469,7 @@ Deleted: sha256:7af3297a3fb4487b740ed6798163f618e6eddea1ee5fa0ba340329fcae31c8f6
 Deleted: sha256:8fd6a1ece3ceceae6d714004614bae5b581c83ab962d838ef88ce760583dcb80
 Deleted: sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef</code></pre>
 c. Check that the image has been removed:
-    <pre class="highlight"><code>docker images</code></pre>
+    <pre class="highlight"><code>docker images | grep hello-openshift</code></pre>
     Example output:
     <pre class="highlight"><code>REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE</code></pre></p>
 </li>
@@ -630,9 +633,13 @@ id
 <li><code>cd /liberty/wlp</code> to find the location of the liberty install</li>
 <li><code>cd /liberty/wlp/usr/servers/defaultServer</code> to find the server configuration. </li>
 <li><code>cd /opt/ibm/wlp/output/defaultServer</code> to find the workarea files required by the server runtime.</li>
-<li>Exit from the container: <code>exit</code></li>
 </ul>
 <p><br></p>
+</li>
+<li>
+<p>Type <code>Exit</code> to exit from the docker shell
+    <pre class="highlight"><code>exit</code></pre></p>
+<p><br/></p>
 </li>
 <li>
 <p>Cleanup:</p>
@@ -714,7 +721,16 @@ Successfully tagged app:latest </code></pre>
 docker tag app app:1.3
 docker tag app app:1.3.6</code></pre>
 
+</li>
+<li>
 <p>Verify that these are the same images: <code>app:1</code>, <code>app:1.3</code>, <code>app:1.3.6</code>.</p>
+<pre class="highlight"><code>REPOSITORY                 TAG                        IMAGE ID       CREATED          SIZE
+app                        1                          6ae053c3a3de   42 seconds ago   537MB
+app                        1.3                        6ae053c3a3de   42 seconds ago   537MB
+app                        1.3.6                      6ae053c3a3de   42 seconds ago   537MB
+app                        latest                     6ae053c3a3de   42 seconds ago   537MB
+</code></pre>
+
 <p>A new minor version involves compatible changes beyond just bug fixes. After you build a new minor version image, you want to manage the tags such that:</p>
 <ul>
 <li><code>app:1.3.5</code>: resolves to the existing <code>1.3.5</code> image.</li>
@@ -766,6 +782,26 @@ docker tag app app:1.4.0</code></pre>
 <li><code>1</code>, <code>1.4</code>, and <code>1.4.0</code> are the same image</li>
 <li><code>1.3</code> and <code>1.3.6</code> are the same image</li>
 </ul>
+<pre class="highlight"><code>REPOSITORY                 TAG                        IMAGE ID       CREATED          SIZE
+app                        1                          d37b46943cff   27 seconds ago   537MB
+app                        1.4                        d37b46943cff   27 seconds ago   537MB
+app                        1.4.0                      d37b46943cff   27 seconds ago   537MB
+app                        latest                     d37b46943cff   27 seconds ago   537MB
+app                        1.3                        6ae053c3a3de   4 minutes ago    537MB
+app                        1.3.6                      6ae053c3a3de   4 minutes ago    537MB
+</code></pre>
+
+</li>
+<li>
+<p>Remove the docker images </p>
+<pre class="highlight"><code>docker rmi app:1
+docker rmi app:1.4
+docker rmi app:1.4.0
+docker rmi app:1.3
+docker rmi app:1.3.5
+docker rmi app:1.3.6
+docker rmi app:latest</code></pre>
+
 </li>
 </ol>
 <p>Congratulations! You have completed the <strong>Introduction to Containerization</strong> lab.</p>
@@ -813,5 +849,5 @@ docker tag app app:1.4.0</code></pre>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-09-09 13:00:41
+Build Date UTC : 2021-09-09 15:20:40
 -->

@@ -104,15 +104,15 @@ If you need more background on containers: https://www.docker.com/resources/what
     <br/>
 
 3. From the terminal window  in the VM, and clone the lab to your local directory via:
-```
-git clone https://github.com/IBMTechSales/openshift-workshop-was
-```
+
+        cd /home/ibmuser
+		
+		git clone https://github.com/IBMTechSales/openshift-workshop-was
 
 
-
-4. Change directory to:  `openshift-workshop-was/labs/Openshift/IntroOpenshift`
+4. Change directory to:  `/home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer`
 ```
-cd openshift-workshop-was/labs/Openshift/IntroOpenshift
+cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer
 ```
 
 <a name="Run_Prebuilt"> </a>
@@ -206,9 +206,9 @@ cd openshift-workshop-was/labs/Openshift/IntroOpenshift
 			]
     
 
-5. Run the image in an container:
+5. Run the image in an container: Notice the exposed ports (8083 and 8888)
    ```
-   docker run --name hello1 -d -p 8080:8080 -p 8888:8888 openshift/hello-openshift
+   docker run --name hello1 -d -p 8083:8080 -p 8888:8888 openshift/hello-openshift
    ```
    Note that:
     - The `--name` option gives the container a name.
@@ -225,16 +225,16 @@ cd openshift-workshop-was/labs/Openshift/IntroOpenshift
 	
       ![firefox](images/runprebuilt3.png)
 	  
-    b. Go to the URL `http://localhost:8080`
+    b. Go to the URL `http://localhost:8083`
 	
     c. Also try port **8888**
 
     ![hello openshift](images/runprebuilt1.png)
 
 
-7. Run another instance of the same image. Note that this new instance is assigned new port numbers 8081 and 8889 on the host. This is so that they don't conflict with the ports 8080 and 8888 already allocated to the first instance.
+7. Run another instance of the same image. Note that this new instance is assigned new port numbers 8084 and 8889 on the host. This is so that they don't conflict with the ports 8083 and 8888 already allocated to the first instance.
    ```
-   docker run --name hello2 -d -p 8081:8080 -p 8889:8888 openshift/hello-openshift
+   docker run --name hello2 -d -p 8084:8080 -p 8889:8888 openshift/hello-openshift
    ```
     **Question:** How does this compare to the time it takes to start a new virtual machine?
 	
@@ -242,7 +242,7 @@ cd openshift-workshop-was/labs/Openshift/IntroOpenshift
 
 8. Access the application in the new container the same way. 
 
-    a. Return to the Firefox Web Browser but instead go to the URL `http://localhost:8081`
+    a. Return to the Firefox Web Browser but instead go to the URL `http://localhost:8084`
    
     b. Also try port **8889**
 
@@ -253,8 +253,8 @@ cd openshift-workshop-was/labs/Openshift/IntroOpenshift
 
     ```
     CONTAINER ID        IMAGE                       COMMAND              CREATED              STATUS              PORTS                                            NAMES
-    5a62f8527b44        openshift/hello-openshift   "/hello-openshift"   About a minute ago   Up About a minute   0.0.0.0:8081->8080/tcp, 0.0.0.0:8889->8888/tcp   hello2
-    c9d49aaa01b7        openshift/hello-openshift   "/hello-openshift"   4 minutes ago        Up 4 minutes        0.0.0.0:8080->8080/tcp, 0.0.0.0:8888->8888/tcp   hello1
+    5a62f8527b44        openshift/hello-openshift   "/hello-openshift"   About a minute ago   Up About a minute   0.0.0.0:8084->8080/tcp, 0.0.0.0:8889->8888/tcp   hello2
+    c9d49aaa01b7        openshift/hello-openshift   "/hello-openshift"   4 minutes ago        Up 4 minutes        0.0.0.0:8083->8080/tcp, 0.0.0.0:8888->8888/tcp   hello1
     ```
 
 10. View the logs: 
@@ -323,7 +323,7 @@ cd openshift-workshop-was/labs/Openshift/IntroOpenshift
     For the purpose of this lab, we'll execute the same command again: 
 	
 	```
-	docker exec -ti hello1 /hello-openshift`. 
+	docker exec -ti hello1 /hello-openshift . 
     ```
 	
 	Running this command again in the same container results in an error, 
@@ -385,7 +385,7 @@ cd openshift-workshop-was/labs/Openshift/IntroOpenshift
 	
     ```
     CONTAINER ID        IMAGE                       COMMAND              CREATED             STATUS              PORTS                                            NAMES
-    c9d49aaa01b7        openshift/hello-openshift   "/hello-openshift"   33 minutes ago      Up 8 seconds        0.0.0.0:8080->8080/tcp, 0.0.0.0:8888->8888/tcp   hello1
+    c9d49aaa01b7        openshift/hello-openshift   "/hello-openshift"   33 minutes ago      Up 8 seconds        0.0.0.0:8083->8080/tcp, 0.0.0.0:8888->8888/tcp   hello1
     ```
     
 20. Stop the container: 
@@ -427,7 +427,7 @@ cd openshift-workshop-was/labs/Openshift/IntroOpenshift
         ```
     c. Check that the image has been removed:
         ```
-        docker images
+        docker images | grep hello-openshift
         ```
         Example output:
         ```
@@ -619,11 +619,18 @@ The configuration file for the server is in the **server.xml**.
        - `cd /liberty/wlp` to find the location of the liberty install
        - `cd /liberty/wlp/usr/servers/defaultServer` to find the server configuration. 
        - `cd /opt/ibm/wlp/output/defaultServer` to find the workarea files required by the server runtime.
-       - Exit from the container: `exit`
+      
 	  
     <br>
  	  
-10. Cleanup:
+10. Type `Exit` to exit from the docker shell
+    ```
+    exit
+    ```
+	
+    <br/>
+
+11. Cleanup:
     
 	  ```
 	  docker stop app-instance
@@ -723,7 +730,16 @@ Let's assume that the first version we will build for our environment is 1.3.5. 
     docker tag app app:1.3.6
     ```
 
-    Verify that these are the same images: `app:1`, `app:1.3`, `app:1.3.6`.
+5. Verify that these are the same images: `app:1`, `app:1.3`, `app:1.3.6`.
+
+    ```
+	REPOSITORY                 TAG                        IMAGE ID       CREATED          SIZE
+    app                        1                          6ae053c3a3de   42 seconds ago   537MB
+    app                        1.3                        6ae053c3a3de   42 seconds ago   537MB
+    app                        1.3.6                      6ae053c3a3de   42 seconds ago   537MB
+    app                        latest                     6ae053c3a3de   42 seconds ago   537MB
+
+	```
 
 
     A new minor version involves compatible changes beyond just bug fixes. After you build a new minor version image, you want to manage the tags such that:
@@ -737,7 +753,7 @@ Let's assume that the first version we will build for our environment is 1.3.5. 
 
     <br>
 
-5. Build a new image using `Containerfile2`:
+6. Build a new image using `Containerfile2`:
 
     ```
     docker build -t app -f Containerfile2 .
@@ -768,7 +784,7 @@ Let's assume that the first version we will build for our environment is 1.3.5. 
     Successfully built 31b27169b3bc
     ```
 
-6. Tag it as  follows:
+7. Tag it as  follows:
 
     ```
     docker tag app app:1
@@ -776,11 +792,33 @@ Let's assume that the first version we will build for our environment is 1.3.5. 
     docker tag app app:1.4.0
     ```
 
-7. Verify the following: 
+8. Verify the following: 
 
     - `1`, `1.4`, and `1.4.0` are the same image
     - `1.3` and `1.3.6` are the same image
 
+    ```
+	REPOSITORY                 TAG                        IMAGE ID       CREATED          SIZE
+    app                        1                          d37b46943cff   27 seconds ago   537MB
+    app                        1.4                        d37b46943cff   27 seconds ago   537MB
+    app                        1.4.0                      d37b46943cff   27 seconds ago   537MB
+    app                        latest                     d37b46943cff   27 seconds ago   537MB
+    app                        1.3                        6ae053c3a3de   4 minutes ago    537MB
+    app                        1.3.6                      6ae053c3a3de   4 minutes ago    537MB
+   
+	```
+
+9. Remove the docker images 
+
+    ```
+    docker rmi app:1
+	docker rmi app:1.4
+	docker rmi app:1.4.0
+	docker rmi app:1.3
+	docker rmi app:1.3.5
+	docker rmi app:1.3.6
+	docker rmi app:latest
+    ```
 
 
 Congratulations! You have completed the **Introduction to Containerization** lab.
