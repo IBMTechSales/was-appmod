@@ -147,7 +147,7 @@ In this lab, we'll use **Customer Order Services** application as an example. In
 	
 12. Look over the migration analysis. 
 
-    From the migratin analysis data, you can: 
+    From the migration analysis data, you can: 
 	
 	  - view a summary of the complexity of migrating this application to this target
 	  - see detailed information about issues
