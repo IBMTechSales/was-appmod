@@ -485,21 +485,26 @@ The command line tools may be used to:
 
 The `oc` command is already installed on your VM's terminal.
 
-Open a terminal window from the VM and clone the lab to your local directory via:
+1. Open a new terminal window on the Desktop VM:
+   
+    ![terminal](images/checkenv1.png)
+   
+    <br/>
+   
+2. If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
+   
+        cd /home/ibmuser
+		
+		git clone https://github.com/IBMTechSales/openshift-workshop-was 
 
-![terminal](images/checkenv1.png)
 
-```
-git clone https://github.com/IBMTechSales/openshift-workshop-was
-```
+3. Change directory to:  `openshift-workshop-was/labs/Openshift/IntroOpenshift`
 
-Change directory to:  `openshift-workshop-was/labs/Openshift/IntroOpenshift`
 
-```
-cd openshift-workshop-was/labs/Openshift/IntroOpenshift
-```
+        cd /home/ibmuser/openshift-workshop-was/labs/Openshift/IntroOpenshift
+    
 
-### Login
+### Login to OpenShift
 
 1. Return to the Openshift console, click on the arrow next to your login name and select `Copy Login Command`.
 
