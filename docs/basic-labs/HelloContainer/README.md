@@ -31,13 +31,7 @@ This lab will introduce you to the basic concepts of containerization, including
 
 - You have `podman` or `docker` installed.  Only `docker` is installed for this lab.
 - You have access to the internet.
-- You have cloned this lab from github. If not, follows these steps:
 
-```
-git clone https://github.com/IBMTechSales/openshift-workshop-was
-
-cd openshift-workshop-was/labs/Openshift/HelloContainer
-```
 
 <a name="What_is_Container"> </a>
 ## What is a Container
