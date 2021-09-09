@@ -571,14 +571,26 @@ The command line tools may be used to:</p>
 </ul>
 <h3 id="command-line-terminal">Command Line Terminal</h3>
 <p>The <code>oc</code> command is already installed on your VM's terminal.</p>
-<p>Open a terminal window from the VM and clone the lab to your local directory via:</p>
+<ol>
+<li>
+<p>Open a new terminal window on the Desktop VM:</p>
 <p><img alt="terminal" src="images/checkenv1.png" /></p>
-<pre class="highlight"><code>git clone https://github.com/IBMTechSales/openshift-workshop-was</code></pre>
+<p><br/></p>
+</li>
+<li>
+<p>If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:</p>
+<pre><code>cd /home/ibmuser
 
+git clone https://github.com/IBMTechSales/openshift-workshop-was
+</code></pre>
+</li>
+<li>
 <p>Change directory to:  <code>openshift-workshop-was/labs/Openshift/IntroOpenshift</code></p>
-<pre class="highlight"><code>cd openshift-workshop-was/labs/Openshift/IntroOpenshift</code></pre>
-
-<h3 id="login">Login</h3>
+<pre><code>cd /home/ibmuser/openshift-workshop-was/labs/Openshift/IntroOpenshift
+</code></pre>
+</li>
+</ol>
+<h3 id="login-to-openshift">Login to OpenShift</h3>
 <ol>
 <li>
 <p>Return to the Openshift console, click on the arrow next to your login name and select <code>Copy Login Command</code>.</p>
@@ -1142,5 +1154,5 @@ example-75778c488-c9jhd   1/1     Running   0          65m</code></pre>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-09-09 15:29:35
+Build Date UTC : 2021-09-09 15:54:20
 -->
