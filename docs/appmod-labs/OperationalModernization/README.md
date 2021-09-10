@@ -231,21 +231,28 @@ Building this image could take around ~8 minutes. So, let's kick that process of
 
      Example output:
      ```
-     Now using project "apps-was" on server "https://c115-e.us-south.containers.cloud.ibm.com:32661".
+     Now using project "apps-was" on server "https://api.demo.ibmdte.net:6443".
      . . .
      ```
      
-6. Run the following command to start building the image. Make sure to copy the entire command, including the `"."` at the end (which indicates current directory). 
-    ```
-    docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was .
-    ```
+
 
 ### Build image (Hands-on)
 
-1. Review the **docker build** command you ran earlier:
-
+1. Run the following command to start building the image. Make sure to copy the entire command, including the `"."` at the end (which indicates current directory). 
      ```
      docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was .
+     ```
+
+2. You should see the following message if the image was successfully built. Please wait if it's still building.
+     ```
+     Successfully built aa6babbb5ce9
+     Successfully tagged default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was:latest
+     ```
+
+3. Review the **docker build** command that you just executed:
+     ```
+     ### docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was .
      ```
 
      - It instructs docker to **build the image** following the instructions in the `Dockerfile` in current directory (indicated by the `"."` at the end).
@@ -259,14 +266,8 @@ Building this image could take around ~8 minutes. So, let's kick that process of
 
      <br/>
 
-2. You should see the following message if the image was successfully built. Please wait if it's still building.
 
-     ```
-     Successfully built aa6babbb5ce9
-     Successfully tagged default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was:latest
-     ```
-
-3. Validate that image is in the repository by running the command:
+4. Validate that image is in the repository by running the command:
    ```
    docker images
    ```
@@ -288,7 +289,7 @@ Building this image could take around ~8 minutes. So, let's kick that process of
 
      <br/>
 
-4. Let's push the image you just built to your OpenShift cluster's built-in image registry. 
+5. Let's push the image you just built to your OpenShift cluster's built-in image registry. 
    
      **a.** First, login to the image registry by running the following command in the terminal. 
    
@@ -338,7 +339,7 @@ Building this image could take around ~8 minutes. So, let's kick that process of
      latest: digest: sha256:4f4e8ae82fa22c83febc4f884b5026d01815fc704df6196431db8ed7a7def6a0 size: 3672
      ```
 
-5. Verify that the image is in the image registry. The following command will get the images in the registry. Filter through the results to get only the image you pushed. Run the following command:
+6. Verify that the image is in the image registry. The following command will get the images in the registry. Filter through the results to get only the image you pushed. Run the following command:
 
      ```
      oc get images | grep apps-was/cos-was
@@ -355,7 +356,7 @@ Building this image could take around ~8 minutes. So, let's kick that process of
        ```
 
 
-6. OpenShift uses `ImageStream` to provide an abstraction for referencing container images from within the cluster. When an image is pushed to registry, an _ImageStream_ is created automatically, if one doesn't already exist. Run the following command to see the _ImageStream_ that's created:
+7. OpenShift uses `ImageStream` to provide an abstraction for referencing container images from within the cluster. When an image is pushed to registry, an _ImageStream_ is created automatically, if one doesn't already exist. Run the following command to see the _ImageStream_ that's created:
    ```
    oc get imagestreams -n apps-was
    ```
@@ -543,7 +544,7 @@ Since migrating the database is not the focus of this particular workshop and to
      Example output:
    
      ```
-     Using project "apps-was" on server "https://c114-e.us-south.containers.cloud.ibm.com:30016".
+     Using project "apps-was" on server "https://api.demo.ibmdte.net:6443".
      ```
    
      - If it's not at the project `apps-was`, then switch:
@@ -569,6 +570,7 @@ Since migrating the database is not the focus of this particular workshop and to
      Example output:
      ```
      http://cos-was-apps-was.apps.demo.ibmdte.net/CustomerOrderServicesWeb
+	 
      ```
 
 4. Return to your Firefox browser window and go to the URL outputted by the command run in the previous step.
@@ -595,7 +597,7 @@ Since migrating the database is not the focus of this particular workshop and to
 
     <br/>
 
-8. Close the browser.
+8. Close the **Electronic and Movie Depot** application browser tab.
 
 ### Review the application workload flow without operator (Hands-on)
 
@@ -646,7 +648,12 @@ Since migrating the database is not the focus of this particular workshop and to
      
 	   <br/> 
 	 
-      - Navigate to the `Terminal` tab to view the files inside the container
+      - Navigate to the `Terminal` tab to view the files inside the container, and run the following commands to view some of the files in the container: 
+        	  
+	          ls -lt
+			  ls -l /logs
+			  ls -l /etc/websphere
+			  ls -l /opt/IBM/WebSphere
      
 		<br/> 
 		 
@@ -664,9 +671,11 @@ Since migrating the database is not the focus of this particular workshop and to
       
 	     <br/>
 	  
-       - Scroll down to the **Data** section and click on the **copy icon** to view the content.
+       - Scroll down to the **Data** section and click on **Reveal Values** to view the content.
      
          ![app-was secret2](extras/images/workload-secret2.jpg)
+		 
+		 ![app-was secret2](extras/images/workload-secret-reveal.jpg)
       
 	     <br/>
       
@@ -722,12 +731,17 @@ Since migrating the database is not the focus of this particular workshop and to
        
          ![db pod1](extras/images/db_pod_1.jpg)
        
+	    <br/>   
+	    
        - Navigate to the `Logs` tab to view the database logs
-       - Navigate to the `Terminal` tab to view the files in the database container
-       
-         ![db pod2](extras/images/db_pod_2.jpg)
+	   - Navigate to the `Terminal` tab to view the files inside the container: 
+        	  
+	          ls -lt
+			  ls -l /opt/ibm/db2
+			  
+          ![db pod2](extras/images/db_pod_2.jpg)
         
-4. View `service` details:
+4. View `service` details for the project **db**:
 
        - Click on the **Services** tab under **Networking** from the left menu and select the `cos-db-was` service.
        
@@ -739,11 +753,13 @@ Since migrating the database is not the focus of this particular workshop and to
 
 ## Remove your deployment (standard deployment without operator) (Hands-on)
 
-1. To remove the deploment from the above scenario without the operator, run the command:
+1. Return to the terminal window on the VM (Not inside of the container), remove the deploment from the above scenario without the operator, using the following commands:
 
     **Note:** The pre-installed resources such as DB2, are **not** removed.
 
     ```
+	cd /home/ibmuser/openshift-workshop-was/labs/Openshift/OperationalModernization
+
     oc delete -f deploy
     ```
 
@@ -869,7 +885,7 @@ For more information, see: [https://github.com/application-stacks/runtime-compon
    
      Example output:
      ```
-     Using project "apps-was" on server "https://c114-e.us-south.containers.cloud.ibm.com:30016".
+     Already on project "apps-was" on server "https://api.demo.ibmdte.net:6443".
      ```
   
 2. Run the following command to verify the pod is running:
@@ -917,8 +933,7 @@ For more information, see: [https://github.com/application-stacks/runtime-compon
 
     <br/>
 
-8. Close the browser.
-  
+8. Close the **Electronic and Movie Depot** applicarion browser tab.
 
 ### Review the application workload flow with Runtime Component Operator (Hands-on)
 
@@ -967,9 +982,7 @@ For more information, see: [https://github.com/application-stacks/runtime-compon
 		 
 		 <br/>
          
-       - Navigate to `Terminal` to view the files in the container
        
-          ![rco pod3](extras/images/rco-pod3.jpg)
  
  
 ####  View the resources in the project apps-was
