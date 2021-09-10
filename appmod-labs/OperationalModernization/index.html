@@ -313,20 +313,24 @@ ls</code></pre></p>
 <pre class="highlight"><code>oc new-project apps-was</code></pre>
 
 <p>Example output:
- <pre class="highlight"><code>Now using project "apps-was" on server "https://c115-e.us-south.containers.cloud.ibm.com:32661".
+ <pre class="highlight"><code>Now using project "apps-was" on server "https://api.demo.ibmdte.net:6443".
 . . .</code></pre></p>
-</li>
-<li>
-<p>Run the following command to start building the image. Make sure to copy the entire command, including the <code>"."</code> at the end (which indicates current directory). 
-    <pre class="highlight"><code>docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was .</code></pre></p>
 </li>
 </ol>
 <h3 id="build-image-hands-on">Build image (Hands-on)</h3>
 <ol>
 <li>
-<p>Review the <strong>docker build</strong> command you ran earlier:</p>
-<pre class="highlight"><code>docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was .</code></pre>
-
+<p>Run the following command to start building the image. Make sure to copy the entire command, including the <code>"."</code> at the end (which indicates current directory). 
+     <pre class="highlight"><code>docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was .</code></pre></p>
+</li>
+<li>
+<p>You should see the following message if the image was successfully built. Please wait if it's still building.
+     <pre class="highlight"><code>Successfully built aa6babbb5ce9
+Successfully tagged default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was:latest</code></pre></p>
+</li>
+<li>
+<p>Review the <strong>docker build</strong> command that you just executed:
+     <pre class="highlight"><code>### docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was .</code></pre></p>
 <ul>
 <li>It instructs docker to <strong>build the image</strong> following the instructions in the <code>Dockerfile</code> in current directory (indicated by the <code>"."</code> at the end).</li>
 <li>A specific name to tag the built image is also specified after <code>--tag</code></li>
@@ -338,12 +342,6 @@ ls</code></pre></p>
 <li>Later when we <code>push</code> the image to OpenShift's internal image registry, we'll refer to the image by the same values.</li>
 </ul>
 <p><br/></p>
-</li>
-<li>
-<p>You should see the following message if the image was successfully built. Please wait if it's still building.</p>
-<pre class="highlight"><code>Successfully built aa6babbb5ce9
-Successfully tagged default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was:latest</code></pre>
-
 </li>
 <li>
 <p>Validate that image is in the repository by running the command:
@@ -595,7 +593,7 @@ stringData:
 <p>Confirm you're at the current project <code>apps-was</code>:
    <pre class="highlight"><code>oc project</code></pre></p>
 <p>Example output:</p>
-<pre class="highlight"><code>Using project "apps-was" on server "https://c114-e.us-south.containers.cloud.ibm.com:30016".</code></pre>
+<pre class="highlight"><code>Using project "apps-was" on server "https://api.demo.ibmdte.net:6443".</code></pre>
 
 <ul>
 <li>If it's not at the project <code>apps-was</code>, then switch:
@@ -613,7 +611,8 @@ cos-was-6bd4767bf6-xhr92   1/1     Running   0          120m</code></pre></p>
 <p>Run the following command to get the URL of your application (the route URL plus the application contextroot): 
    <pre class="highlight"><code>echo http://$(oc get route cos-was  --template='{{ .spec.host }}')/CustomerOrderServicesWeb</code></pre></p>
 <p>Example output:
- <pre class="highlight"><code>http://cos-was-apps-was.apps.demo.ibmdte.net/CustomerOrderServicesWeb</code></pre></p>
+ <pre class="highlight"><code>http://cos-was-apps-was.apps.demo.ibmdte.net/CustomerOrderServicesWeb
+</code></pre></p>
 </li>
 <li>
 <p>Return to your Firefox browser window and go to the URL outputted by the command run in the previous step.</p>
@@ -639,7 +638,7 @@ cos-was-6bd4767bf6-xhr92   1/1     Running   0          120m</code></pre></p>
 <p><br/></p>
 </li>
 <li>
-<p>Close the browser.</p>
+<p>Close the <strong>Electronic and Movie Depot</strong> application browser tab.</p>
 </li>
 </ol>
 <h3 id="review-the-application-workload-flow-without-operator-hands-on">Review the application workload flow without operator (Hands-on)</h3>
@@ -693,7 +692,12 @@ cos-was-6bd4767bf6-xhr92   1/1     Running   0          120m</code></pre></p>
 <p><br/> </p>
 <ul>
 <li>
-<p>Navigate to the <code>Terminal</code> tab to view the files inside the container</p>
+<p>Navigate to the <code>Terminal</code> tab to view the files inside the container, and run the following commands to view some of the files in the container: </p>
+<pre><code>  ls -lt
+  ls -l /logs
+  ls -l /etc/websphere
+  ls -l /opt/IBM/WebSphere
+</code></pre>
 <p><br/> </p>
 <p><img alt="app-was pod4" src="extras/images/workload-pod4.jpg" /></p>
 <p><img alt="app-was pod5" src="extras/images/workload-pod5.jpg" /></p>
@@ -710,8 +714,9 @@ cos-was-6bd4767bf6-xhr92   1/1     Running   0          120m</code></pre></p>
 <p><br/></p>
 </li>
 <li>
-<p>Scroll down to the <strong>Data</strong> section and click on the <strong>copy icon</strong> to view the content.</p>
+<p>Scroll down to the <strong>Data</strong> section and click on <strong>Reveal Values</strong> to view the content.</p>
 <p><img alt="app-was secret2" src="extras/images/workload-secret2.jpg" /></p>
+<p><img alt="app-was secret2" src="extras/images/workload-secret-reveal.jpg" /></p>
 <p><br/></p>
 </li>
 </ul>
@@ -773,18 +778,22 @@ cos-was-6bd4767bf6-xhr92   1/1     Running   0          120m</code></pre></p>
 <li>
 <p>Click on the <strong>Pods</strong> tab under <strong>Workloads</strong> from the left menu and select the pod with name starting with <code>cos-db-was</code></p>
 <p><img alt="db pod1" src="extras/images/db_pod_1.jpg" /></p>
+<p><br/>   </p>
 </li>
 <li>
 <p>Navigate to the <code>Logs</code> tab to view the database logs</p>
 </li>
 <li>
-<p>Navigate to the <code>Terminal</code> tab to view the files in the database container</p>
+<p>Navigate to the <code>Terminal</code> tab to view the files inside the container: </p>
+<pre><code>  ls -lt
+  ls -l /opt/ibm/db2
+</code></pre>
 <p><img alt="db pod2" src="extras/images/db_pod_2.jpg" /></p>
 </li>
 </ul>
 </li>
 <li>
-<p>View <code>service</code> details:</p>
+<p>View <code>service</code> details for the project <strong>db</strong>:</p>
 <ul>
 <li>
 <p>Click on the <strong>Services</strong> tab under <strong>Networking</strong> from the left menu and select the <code>cos-db-was</code> service.</p>
@@ -797,9 +806,11 @@ cos-was-6bd4767bf6-xhr92   1/1     Running   0          120m</code></pre></p>
 <h2 id="remove-your-deployment-standard-deployment-without-operator-hands-on">Remove your deployment (standard deployment without operator) (Hands-on)</h2>
 <ol>
 <li>
-<p>To remove the deploment from the above scenario without the operator, run the command:</p>
+<p>Return to the terminal window on the VM (Not inside of the container), remove the deploment from the above scenario without the operator, using the following commands:</p>
 <p><strong>Note:</strong> The pre-installed resources such as DB2, are <strong>not</strong> removed.</p>
-<pre class="highlight"><code>oc delete -f deploy</code></pre>
+<pre class="highlight"><code>cd /home/ibmuser/openshift-workshop-was/labs/Openshift/OperationalModernization
+
+oc delete -f deploy</code></pre>
 
 <p>Output:
 <pre class="highlight"><code>deployment.apps "cos-was" deleted
@@ -902,7 +913,7 @@ oc get Route cos-was-rco -o yaml</code></pre></p>
 <p>Ensure you are at the project <code>apps-was</code>:
    <pre class="highlight"><code>oc project apps-was</code></pre></p>
 <p>Example output:
- <pre class="highlight"><code>Using project "apps-was" on server "https://c114-e.us-south.containers.cloud.ibm.com:30016".</code></pre></p>
+ <pre class="highlight"><code>Already on project "apps-was" on server "https://api.demo.ibmdte.net:6443".</code></pre></p>
 </li>
 <li>
 <p>Run the following command to verify the pod is running:
@@ -941,7 +952,7 @@ cos-was-rco-6779784fc8-pz92m   1/1     Running   0          2m59s</code></pre></
 <p><br/></p>
 </li>
 <li>
-<p>Close the browser.</p>
+<p>Close the <strong>Electronic and Movie Depot</strong> applicarion browser tab.</p>
 </li>
 </ol>
 <h3 id="review-the-application-workload-flow-with-runtime-component-operator-hands-on">Review the application workload flow with Runtime Component Operator (Hands-on)</h3>
@@ -991,10 +1002,6 @@ cos-was-rco-6779784fc8-pz92m   1/1     Running   0          2m59s</code></pre></
 <p>Navigate to <code>Logs</code> to view the runtime-component-operator container log</p>
 <p><img alt="rco pod2" src="extras/images/rco-pod2.jpg" /></p>
 <p><br/></p>
-</li>
-<li>
-<p>Navigate to <code>Terminal</code> to view the files in the container</p>
-<p><img alt="rco pod3" src="extras/images/rco-pod3.jpg" /></p>
 </li>
 </ul>
 </li>
@@ -1178,5 +1185,5 @@ oc get Route </code></pre>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-09-09 15:54:20
+Build Date UTC : 2021-09-10 17:02:22
 -->
