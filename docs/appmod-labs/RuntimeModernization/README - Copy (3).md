@@ -19,23 +19,12 @@
 
 **This path gets the application on to a cloud-ready runtime container which is easy to use and portable. In addition to the necessary library changes, some aspects of the application were modernized. However, it has not been 'modernized' to a newer architecture such as micro-services**.
 
-Applications deployed on the WebSphere Liberty container runtime can be build, deployed and managed with the same common technologies and methodologies that would be used by cloud-native (built for the cloud) applications.
-
-
-
-The application will go through the **analysis**, **build** and **deploy** phases. 
-It is modernized to run on the Liberty runtime, and deployed to RedHat OpenShift Container Platform (OCP).
-
-The diagram below shows the high level decision flow where IBM Cloud Transformation Advisor is used to analyze existing assets and a decision is made to move the monolithic application to the Liberty container.
-
-  ![](extras/images/runtime-modernization-diagram.png)
-
-
 This lab demonstrates **runtime modernization**.
 It uses the **Customer Order Services** application, which originates from WebSphere ND V8.5.5. 
-
 Click [here](extras/application.md) to get to know the application, including its architecture and components.
-
+The application will go through the **analysis**, **build** and **deploy** phases. 
+It is modernized to run on the Liberty runtime, and
+deployed via the IBM Cloud Pak for Applications to RedHat OpenShift Container Platform (OCP).
 
 <a name="Login_VM"> </a>
 
@@ -1222,7 +1211,7 @@ spec:
 
 Congratulations! You've completed **Runtime Modernization** lab! 
 
-This application has been modified from the initial WebSphere ND v8.5.5 version to run on modern & cloud-native runtime Open Liberty and deployed to RedHat OpenShift.
+This application has been modified from the initial WebSphere ND v8.5.5 version to run on modern & cloud-native runtime Open Liberty and deployed by IBM Cloud Pak for Applications to RedHat OpenShift.
 
 ## Next
 Please follow the link to do the next lab **Application Management**:

@@ -17,24 +17,9 @@
 **Operational modernization** gives an operations team the opportunity to embrace modern operations best practices without putting change requirements on the development team. 
 Modernizing from WebSphere Network Deployment (ND) to the **traditional WebSphere Application Server Base V9 runtime** in a container allows the application to be moved to the cloud without code changes.
 
-The scaling, routing, clustering, high availability and continuous availability functionality that WebSphere ND was required for previously can be provided by the container runtime and allows the operations team to run cloud-native and older applications in the same environment with the same standardized logging, monitoring and security frameworks.
-
-While traditional WebSphere isn’t a ‘built for the cloud’ runtime like WebSphere Liberty, it can still be run in a container and will receive the benefits of the consistency and reliability of containers as well as helping to improve DevOps and speed to market.
-
 **This type of modernization shouldn't require any code changes** and can be driven by the operations team. **This path gets the application in to a container with the least amount of effort but doesn't modernize the application or the runtime.**
 
-As organizations modernize to cloud platforms, new technologies and methodologies will be used for build, deployment and management of applications. While this modernization will be focused on cloud-native (built for the cloud) applications, using the traditional WebSphere container will allow common technologies and methodologies to be used regardless of the runtime.
-
-The diagram below shows the high level decision flow where IBM Cloud Transformation Advisor is used to analyze existing assets and a decision is made to not make code changes to the application and use the traditional WebSphere container as the target runtime.
-
-
-![start VM](extras/images/operationalModFlowDiagram.png)
-
-
-
-In this lab, we'll use **Customer Order Services** application as an example. In order to modernize, the application will go through **analysis**, **build** and **deploy** phases. 
-
-Click [here](extras/application.md) and get to know the application, its architecture and components.
+In this lab, we'll use **Customer Order Services** application as an example. In order to modernize, the application will go through **analysis**, **build** and **deploy** phases. Click [here](extras/application.md) and get to know the application, its architecture and components.
 
 <a name="Login_VM"> </a>
 
