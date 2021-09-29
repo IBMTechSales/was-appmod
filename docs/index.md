@@ -2,7 +2,7 @@
 
 <h3 style="color:green"> Hands on WebSphere Application Moderinization Journey from VMs to containers on OpenShift</h3>
 
-**Last updated:** July 2021
+**Last updated:** September 2021
 
 This material is designed as a Demo/Lab/Workshop asset that includes the following WebSphere Application Modernization use cases: 
 
