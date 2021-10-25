@@ -1,0 +1,122 @@
+# Application Modernization Assessment using IBM Cloud Transformation Advisor
+
+This demo covers how to use [IBM Cloud Transformation Advisor](https://www.ibm.com/cloud/garage/practices/learn/ibm-transformation-advisor) to analyze an existing traditional WebSphere application.
+
+For this demo the WebSphere Liberty runtime is chosen as the target runtime and the intention is to migrate this application with minimal code changes. WebSphere Liberty is a fast, dynamic, and easy-to-use Java application server, built on the open source Open Liberty project. Ideal or the cloud, Liberty is a combination of IBM technology and open source software, with fast startup times (<2 seconds), no server restarts to pick up changes, and a simple XML configuration.
+
+## Video Recording
+There is a video recording of this demo in [Box](https://ibm.box.com/s/3e0tnndb9pyhnulxidcwal1yeqxzq74j)
+
+## Summary
+This demo has the following steps:
+* Pre-reqs to complete before the workshop starts
+* Access IBM Cloud Transformation Advisor
+* Download the Data Collector
+* Simulate running the Data Collector
+* Upload the Data Collector results
+* Analyze the Recommendations
+
+## Pre-reqs to complete before the workshop starts
+It is assumed that you have installed [TA Local](https://www.ibm.com/account/reg/us-en/signup?formid=urx-38642) using the instructions provided in the [prereqs](https://github.ibm.com/garage-tsa/AppMod_WiaB/blob/master/Prerequisites/index.md) section.
+
+1. To start Transformation Advisor, navigate to the folder that you used for the installation and run:
+
+```bash
+./launchTransformationAdvisor.sh
+```
+
+2. Follow the prompts to start Transformation Advisor
+
+***
+
+# The Demonstration Steps
+
+## Access IBM Cloud Transformation Advisor
+1. Open a browser session to `http://localhost:3000/`
+
+## Download the Data Collector
+Create a new Workspace and Collection and then download the **Data Collector** that will be used to examine the existing environment and applications.
+
+1. Open IBM Cloud Transformation Advisor in a browser and click the button to create a new **Workspace**
+  ![Home Page](images/liberty-analyze/workspace1.jpg)
+
+2. Enter a Workspace name such as `CustomerOrderServices` and click **Next**
+  ![Workspace](images/liberty-analyze/workspace2.jpg)
+
+3. Enter a Collection name such as `WAS855_AppSrv01` and click **Let's go**
+  ![Collection](images/liberty-analyze/workspace3.jpg)
+
+4. When the **No recommendations available** page is displayed, click the **Data Collector** button
+  ![Collector](images/liberty-analyze/collector.jpg)
+
+5. When the **Data Collector** page is displayed, select the **Source Operating System** for your environment and click the **Download** button to download the Data Collector.
+  ![Download](images/liberty-analyze/download.jpg)
+
+  This results in a file with a name similar to `transformationadvisor-Linux_CustomerOrderServices_WAS855_AppSrv01.tgz` being downloaded.
+
+
+## Simulate running the Data Collector
+In this demonstration it is not necessary to run the Data Collector, but it is important to understand what the steps would be.
+
+1. Unzip the Data Collector zip file that was downloaded from IBM Cloud Transformation Advisor in the previous step. The directory used arbitrary.
+
+2. It is necessary to modify the scan performed by the Data Collector to include the `org.pwte` package as the Data Collector doesn't scan `org.*` packages by default. Open the `conf/customCmd.properties` file and modify it as shown below:
+  ```bash
+  evaluation=--evaluate --excludePackages=com.ibm,com.informix,com.microsoft,com.sybase,com.sun,java,javax,net,oracle,sqlj,_ibmjsp --includePackages=org.pwte
+  migration_liberty=--analyze --sourceAppServer=was855 --targetAppServer=liberty --targetCloud=dockerIBMCloud --includePackages=org.pwte --excludePackages=com.ibm,com.informix,com.microsoft,com.sybase,com.sun,java,javax,net,oracle,sqlj,_ibmjsp
+  migration_was=--analyze --sourceAppServer=was855 --targetAppServer=was90 --targetCloud=vmIBMCloud --includePackages=org.pwte --excludePackages=com.ibm,com.informix,com.microsoft,com.sybase,com.sun,java,javax,net,oracle,sqlj,_ibmjsp
+  #inventory=--inventory --excludeFiles=".*/directory/LargeXMLFileName.xml"
+  #featureList=--featureList --excludeFiles=".*/directory/LargeXMLFileName.xml"
+  #java_opt=-Xmx2g
+  ```
+
+3. Discuss the following command with the audience **it is not necessary to execute the commmand**. The command assumes that WebSphere Application Server v855 is installed to `/opt/IBM/WebSphere/AppServer855` with a **profile** named `AppSrv01` and that the **administration user** is `wasadmin` with a **password** of `wasadmin`. Modify and issue the following command as necessary to execute the Data Collector against the WebSphere environment:
+  ```bash
+  ./bin/transformationadvisor -w /opt/IBM/WebSphere/AppServer855 -p AppSrv01 wasadmin wasadmin
+  ```
+
+4. If the Data Collector had been executed, it would create a zip file. That file has been provided for you.
+
+## Upload the Data Collector results
+In this section the results from the Data Collector will be uploaded to IBM Cloud Transformation Advisor.
+
+1. In the IBM Cloud Transformation Advisor web browser session, click the **Recomendations** link in the top left corner and then click the **Upload data** button as shown below
+  ![Upload](images/liberty-analyze/upload1.jpg)
+
+2. When the **Upload data** dialog is displayed, use the **Drop or Add File** button to select the **Data Collector Results zip** file named `AppSrv01.zip` that was provided in this GitHub repo. Click **Upload**
+  ![Upload2](images/liberty-analyze/upload2.jpg)
+
+  After a few moments the upload of the data collector results will be completed.
+
+## Analyze the Recommendations
+Once the Data Collector Results have been uploaded to IBM Cloud Transformation Advisor a set of recommendations will be created and shown on the **Recommendations** page. In this section the recommendations will be analyzed and interpreted.
+
+1. The Data Collector analyzed all of the applications running on the traditional WebSphere profile and displays a row in the chart for each application and potential target runtime.
+  ![tWAS](images/liberty-analyze/analysis1b.jpg)
+  In the case of the **CustomerOrderServicesApp.ear** application, IBM Cloud Transformation Advisor has determined that the application can be modernized to run on either **WebSphere Liberty** (which supports JEE6, 7 and 8) in 1.5 days or **Open Liberty** (which supports JEE7 or 8) in 9.5 days. Click on the **CustomerOrderServicesApp.ear** application name on the **WebSphere Liberty** row to see more information.
+
+3. Review the analysis results and scroll down to the **Complexity Rules** section and open the section. Note that IBM Cloud Transformation Advisor has determined that code changes are required before this application will run on WebSphere Liberty.
+  ![tWAS](images/liberty-analyze/rules1.jpg)
+
+4. Scroll down to the **Issues details** section and open the section. Note that IBM Cloud Transformation Advisor has detected that there are issues with lookups for Enterprise JavaBeans and with accessing the Apache Wink APIs.
+  ![tWAS](images/liberty-analyze/issues1.jpg)
+
+5. In order to review the IBM Cloud Transformation Advisor results in more detail, scroll to the bottom of the analysis page and click on the **Analysis Report** link
+  ![Report](images/liberty-analyze/reports.jpg)
+
+6. When the warning dialog is displayed, click **OK**
+  ![Warning](images/liberty-analyze/reports2.jpg)
+
+7. The **Detailed Migration Analysis Report** will be displayed which show the results of the migration rules that were executed by the Data Collector and returned results. Scroll down to the **Severe Rules** section and click on the **Show rule help** link for each of the results. Review the recommendations.
+  ![JPA](images/liberty-analyze/severe.jpg)
+
+  **Behavior change on lookups for Enterprise JavaBeans** In Liberty, EJB components are not bound to a server root Java Naming and Directory Interface (JNDI) namespace as they are in WebSphere Application Server traditional. The fix for this is to change the three classes that use `ejblocal` to use the correct URL for Liberty
+
+  **The user of system provided Apache Wink APIs requires configuration** To use system-provided third-party APIs in Liberty applications, you must configure the applications to include the APIs. In WebSphere Application Server traditional, these APIs are available without configuration. This is a configuration only change and can be achieved by using a `classloader` definition in the Liberty server.xml file.
+
+## Final Analysis
+The intention of this traditional WebSphere V855 --> WebSphere Liberty scenario is to migrate the Customer Order Services application to the cloud-ready new runtime with minimal code changes.
+
+IBM Cloud Transformation Advisor was used to analyze the application for compatibility with WebSphere Liberty and determined that only small changes to three classes would be required.
+
+While this scenario will move the application to the cloud-ready WebSphere Liberty runtime in a container, it will not **modernize** the application architecture and code in any way.

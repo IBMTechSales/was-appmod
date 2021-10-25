@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Application Modernization Assessment using IBM Cloud Transformation Advisor - WebSphere Application Modernization</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../stylesheets/klp.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Application Modernization Assessment using IBM Cloud Transformation Advisor";
+    var mkdocs_page_input_path = "demos\\AppMod-Assessment-Demo\\README.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> WebSphere Application Modernization</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../environments-setup/">Reserve lab environment or workshop</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../basic-labs/">Basic Containerization & App Mod Tools Labs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../appmod-labs/">App Modernization Labs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../devops-labs/">DevOps Labs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../">Usecase Demos</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Resources</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../OpenshiftConcepts/">Openshift Concepts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../WebSphereCloud/">Moving WebSphere applications to Cloud</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../resources/">Additional Resources</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">WebSphere Application Modernization</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Application Modernization Assessment using IBM Cloud Transformation Advisor</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="application-modernization-assessment-using-ibm-cloud-transformation-advisor">Application Modernization Assessment using IBM Cloud Transformation Advisor</h1>
+<p>This demo covers how to use <a href="https://www.ibm.com/cloud/garage/practices/learn/ibm-transformation-advisor">IBM Cloud Transformation Advisor</a> to analyze an existing traditional WebSphere application.</p>
+<p>For this demo the WebSphere Liberty runtime is chosen as the target runtime and the intention is to migrate this application with minimal code changes. WebSphere Liberty is a fast, dynamic, and easy-to-use Java application server, built on the open source Open Liberty project. Ideal or the cloud, Liberty is a combination of IBM technology and open source software, with fast startup times (&lt;2 seconds), no server restarts to pick up changes, and a simple XML configuration.</p>
+<h2 id="summary">Summary</h2>
+<p>This demo has the following steps:</p>
+<ul>
+<li>Pre-reqs to complete before the workshop starts</li>
+<li>Access IBM Cloud Transformation Advisor</li>
+<li>Download the Data Collector</li>
+<li>Simulate running the Data Collector</li>
+<li>Upload the Data Collector results</li>
+<li>Analyze the Recommendations</li>
+</ul>
+<h2 id="pre-reqs-to-complete-before-the-workshop-starts">Pre-reqs to complete before the workshop starts</h2>
+<p>It is assumed that you are using the <strong>Teaching your monolith to dance</strong> workshop environment for the demonstration. 
+The envieonment runs in Skytap. </p>
+<p>Follow the instructions in the URL below to reserve an environemnt. </p>
+<ol>
+<li>
+<p>Using the link below, open a new Browser window or tab. Then, follow the instructions to <strong>reserve single environment</strong> for the demonstration:</p>
+<p><a href="https://ibmtechsales.github.io/was-appmod/environments-setup/">https://ibmtechsales.github.io/was-appmod/environments-setup/</a></p>
+<p><br></p>
+</li>
+<li>
+<p>Start the Skytap environment if it is no already started</p>
+</li>
+<li>
+<p>After the VMs are started, click the <strong>desktop VM</strong> icon to access
+    it.</p>
+<p><img alt="" src="images/media/image4.png" /></p>
+<p>The Desktop Linux Desktop is displayed. You execute all the lab tasks
+on this desktop VM.</p>
+<p><br/></p>
+</li>
+<li>
+<p>Login with <strong>ibmuser</strong> ID.</p>
+<ul>
+<li>
+<p>Click on the <strong>ibmuser</strong> icon on the screen.</p>
+</li>
+<li>
+<p>When prompted for the password for <strong>ibmuser</strong>, enter
+    "<strong>engageibm</strong>" as the password:</p>
+</li>
+</ul>
+<p><br/></p>
+<p><img alt="login VM" src="images/media/image5.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Resize the Skytap environment window for a larger viewing area while
+    doing the lab. From the Skytap menu bar, click on the "<strong>Fit to
+    Size</strong>" icon. This will enlarge the viewing area to fit the size of
+    your browser window.</p>
+<p><img alt="fit to size icon" src="images/media/image6.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Open a terminal window by clicking its icon from the Desktop
+    toolbar.</p>
+<p><img alt="terminal icon" src="images/media/image7.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Clone the GitHub repo containing the lab workshop / demo artifacts. </p>
+<p>a. In the terminal window, run the following command to clone the GitHub repository for this workshop / demo.</p>
+<pre><code>git clone https://github.com/IBMTechSales/openshift-workshop-was
+</code></pre>
+<p><strong>Sample output</strong></p>
+<p><img alt="" src="images/media/image8.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Change to the cloned github directoy where the materials are downloaded </p>
+<pre><code>cd /home/ibmuser/openshift-workshop-was
+</code></pre>
+<p><br></p>
+</li>
+</ol>
+<h1 id="the-demonstration-steps">The Demonstration Steps</h1>
+<h2 id="access-ibm-cloud-transformation-advisor">Access IBM Cloud Transformation Advisor</h2>
+<ol>
+<li>
+<p>The Transformation Advisor is installed in the OpenShift cluster. For this demo, you use the following steps to access the Transformation
+Advisor tool.</p>
+<ul>
+<li>From web browser window, open a new Browser tab</li>
+<li>Then click the <strong>IBM Cloud Transformation Advisor</strong> bookmark and login with the OpenShift account credentials.</li>
+</ul>
+<p><img alt="" src="images/media/image14.png" /></p>
+<ul>
+<li>If prompted to log in to Red Hat OpenShift Container Platform, click <strong>htpasswd</strong> field. Then log in with <strong>ibmadmin</strong>/<strong>engageibm</strong> as the username and password.</li>
+</ul>
+<p><img alt="ocp console login 1" src="images/media/image15.png" /></p>
+<p><img alt="ocp console login 2" src="images/media/image16.png" /></p>
+<p>The Transformation Advisor Home page is displayed.</p>
+<p><img alt="" src="images/media/image17.png" /> </p>
+</li>
+</ol>
+<h2 id="download-the-data-collector">Download the Data Collector</h2>
+<p>Create a new Workspace and Collection and then download the <strong>Data Collector</strong> that will be used to examine the existing environment and applications.</p>
+<ol>
+<li>
+<p>Open IBM Cloud Transformation Advisor in a browser and click the button to <strong>create a new Workspace</strong></p>
+<p><img alt="Home Page" src="images/media/image18.png" /></p>
+<p><br></p>
+</li>
+<li>
+<p>Enter a Workspace name such as <code>CustomerOrderServices</code> and click <strong>Next</strong></p>
+<p><img alt="Workspace" src="images/media/workspace2.jpg" /></p>
+<p><br></p>
+</li>
+<li>
+<p>Enter a Collection name such as <code>WAS855_AppSrv01</code> and click <strong>Create</strong></p>
+<p><img alt="Collection" src="images/media/image20.png" /></p>
+<p><br></p>
+</li>
+<li>
+<p>When the <strong>No recommendations available</strong> page is displayed, click the <strong>Download</strong> data collctor button</p>
+<p><img alt="Collector" src="images/media/image21.png" /></p>
+<p><br></p>
+</li>
+<li>
+<p>When the <strong>Data Collector</strong> page is displayed, select the <strong>Source Operating System</strong> for your environment and click the <strong>Download</strong> button to download the Data Collector.
+    <img alt="Download" src="images/media/download.jpg" /></p>
+</li>
+</ol>
+<p>This results in a file with a name similar to <code>transformationadvisor-Linux_CustomerOrderServices_WAS855_AppSrv01.tgz</code> being downloaded.</p>
+<h2 id="simulate-running-the-data-collector">Simulate running the Data Collector</h2>
+<p>In this demonstration it is not necessary to run the Data Collector, but it is important to understand what the steps would be.</p>
+<ol>
+<li>
+<p>Unzip the Data Collector zip file that was downloaded from IBM Cloud Transformation Advisor in the previous step. </p>
+<pre><code>cd /home/ibmuser/Downloads/
+
+tar xvfz transformationadvisor-Linux_CustomerOrderServices_WAS855_AppSrv01.tgz
+</code></pre>
+<p>The archive is extracted to a sub-directly named similar to  <code>./transformationadvisor-2.4.4</code> </p>
+<p><strong>Note:</strong> the specific version may be fifferent than the version illustrated above. </p>
+<p><br>    </p>
+</li>
+<li>
+<p>It is necessary to modify the scan performed by the Data Collector to include the <code>org.pwte</code> package as the Data Collector doesn't scan <code>org.*</code> packages by default. Open the <code>conf/customCmd.properties</code> file and modify it as shown below:
+  <pre class="highlight"><code class="language-bash">evaluation=--evaluate --excludePackages=com.ibm,com.informix,com.microsoft,com.sybase,com.sun,java,javax,net,oracle,sqlj,_ibmjsp --includePackages=org.pwte
+migration_liberty=--analyze --sourceAppServer=was855 --targetAppServer=liberty --targetCloud=dockerIBMCloud --includePackages=org.pwte --excludePackages=com.ibm,com.informix,com.microsoft,com.sybase,com.sun,java,javax,net,oracle,sqlj,_ibmjsp
+migration_was=--analyze --sourceAppServer=was855 --targetAppServer=was90 --targetCloud=vmIBMCloud --includePackages=org.pwte --excludePackages=com.ibm,com.informix,com.microsoft,com.sybase,com.sun,java,javax,net,oracle,sqlj,_ibmjsp
+#inventory=--inventory --excludeFiles=".*/directory/LargeXMLFileName.xml"
+#featureList=--featureList --excludeFiles=".*/directory/LargeXMLFileName.xml"
+#java_opt=-Xmx2g</code></pre></p>
+</li>
+<li>
+<p>Discuss the following command with the audience <strong>it is not necessary to execute the commmand</strong>. The command assumes that WebSphere Application Server v855 is installed to <code>/opt/IBM/WebSphere/AppServer855</code> with a <strong>profile</strong> named <code>AppSrv01</code> and that the <strong>administration user</strong> is <code>wasadmin</code> with a <strong>password</strong> of <code>wasadmin</code>. 
+  <pre class="highlight"><code>./bin/transformationadvisor -w /opt/IBM/WebSphere/AppServer855 -p AppSrv01 wasadmin wasadmin</code></pre></p>
+</li>
+<li>
+<p>If the Data Collector had been executed, it would create a zip file that includes the data collection results. That file has been provided for you. </p>
+</li>
+</ol>
+<p>Next, upload the AppSrv01.zip file into the IBM Cloud Transformation Advisor tool for analysis. </p>
+<h2 id="upload-the-data-collector-results">Upload the Data Collector results</h2>
+<p>In this section the results from the Data Collector will be uploaded to IBM Cloud Transformation Advisor.</p>
+<ol>
+<li>
+<p>In the IBM Cloud Transformation Advisor web browser session, click the <strong>WAS855_AppSrv01</strong> link to go to the Recommendations page.</p>
+<p><img alt="ta server link" src="images/media/image26.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>In the IBM Cloud Transformation Advisor web browser session, click the <strong>Upload</strong> button as shown below</p>
+<p><img alt="Upload" src="images/media/upload-button.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>When the <strong>Upload data</strong> dialog is displayed, use the <strong>Drop or Add File</strong> button to select the <strong>Data Collector Results zip</strong> file named <code>AppSrv01.zip</code> that was provided in this GitHub repo that you cloned in the setup section of the demo. </p>
+<p><strong>Note:</strong> The AppSrv01.zip file is located in <code>Home &gt; ibmuser &gt; openhift-workshop-was &gt; shared</code> folder on the demo environment.  </p>
+<p><img alt="Uploadzip" src="images/media/upload-zip.png" /></p>
+<p><br></p>
+</li>
+<li>
+<p>Click <strong>Upload</strong> to upload the data collection archive file to Transfromation Advisor.</p>
+<p><img alt="Upload2" src="images/media/upload2.jpg" /></p>
+</li>
+</ol>
+<p>After a few moments the upload of the data collector results will be completed.</p>
+<h2 id="analyze-the-recommendations">Analyze the Recommendations</h2>
+<p>Once the Data Collector Results have been uploaded to IBM Cloud Transformation Advisor a set of recommendations will be created and shown on the <strong>Recommendations</strong> page. In this section the recommendations will be analyzed and interpreted.</p>
+<ol>
+<li>
+<p>The Data Collector analyzed all of the applications running on the traditional WebSphere profile and displays a row in the chart for each application and potential target runtime.</p>
+<p><img alt="tWAS" src="images/media/analysis1b.png" /></p>
+<p>In the case of the <strong>CustomerOrderServicesApp.ear</strong> application, IBM Cloud Transformation Advisor has determined that the application can be modernized to run on <strong>WebSphere Liberty</strong> (which supports JEE6, 7 and 8) in 0.5 days. </p>
+<p><br></p>
+</li>
+<li>
+<p>Click on the <strong>CustomerOrderServicesApp.ear</strong> application name on the <strong>WebSphere Liberty</strong> row to see more information.</p>
+<p><br></p>
+</li>
+<li>
+<p>Review the analysis results and scroll down to the <strong>Complexity Rules</strong> section and open the section. Note that IBM Cloud Transformation Advisor has determined that code changes <strong>may be required</strong> before this application will run on WebSphere Liberty.</p>
+<p><img alt="tWAS" src="images/media/rule1.png" /></p>
+<p><br></p>
+</li>
+<li>
+<p>Scroll down to the <strong>Issues details</strong> section and open the section. Note that IBM Cloud Transformation Advisor has detected that there are <strong>minor issues</strong> with lookups for Enterprise JavaBeans, InitialContext lookups, and configuration in Docer containers. 
+   Transromation Advisor also detected a <strong>critical technology issue</strong> with accessing the Apache Wink APIs.</p>
+<p><img alt="tWAS" src="images/media/issues1.png" /></p>
+<p><br></p>
+</li>
+<li>
+<p>In order to review the IBM Cloud Transformation Advisor results in more detail, scroll to the bottom of the analysis page and click on the <strong>Analysis Report</strong> link</p>
+<p><img alt="Report" src="images/media/reports.jpg" /></p>
+<p><br></p>
+</li>
+<li>
+<p>When the warning dialog is displayed, click <strong>OK</strong></p>
+<p><img alt="Warning" src="images/media/reports2a.jpg" /></p>
+<p><br></p>
+</li>
+<li>
+<p>The <strong>Detailed Migration Analysis Report</strong> will be displayed which show the results of the migration rules that were executed by the Data Collector and returned results. Scroll down to the <strong>Severe Rules</strong> section and click on the <strong>Show rule help</strong> link for each of the results. Review the recommendations.</p>
+<p><img alt="JPA" src="images/media/severe.png" /></p>
+</li>
+</ol>
+<p><strong>Behavior change on lookups for Enterprise JavaBeans</strong> In Liberty, EJB components are not bound to a server root Java Naming and Directory Interface (JNDI) namespace as they are in WebSphere Application Server traditional. The fix for this is to change the three classes that use <code>ejblocal</code> to use the correct URL for Liberty</p>
+<p><strong>The user of system provided Apache Wink APIs requires configuration</strong> To use system-provided third-party APIs in Liberty applications, you must configure the applications to include the APIs. In WebSphere Application Server traditional, these APIs are available without configuration. This is a configuration only change and can be achieved by using a <code>classloader</code> definition in the Liberty server.xml file.</p>
+<h2 id="final-analysis">Final Analysis</h2>
+<p>The intention of this traditional WebSphere V855 --&gt; WebSphere Liberty scenario is to migrate the Customer Order Services application to the cloud-ready new runtime with minimal code changes.</p>
+<p>IBM Cloud Transformation Advisor was used to analyze the application for compatibility with WebSphere Liberty and determined that only small changes to three classes would be required.</p>
+<p>While this scenario will move the application to the cloud-ready WebSphere Liberty runtime in a container, it will not <strong>modernize</strong> the application architecture and code in any way.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2021-10-25 21:57:48
+-->
