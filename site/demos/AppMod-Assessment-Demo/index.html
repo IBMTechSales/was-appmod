@@ -136,17 +136,17 @@
 <h2 id="summary">Summary</h2>
 <p>This demo has the following steps:</p>
 <ul>
-<li>Pre-reqs to complete before the workshop starts</li>
+<li>Pre-reqs to complete before the demonstration</li>
 <li>Access IBM Cloud Transformation Advisor</li>
 <li>Download the Data Collector</li>
 <li>Simulate running the Data Collector</li>
 <li>Upload the Data Collector results</li>
 <li>Analyze the Recommendations</li>
 </ul>
-<h2 id="pre-reqs-to-complete-before-the-workshop-starts">Pre-reqs to complete before the workshop starts</h2>
+<h2 id="pre-reqs-to-complete-before-the-demonstration">Pre-reqs to complete before the demonstration</h2>
 <p>It is assumed that you are using the <strong>Teaching your monolith to dance</strong> workshop environment for the demonstration. 
-The envieonment runs in Skytap. </p>
-<p>Follow the instructions in the URL below to reserve an environemnt. </p>
+The environment runs in Skytap. </p>
+<p>Follow the instructions in the URL below to reserve an environment. </p>
 <ol>
 <li>
 <p>Using the link below, open a new Browser window or tab. Then, follow the instructions to <strong>reserve single environment</strong> for the demonstration:</p>
@@ -203,7 +203,7 @@ on this desktop VM.</p>
 <p><br/></p>
 </li>
 <li>
-<p>Change to the cloned github directoy where the materials are downloaded </p>
+<p>Change to the cloned github directory where the materials are downloaded </p>
 <pre><code>cd /home/ibmuser/openshift-workshop-was
 </code></pre>
 <p><br></p>
@@ -248,7 +248,7 @@ Advisor tool.</p>
 <p><br></p>
 </li>
 <li>
-<p>When the <strong>No recommendations available</strong> page is displayed, click the <strong>Download</strong> data collctor button</p>
+<p>When the <strong>No recommendations available</strong> page is displayed, click the <strong>Download</strong> data collector button</p>
 <p><img alt="Collector" src="images/media/image21.png" /></p>
 <p><br></p>
 </li>
@@ -268,7 +268,7 @@ Advisor tool.</p>
 tar xvfz transformationadvisor-Linux_CustomerOrderServices_WAS855_AppSrv01.tgz
 </code></pre>
 <p>The archive is extracted to a sub-directly named similar to  <code>./transformationadvisor-2.4.4</code> </p>
-<p><strong>Note:</strong> the specific version may be fifferent than the version illustrated above. </p>
+<p><strong>Note:</strong> the specific version may be different than the version illustrated above. </p>
 <p><br>    </p>
 </li>
 <li>
@@ -281,7 +281,7 @@ migration_was=--analyze --sourceAppServer=was855 --targetAppServer=was90 --targe
 #java_opt=-Xmx2g</code></pre></p>
 </li>
 <li>
-<p>Discuss the following command with the audience <strong>it is not necessary to execute the commmand</strong>. The command assumes that WebSphere Application Server v855 is installed to <code>/opt/IBM/WebSphere/AppServer855</code> with a <strong>profile</strong> named <code>AppSrv01</code> and that the <strong>administration user</strong> is <code>wasadmin</code> with a <strong>password</strong> of <code>wasadmin</code>. 
+<p>Discuss the following command with the audience <strong>it is not necessary to execute the command</strong>. The command assumes that WebSphere Application Server v855 is installed to <code>/opt/IBM/WebSphere/AppServer855</code> with a <strong>profile</strong> named <code>AppSrv01</code> and that the <strong>administration user</strong> is <code>wasadmin</code> with a <strong>password</strong> of <code>wasadmin</code>. 
   <pre class="highlight"><code>./bin/transformationadvisor -w /opt/IBM/WebSphere/AppServer855 -p AppSrv01 wasadmin wasadmin</code></pre></p>
 </li>
 <li>
@@ -309,7 +309,7 @@ migration_was=--analyze --sourceAppServer=was855 --targetAppServer=was90 --targe
 <p><br></p>
 </li>
 <li>
-<p>Click <strong>Upload</strong> to upload the data collection archive file to Transfromation Advisor.</p>
+<p>Click <strong>Upload</strong> to upload the data collection archive file to Transformation Advisor.</p>
 <p><img alt="Upload2" src="images/media/upload2.jpg" /></p>
 </li>
 </ol>
@@ -333,8 +333,8 @@ migration_was=--analyze --sourceAppServer=was855 --targetAppServer=was90 --targe
 <p><br></p>
 </li>
 <li>
-<p>Scroll down to the <strong>Issues details</strong> section and open the section. Note that IBM Cloud Transformation Advisor has detected that there are <strong>minor issues</strong> with lookups for Enterprise JavaBeans, InitialContext lookups, and configuration in Docer containers. 
-   Transromation Advisor also detected a <strong>critical technology issue</strong> with accessing the Apache Wink APIs.</p>
+<p>Scroll down to the <strong>Issues details</strong> section and open the section. Note that IBM Cloud Transformation Advisor has detected that there are <strong>minor issues</strong> with lookups for Enterprise JavaBeans, InitialContext lookups, and configuration in Docker containers. 
+   Transformation Advisor also detected a <strong>critical technology issue</strong> with accessing the Apache Wink APIs.</p>
 <p><img alt="tWAS" src="images/media/issues1.png" /></p>
 <p><br></p>
 </li>
@@ -398,5 +398,5 @@ migration_was=--analyze --sourceAppServer=was855 --targetAppServer=was90 --targe
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-10-25 21:57:48
+Build Date UTC : 2021-10-26 19:00:14
 -->

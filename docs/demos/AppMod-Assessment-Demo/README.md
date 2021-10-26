@@ -7,19 +7,19 @@ For this demo the WebSphere Liberty runtime is chosen as the target runtime and 
 ## Summary
 This demo has the following steps:
 
-* Pre-reqs to complete before the workshop starts
+* Pre-reqs to complete before the demonstration
 * Access IBM Cloud Transformation Advisor
 * Download the Data Collector
 * Simulate running the Data Collector
 * Upload the Data Collector results
 * Analyze the Recommendations
 
-## Pre-reqs to complete before the workshop starts
+## Pre-reqs to complete before the demonstration
 
 It is assumed that you are using the **Teaching your monolith to dance** workshop environment for the demonstration. 
-The envieonment runs in Skytap. 
+The environment runs in Skytap. 
 
-Follow the instructions in the URL below to reserve an environemnt. 
+Follow the instructions in the URL below to reserve an environment. 
 
 1. Using the link below, open a new Browser window or tab. Then, follow the instructions to **reserve single environment** for the demonstration:
 
@@ -80,7 +80,7 @@ Follow the instructions in the URL below to reserve an environemnt.
 	
 	<br/>
 
-7.  Change to the cloned github directoy where the materials are downloaded 
+7.  Change to the cloned github directory where the materials are downloaded 
     
 	    cd /home/ibmuser/openshift-workshop-was
 
@@ -135,7 +135,7 @@ Create a new Workspace and Collection and then download the **Data Collector** t
   
     <br>
 
-4. When the **No recommendations available** page is displayed, click the **Download** data collctor button
+4. When the **No recommendations available** page is displayed, click the **Download** data collector button
     
     ![Collector](./images/media/image21.png)
   
@@ -159,7 +159,7 @@ In this demonstration it is not necessary to run the Data Collector, but it is i
 
      The archive is extracted to a sub-directly named similar to  `./transformationadvisor-2.4.4` 
    
-     **Note:** the specific version may be fifferent than the version illustrated above. 
+     **Note:** the specific version may be different than the version illustrated above. 
 
      <br> 	 
 
@@ -174,7 +174,7 @@ In this demonstration it is not necessary to run the Data Collector, but it is i
   #java_opt=-Xmx2g
   ```
 
-3. Discuss the following command with the audience **it is not necessary to execute the commmand**. The command assumes that WebSphere Application Server v855 is installed to `/opt/IBM/WebSphere/AppServer855` with a **profile** named `AppSrv01` and that the **administration user** is `wasadmin` with a **password** of `wasadmin`. 
+3. Discuss the following command with the audience **it is not necessary to execute the command**. The command assumes that WebSphere Application Server v855 is installed to `/opt/IBM/WebSphere/AppServer855` with a **profile** named `AppSrv01` and that the **administration user** is `wasadmin` with a **password** of `wasadmin`. 
   ```
   ./bin/transformationadvisor -w /opt/IBM/WebSphere/AppServer855 -p AppSrv01 wasadmin wasadmin
   ```
@@ -208,7 +208,7 @@ In this section the results from the Data Collector will be uploaded to IBM Clou
 
      <br>
 
-4. Click **Upload** to upload the data collection archive file to Transfromation Advisor.
+4. Click **Upload** to upload the data collection archive file to Transformation Advisor.
   
     ![Upload2](./images/media/upload2.jpg)
 
@@ -235,8 +235,8 @@ Once the Data Collector Results have been uploaded to IBM Cloud Transformation A
 
     <br>
 
-4. Scroll down to the **Issues details** section and open the section. Note that IBM Cloud Transformation Advisor has detected that there are **minor issues** with lookups for Enterprise JavaBeans, InitialContext lookups, and configuration in Docer containers. 
-   Transromation Advisor also detected a **critical technology issue** with accessing the Apache Wink APIs.
+4. Scroll down to the **Issues details** section and open the section. Note that IBM Cloud Transformation Advisor has detected that there are **minor issues** with lookups for Enterprise JavaBeans, InitialContext lookups, and configuration in Docker containers. 
+   Transformation Advisor also detected a **critical technology issue** with accessing the Apache Wink APIs.
    
     ![tWAS](./images/media/issues1.png)
 
