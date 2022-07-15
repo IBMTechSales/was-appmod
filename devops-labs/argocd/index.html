@@ -76,11 +76,6 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../demos/">Usecase Demos</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
     <span class="caption-text">Resources</span>
     <ul class="subnav">
                 <li class="">
@@ -609,9 +604,9 @@ in a Kubernetes secret in the argocd namespace.</p>
 <p>a.  Return to your terminal window.</p>
 <p>b.  Run the following commands to export the Argo CD admin account's
     password and display it. </p>
-<pre><code>  export ARGOCD\_PASSWORD=$(oc -n argocd get secret example-argocd-cluster -o jsonpath='{.data.admin\\.password}' | base64 -d)
+<pre><code>  export ARGOCD_PASSWORD=$(oc -n argocd get secret example-argocd-cluster -o jsonpath='{.data.admin\.password}' | base64 -d)
 
-  echo $ARGOCD\_PASSWORD
+  echo $ARGOCD_PASSWORD
 </code></pre>
 <p><img alt="" src="images/outpics/11.png" /></p>
 <blockquote>
@@ -1038,7 +1033,7 @@ examples of these functions:</p>
 <p>a.  Export the Argo CD admin account's password again for login.</p>
 <pre><code>export ARGOCD_PASSWORD=$(oc -n argocd get secret example-argocd-cluster -o jsonpath='{.data.admin\.password}' | base64 -d)
 
-echo $ARGOCD\_PASSWORD
+echo $ARGOCD_PASSWORD
 </code></pre>
 <p><img alt="" src="images/outpics/19.png" />    </p>
 <p>b.  Enter the following command to login to the Argo CD server as
@@ -1155,5 +1150,5 @@ application using Argo CD following GitOps practices.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-10-26 19:00:14
+Build Date UTC : 2022-07-15 12:27:09
 -->
