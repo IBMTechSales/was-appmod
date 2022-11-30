@@ -38,27 +38,83 @@ Click [here](extras/application.md) and get to know the application, its archite
 
 <a name="Login_VM"> </a>
 
-## Login to the VM
+## Accessing the lab environment
 
-1. If the VM is not already started, start it by clicking the Play button.
+
+1.  Access the lab environment from your web browser. 
+    
+    A Published Service is configured to provide access to the **Workstation** VM through the noVNC interface for the lab environment.
+
+    a.  When the environment is provisioned, right-mouse click on the **Published Service** link and open the URL in a new private or incognito browser window, as described below:  
+    
+    - If using **Google Chrome** browser, select **"Open link in incognito window"** from the context menu. 
+
+      ![](./extras/images/chrome-incognito.png)
+    
+    - If using **Firefox** browser, select **"Open link in new private window"** from the context menu. 
+
+      ![](./extras/images/firefox-private.png)
+
+    b. Click on the **"vnc.html"** link to open the lab environment through the **noVNC** interface. 
+
+      ![](./extras/images/vnc-link.png)
+
  
-    ![start VM](extras/images/loginvm1.png)
-   
-2. After the VM is started, click the **desktop** VM to access it.
-   
-    ![desktop VM](extras/images/loginvm2.png)
-   
-3. Login with **ibmuser** ID.
-     * Click on the **ibmuser** icon on the Ubuntu screen.
-     * When prompted for the password for **ibmuser**, enter "**engageibm**" as the password.
-     
-     ![login VM](extras/images/loginvm3.png)
-     
-	 <br/>
-	 
-4. Resize the Skytap environment window for a larger viewing area while doing the lab. From the Skytap menu bar, click on the "**Fit to Size**" icon. This will enlarge the viewing area to fit the size of your browser window. 
+    c. Click the **Connect** button 
+    
+    ![](./extras/images/vnc-connect.png)
 
-    ![fit to size icon](extras/images/loginvm4.png)
+    d. Enter the password as:  **passw0rd**. Then click the **Send Credentials** button to access the lab environment. 
+
+    > Note: That is a numeric zero in passw0rd  
+
+    ![](./extras/images/vnc-password.png)
+
+2. Login with ibmuser ID.
+
+    - Click on the **ibmuser** icon on the Ubuntu screen.
+
+    - When prompted for the password for ibmuser, enter **engageibm** as the password.
+    
+    ![](./extras/images/ibmuser-login.png)
+
+    <br/>
+	
+
+## Tips for working the in lab environment     
+
+1.  You can use your Browsers **zoom in** and **zoom out** options to resize the virtual desktop to fit your screen.
+
+    The examples below are using Firefox and Chrome browsers. 
+
+    - Firefox example: 
+    
+    ![fit to window](./extras/images//zoom.png)
+
+    - Chrome example: 
+      
+     ![fit to window](./extras/images//zoom-chrome.png)
+
+
+2.  You can copy / paste text from the lab guide into the lab environment using the clipboard in the noVNC viewer. 
+   
+    a. Copy the text from the lab guide that you want to paste into the lab environment
+    
+    b. Click the **Clipboard** icon and **paste** the text into the noVNC clipboard
+
+    ![fit to window](./extras/images/paste.png)
+    
+    c. Paste the tect into the VM, such as to a terminal window, browser window, etc. 
+
+    d. Click on the **clipboard** icon agian to close the clipboard
+
+    > **NOTE:** Sometimes pasting into a Terminal window in the VM does not work consistently. In this case you might try again, or paste the text into a **Text Editor** in the VM, and then paste it into the Terminal window in the VM. 
+
+3. An alternative to using the noVNC Copy / Paste option, you may considr openeing the lab guide in a web browser inside of the VM. Using this method, you can easily copy / paste text from the lab guide wihout having to use the noVNC clipboard. 
+
+
+    <br>
+
 	
 
 <a name="analysis"></a>

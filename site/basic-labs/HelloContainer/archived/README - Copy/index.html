@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>Introduction to Containerization - WebSphere Application Modernization</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../../../stylesheets/klp.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Introduction to Containerization";
+    var mkdocs_page_input_path = "basic-labs\\HelloContainer\\archived\\README - Copy.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> WebSphere Application Modernization</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../environments-setup/">Reserve lab environment or workshop</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../">Basic Containerization & App Mod Tools Labs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../appmod-labs/">App Modernization Labs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Resources</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../OpenshiftConcepts/">Openshift Concepts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../WebSphereCloud/">Moving WebSphere applications to Cloud</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../resources/">Additional Resources</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">WebSphere Application Modernization</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Introduction to Containerization</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="introduction-to-containerization">Introduction to Containerization</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#introduction-to-containerization">Introduction to Containerization</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#background">Background</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#what-is-a-container">What is a Container</a></li>
+<li><a href="#login-to-the-vm">Login to the VM</a></li>
+<li><a href="#check-your-environment">Check your environment</a></li>
+<li><a href="#run-a-pre-built-image">Run a pre-built image</a></li>
+<li><a href="#build-and-run-your-own-image">Build and Run Your Own Image</a></li>
+<li><a href="#managing-image-versions">Managing Image Versions</a></li>
+<li><a href="#extra-credit">Extra Credit</a></li>
+<li><a href="#next">Next</a></li>
+</ul>
+<p><a name="Background"> </a></p>
+<h2 id="background">Background</h2>
+<p>If you are expecting a lab about <code>docker</code>, you are at the right place.
+This lab will introduce you to the basic concepts of containerization, including:</p>
+<ul>
+<li>What are containers and container images</li>
+<li>How to start, stop, and remove containers.</li>
+<li>How to create container images</li>
+<li>How to version container images</li>
+</ul>
+<p><a name="Prerequisites"> </a></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>You have <code>podman</code> or <code>docker</code> installed.  Only <code>docker</code> is installed for this lab.</li>
+<li>You have access to the internet.</li>
+<li>You have cloned this lab from github. If not, follows these steps:</li>
+</ul>
+<pre class="highlight"><code>git clone https://github.com/IBM/openshift-workshop-was.git
+cd openshift-workshop-was/labs/Openshift/HelloContainer</code></pre>
+
+<p><a name="What_is_Container"> </a></p>
+<h2 id="what-is-a-container">What is a Container</h2>
+<p>Compared to virtual machines, containers supports virtualization at the process level. 
+Think of them as virtual processes.
+The isolation abstraction provided by the operating system makes the process think that it's running in its own virtual machine.
+As processes, containers may be created, started, and stopped much more quickly than virtual machines.</p>
+<p>Everything you need to run your application, from the operating system and up, is stored in a special file called a container image.<br />
+Container images are self contained and portable. 
+You may run one or more instances anywhere. 
+And you don't have to worry about missing prerequisites, because all prerequisites are stored in the image.</p>
+<p>Container images are created via tools such as <code>docker</code> or <code>podman</code>. 
+Existing images are hosted in container registries. 
+For example, docker hub, or registry.access.redhat.com, or your own internal registry. </p>
+<p>If you need more background on containers: https://www.docker.com/resources/what-container</p>
+<p><a name="Login_VM"> </a></p>
+<h2 id="login-to-the-vm">Login to the VM</h2>
+<ol>
+<li>If the VM is not already started, start it by clicking the Play button.</li>
+</ol>
+<p><img alt="start VM" src="images/loginvm1.png" /></p>
+<ol>
+<li>After the VM is started, click the <strong>desktop</strong> VM to access it.</li>
+</ol>
+<p><img alt="desktop VM" src="images/loginvm2.png" /></p>
+<ol>
+<li>Login with <strong>ibmuser</strong> ID.</li>
+<li>Click on the <strong>ibmuser</strong> icon on the Ubuntu screen.</li>
+<li>
+<p>When prompted for the password for <strong>ibmuser</strong>, enter "<strong>engageibm</strong>" as the password: \
+     Password: <strong>engageibm</strong></p>
+<p><img alt="login VM" src="images/loginvm3.png" /></p>
+</li>
+<li>
+<p>Resize the Skytap environment window for a larger viewing area while doing the lab. From the Skytap menu bar, click on the "<strong>Fit to Size</strong>" icon. This will enlarge the viewing area to fit the size of your browser window. </p>
+<p><img alt="fit to size icon" src="images/loginvm4.png" /></p>
+</li>
+</ol>
+<p><a name="Check_Environment"> </a></p>
+<h2 id="check-your-environment">Check your environment</h2>
+<ol>
+<li>
+<p>Open a terminal window from within your VM.</p>
+<p><img alt="terminal" src="images/checkenv1.png" /></p>
+</li>
+<li>
+<p>List version of docker: <code>docker --version</code>
+    Example output:
+    <pre class="highlight"><code>Docker version 20.10.7, build f0df350</code></pre></p>
+</li>
+<li>For more background on docker command line: https://docs.docker.com/engine/reference/commandline/cli/</li>
+</ol>
+<p><a name="Run_Prebuilt"> </a></p>
+<h2 id="run-a-pre-built-image">Run a pre-built image</h2>
+<ol>
+<li>
+<p>Container images must be available locally before they can be run. To list available local images: <code>docker images</code></p>
+<pre class="highlight"><code>REPOSITORY   TAG   IMAGE ID   CREATED   SIZE</code></pre>
+
+</li>
+<li>
+<p>Images are hosted in container registries. The default container registry for docker is docker hub, located at https://hub.docker.com.  Let's pull a test image from docker hub:  </p>
+<pre class="highlight"><code>docker pull openshift/hello-openshift</code></pre>
+
+<p>And the output:</p>
+<pre class="highlight"><code>Using default tag: latest
+latest: Pulling from openshift/hello-openshift
+4f4fb700ef54: Pull complete 
+8b32988996c5: Pull complete 
+Digest: sha256:aaea76ff622d2f8bcb32e538e7b3cd0ef6d291953f3e7c9f556c1ba5baf47e2e
+Status: Downloaded newer image for openshift/hello-openshift:latest
+docker.io/openshift/hello-openshift:latest</code></pre>
+
+</li>
+<li>
+<p>List available local images again: <code>docker images</code></p>
+<pre class="highlight"><code>REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+openshift/hello-openshift   latest              7af3297a3fb4        2 years ago         6.09MB</code></pre>
+
+</li>
+<li>
+<p>Inspect the image metadata:
+   <pre class="highlight"><code>docker inspect openshift/hello-openshift</code></pre>
+   Note that:</p>
+<ul>
+<li>It exposes two ports: 8080 and  8888</li>
+<li>It runs as user 1001</li>
+<li>The entry point executable is /hello-openshift</li>
+</ul>
+<pre class="highlight"><code>[
+    {
+        "Id": "sha256:7af3297a3fb4487b740ed6798163f618e6eddea1ee5fa0ba340329fcae31c8f6",
+        "RepoTags": [
+            "openshift/hello-openshift:latest"
+        ],
+        "RepoDigests": [
+            "openshift/hello-openshift@sha256:aaea76ff622d2f8bcb32e538e7b3cd0ef6d291953f3e7c9f556c1ba5baf47e2e"
+        ],
+
+        ...
+
+        "Config": {
+            "User": "1001",
+            ...
+
+            "ExposedPorts": {
+                "8080/tcp": {},
+                "8888/tcp": {}
+            },
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            ...
+
+            "Entrypoint": [
+                "/hello-openshift"
+            ]
+            ...
+    }
+]</code></pre>
+
+</li>
+<li>
+<p>Run the image in an container:
+   <pre class="highlight"><code>docker run --name hello1 -d -p 8080:8080 -p 8888:8888 openshift/hello-openshift</code></pre>
+   Note that:</p>
+<ul>
+<li>The <code>--name</code> option gives the container a name.</li>
+<li>The <code>-d</code> option runs the command in the background as a daemon</li>
+<li>The <code>-p</code> option maps the port on the host to the port in the container. Through virtual networking, the port within the container is always the same for all running instances. But to support multiple concurrent running instances, the actual port on the host must be different for each instance. When you start the container, you may assign a new port on the host dynamically.</li>
+<li>The output of the command is the container ID for the running container.</li>
+<li>If the container starts successfully, the executable specified by the <code>Entrypoint</code> in the metadata is run. For our sample, it is <code>/hello-openshift</code>.</li>
+</ul>
+</li>
+<li>
+<p>Access the application in the container.</p>
+<ul>
+<li>Open the Firefox Web Browser from inside of the VM. 
+    <img alt="firefox" src="images/runprebuilt3.png" /></li>
+<li>Go to the URL <code>http://localhost:8080</code></li>
+<li>
+<p>Also try port 8888</p>
+<p><img alt="hello openshift" src="images/runprebuilt1.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Run another instance of the same image. Note that this new instance is assigned new port numbers 8081 and 8889 on the host. This is so that they don't conflict with the ports 8080 and 8888 already allocated to the first instance.
+   <pre class="highlight"><code>docker run --name hello2 -d -p 8081:8080 -p 8889:8888 openshift/hello-openshift</code></pre>
+    Question: how does this compare to the time it takes to start a new virtual machine?</p>
+</li>
+<li>
+<p>Access the application in the new container the same way. </p>
+</li>
+<li>Return to the Firefox Web Browser but instead go to the URL <code>http://localhost:8081</code></li>
+<li>Also try port 8889</li>
+</ol>
+<p><img alt="hello openshift" src="images/runprebuilt2.png" /></p>
+<ol>
+<li>
+<p>Verify there are two containers running in the same host: <code>docker ps</code>:</p>
+<pre class="highlight"><code>CONTAINER ID        IMAGE                       COMMAND              CREATED              STATUS              PORTS                                            NAMES
+5a62f8527b44        openshift/hello-openshift   "/hello-openshift"   About a minute ago   Up About a minute   0.0.0.0:8081-&gt;8080/tcp, 0.0.0.0:8889-&gt;8888/tcp   hello2
+c9d49aaa01b7        openshift/hello-openshift   "/hello-openshift"   4 minutes ago        Up 4 minutes        0.0.0.0:8080-&gt;8080/tcp, 0.0.0.0:8888-&gt;8888/tcp   hello1</code></pre>
+
+</li>
+<li>
+<p>View the logs: 
+   <pre class="highlight"><code>docker logs hello1</code></pre></p>
+</li>
+</ol>
+<p>And the output:</p>
+<pre><code>```
+serving on 8888
+serving on 8080
+```
+</code></pre>
+<ol>
+<li>View the logs on the second container: 
+   <pre class="highlight"><code>docker logs hello2</code></pre></li>
+</ol>
+<p>And the output:</p>
+<pre class="highlight"><code>serving on 8888
+serving on 8080</code></pre>
+
+<p>Note: within the container, each instance behaves as if it's running in its own virtual environment, and has opened the same ports. Outside of the container, different ports are opened.</p>
+<ol>
+<li>
+<p>To export the file system of a running container: 
+   <pre class="highlight"><code>docker export hello1 &gt; hello1.tar</code></pre></p>
+</li>
+<li>
+<p>List the files on the file system: 
+   <pre class="highlight"><code>tar -tvf hello1.tar</code></pre></p>
+</li>
+</ol>
+<p>Note that this is a very small image.</p>
+<pre class="highlight"><code>-rwxr-xr-x 0/0               0 2020-04-29 16:48 .dockerenv
+drwxr-xr-x 0/0               0 2020-04-29 16:48 dev/
+-rwxr-xr-x 0/0               0 2020-04-29 16:48 dev/console
+drwxr-xr-x 0/0               0 2020-04-29 16:48 dev/pts/
+drwxr-xr-x 0/0               0 2020-04-29 16:48 dev/shm/
+drwxr-xr-x 0/0               0 2020-04-29 16:48 etc/
+-rwxr-xr-x 0/0               0 2020-04-29 16:48 etc/hostname
+-rwxr-xr-x 0/0               0 2020-04-29 16:48 etc/hosts
+lrwxrwxrwx 0/0               0 2020-04-29 16:48 etc/mtab -&gt; /proc/mounts
+-rwxr-xr-x 0/0               0 2020-04-29 16:48 etc/resolv.conf
+-rwxr-xr-x 0/0         6089990 2018-04-18 10:22 hello-openshift
+drwxr-xr-x 0/0               0 2020-04-29 16:48 proc/
+drwxr-xr-x 0/0               0 2020-04-29 16:48 sys/</code></pre>
+
+<ol>
+<li>
+<p>Run another command in the running container. 
+You can reach into the running container to run another command. 
+The typical use case is to run a shell command, so you can use the shell to navigate within the container and run other commands.
+However, our image is tiny, and there is no built-in shell.
+For the purpose of this lab, we'll execute the same command again: <code>docker exec -ti hello1 /hello-openshift</code>. 
+Running this command again in the same container results in an error, 
+because there is already another copy running in the background that is bound to the ports 8080 and 8888:</p>
+<pre class="highlight"><code>serving on 8888
+serving on 8080
+panic: ListenAndServe: listen tcp :8888: bind: address already in use
+...</code></pre>
+
+</li>
+<li>
+<p>Stop the containers:</p>
+</li>
+<li><code>docker stop hello1</code></li>
+<li>
+<p><code>docker stop hello2</code></p>
+</li>
+<li>
+<p>List running containers: <code>docker ps</code></p>
+</li>
+</ol>
+<pre class="highlight"><code> CONTAINER ID        IMAGE                       COMMAND              CREATED             STATUS                      PORTS               NAMES
+</code></pre>
+
+<ol>
+<li>
+<p>List all containers, including stopped ones: <code>docker ps -a</code></p>
+<pre class="highlight"><code>CONTAINER ID        IMAGE                       COMMAND              CREATED             STATUS                      PORTS               NAMES
+5a62f8527b44        openshift/hello-openshift   "/hello-openshift"   28 minutes ago      Exited (2) 28 seconds ago                       hello2
+c9d49aaa01b7        openshift/hello-openshift   "/hello-openshift"   31 minutes ago      Exited (2) 32 seconds ago                       hello1</code></pre>
+
+</li>
+<li>
+<p>Restart a stopped container: <code>docker restart hello1</code></p>
+</li>
+<li>
+<p>List running containers: <code>docker ps</code></p>
+<pre class="highlight"><code>CONTAINER ID        IMAGE                       COMMAND              CREATED             STATUS              PORTS                                            NAMES
+c9d49aaa01b7        openshift/hello-openshift   "/hello-openshift"   33 minutes ago      Up 8 seconds        0.0.0.0:8080-&gt;8080/tcp, 0.0.0.0:8888-&gt;8888/tcp   hello1</code></pre>
+
+</li>
+<li>
+<p>Stop the container: <code>docker stop hello1</code></p>
+</li>
+<li>
+<p>Remove stopped containers, and note that there are no more containers:</p>
+<ul>
+<li><code>docker rm hello1</code></li>
+<li><code>docker rm hello2</code></li>
+<li><code>docker ps -a</code></li>
+</ul>
+</li>
+<li>
+<p>Remove the image from local cache:</p>
+<ul>
+<li>View current images:
+    <pre class="highlight"><code>docker images</code></pre>
+    Example output:
+    <pre class="highlight"><code>REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+openshift/hello-openshift   latest              7af3297a3fb4        2 years ago         6.09MB</code></pre></li>
+<li>Remove the image:
+    <pre class="highlight"><code>docker rmi openshift/hello-openshift</code></pre>
+    Example output:
+    <pre class="highlight"><code>Untagged: openshift/hello-openshift:latest
+Untagged: openshift/hello-openshift@sha256:aaea76ff622d2f8bcb32e538e7b3cd0ef6d291953f3e7c9f556c1ba5baf47e2e
+Deleted: sha256:7af3297a3fb4487b740ed6798163f618e6eddea1ee5fa0ba340329fcae31c8f6
+Deleted: sha256:8fd6a1ece3ceceae6d714004614bae5b581c83ab962d838ef88ce760583dcb80
+Deleted: sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef</code></pre></li>
+<li>Check that the image has been removed:
+    <pre class="highlight"><code>docker images</code></pre>
+    Example output:
+    <pre class="highlight"><code>REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE</code></pre></li>
+</ul>
+</li>
+</ol>
+<p><a name="Build_Your_Own"> </a></p>
+<h2 id="build-and-run-your-own-image">Build and Run Your Own Image</h2>
+<p>We use a <code>Containerfile</code>, which contains the instructions to create the new layers of your image. 
+For those familiar with docker, the <code>Containerfile</code> is equivalent to <code>Dockerfile</code>.</p>
+<p>Recall that an image contains the entire file system that you want to use to run your virtual process in a container.
+For this sample, we are building a new image for a Java EE web application ServletApp.war.
+It is configured to run on the WebSphere Liberty Runtime. 
+The configuration file for the server is in the server.xml.</p>
+<ol>
+<li>
+<p>Change directory to openshift-workshop-was/labs/Openshift/HelloContainer 
+   <pre class="highlight"><code>cd openshift-workshop-was/labs/Openshift/HelloContainer </code></pre></p>
+</li>
+<li>
+<p>Review the provided <code>Containerfile</code> from the directory:
+    <pre class="highlight"><code>cat Containerfile</code></pre></p>
+<p>Content of <code>Containerfile</code>:
+<pre class="highlight"><code>FROM ibmcom/websphere-liberty:kernel-java8-ibmjava-ubi
+COPY server.xml  /config
+COPY ServletApp.war /config/dropins/app.war
+RUN /liberty/wlp/bin/installUtility install --acceptLicense /config/server.xml </code></pre></p>
+</li>
+<li>
+<p>To create a new image, you start with a pre-existing image. The first line <code>FROM</code> specifies the existing image to be used as the base.  If this is not in the local registry, it will be pulled from a remote registry such as docker hub. The base image we are using, <code>ibmcom/websphere-liberty</code>, is already prepackaged for us and made available on docker hub.</p>
+</li>
+<li>
+<p>The second line <code>COPY</code>  is a straight copy of the file <code>server.xml</code> from the local directory to <code>/config/server.xml</code> in the image. This adds a new layer to the image with the actual server configuration to be used.</p>
+</li>
+<li>
+<p>The third line, another <code>COPY</code>, copies <code>ServletApp.war</code> from the current directory into a new layer in the image you are creating, at the location <code>/config/dropins/app.war</code>.</p>
+</li>
+<li>
+<p>The last line <code>RUN</code> runs the <code>installUtility</code> command within the image to install additional features required to run the server as specified in <code>server.xml</code>. You can use the <code>RUN</code> command to run any command that is available within the image to customize the image itself.</p>
+</li>
+<li>
+<p>Run the build.  Ensure you include <code>.</code> at the end of the command (the dot indicates using the file from the current directory):
+    <pre class="highlight"><code>docker build -t app -f Containerfile .</code></pre></p>
+<ul>
+<li>The <code>-t</code> option tags the name of the image as <code>app</code>.  </li>
+<li>The <code>-f</code> option specifies the name of the <code>Containerfile</code>. </li>
+<li>The build command runs the commands in <code>Containerfile</code> to build a new image called <code>app</code>.</li>
+</ul>
+<p>Example output:
+<pre class="highlight"><code>Sending build context to Docker daemon   25.6kB
+Step 1/4 : FROM ibmcom/websphere-liberty:kernel-java8-ibmjava-ubi
+kernel-java8-ibmjava-ubi: Pulling from ibmcom/websphere-liberty
+ee2244abc66f: Pull complete 
+befb03b11956: Pull complete 
+137dc88f6a93: Pull complete 
+5bdd69a33184: Pull complete 
+d4e2554981d7: Pull complete 
+32c91bc0f2e1: Pull complete 
+db7e931336a9: Pull complete 
+3b32f9956ae2: Pull complete 
+304584ffa0a2: Pull complete 
+9f6da4c82b7e: Pull complete 
+b6fa5b2e2325: Pull complete 
+Digest: sha256:d76f79695afe2f653fc7b272f9a629105446e6b78ff0d733d494c93ff05728e7
+Status: Downloaded newer image for ibmcom/websphere-liberty:kernel-java8-ibmjava-ubi
+ ---&gt; 4d9265befb26
+Step 2/4 : COPY server.xml  /config
+ ---&gt; 4a02d03d3725
+Step 3/4 : COPY ServletApp.war /config/dropins/app.war
+ ---&gt; b2def2a0feac
+Step 4/4 : RUN /liberty/wlp/bin/installUtility install --acceptLicense /config/server.xml
+ ---&gt; Running in 5f5b05aec1ae
+Checking for missing features required by the server ...
+The server requires the following additional features: appsecurity-2.0 servlet-3.0.  Installing features from the repository ...
+Establishing a connection to the configured repositories ...
+This process might take several minutes to complete.
+
+Successfully connected to all configured repositories.
+
+Preparing assets for installation. This process might take several minutes to complete.
+
+Additional Liberty features must be installed for this server.
+
+To install the additional features, review and accept the feature license agreement:
+The --acceptLicense argument was found. This indicates that you have
+accepted the terms of the license agreement.
+
+Step 1 of 12: Downloading ssl-1.0 ...
+Step 2 of 12: Installing ssl-1.0 ...
+Step 3 of 12: Downloading appSecurity-2.0 ...
+Step 4 of 12: Installing appSecurity-2.0 ...
+Step 5 of 12: Downloading servlet-3.0 ...
+Step 6 of 12: Installing servlet-3.0 ...
+Step 7 of 12: Downloading jndi-1.0 ...
+Step 8 of 12: Installing jndi-1.0 ...
+Step 9 of 12: Downloading distributedMap-1.0 ...
+Step 10 of 12: Installing distributedMap-1.0 ...
+Step 11 of 12: Validating installed fixes ...
+Step 12 of 12: Cleaning up temporary files ...
+
+All assets were successfully installed.
+
+Start product validation...
+Product validation completed successfully.
+Removing intermediate container 5f5b05aec1ae
+ ---&gt; e1c6bfabda76
+Successfully built e1c6bfabda76
+Successfully tagged app:latest</code></pre></p>
+</li>
+<li>
+<p>List the images to see that the new image <code>app</code> is built: 
+   <pre class="highlight"><code>docker images</code></pre>
+   Note that the base image, <code>ibmcom/websphere-liberty</code> has also been pulled into the local registry.</p>
+</li>
+</ol>
+<pre class="highlight"><code>REPOSITORY                            TAG                        IMAGE ID       CREATED         SIZE
+app                                   latest                     baa6bb9ad29d   2 minutes ago   544 MB
+ibmcom/websphere-liberty              kernel-java8-ibmjava-ubi   7ea3d0a2b3fe   4 hours ago     544 MB</code></pre>
+
+<ol>
+<li>
+<p>Start the container. Note that you are running with both http and https ports: 
+   <pre class="highlight"><code>docker run -d -p 9080:9080 -p 9443:9443 --name=app-instance app</code></pre></p>
+</li>
+<li>
+<p>Access the application running in the container:</p>
+</li>
+<li>Open the Firefox Web Browswer and go to URL <code>http://localhost:9080/app</code><ul>
+<li>Check that it renders a page showing <code>Simple Servlet ran successfully</code>.</li>
+<li>Also point your browser to 9443:  <code>https://localhost:9443/app</code></li>
+</ul>
+</li>
+</ol>
+<p><img alt="hello openshift" src="images/buildyourown1.png" /></p>
+<ol>
+<li>
+<p>List the running containers: 
+    <pre class="highlight"><code>docker ps</code></pre>
+    <pre class="highlight"><code>CONTAINER ID     IMAGE     COMMAND                  CREATED             STATUS              PORTS                                NAMES                                     
+595cdc49c710     app       "/opt/ibm/helpers/ru…"   8 minutes ago       Up 8 minutes        0.0.0.0:9080-&gt;9080/tcp, 0.0.0.0:9443-&gt;9443/tcp      app-instance</code></pre></p>
+</li>
+<li>
+<p>Access the logs to your container: 
+   <pre class="highlight"><code>docker logs -f app-instance</code></pre>
+   Use <code>Ctrl-C</code> To exit.</p>
+</li>
+<li>
+<p>Remote shell into your running container to poke around: 
+   <pre class="highlight"><code>docker exec -it app-instance /bin/sh</code></pre>
+   In the shell session,</p>
+<ul>
+<li>run <code>whoami</code> and then run <code>id</code>, note you're not running as root.</li>
+<li>Note that this is a stripped down environment where many commands are not available. For example, try <code>which ps</code>.</li>
+<li>cd <code>/logs</code> to find the log files</li>
+<li>cd <code>/liberty/wlp</code> to find the location of the liberty install</li>
+<li>cd <code>/liberty/wlp/usr/servers/defaultServer</code> to find the server configuration. </li>
+<li>cd <code>/opt/ibm/wlp/output/defaultServer</code> to find the workarea files required by the server runtime.</li>
+<li>Exit from the container: <code>exit</code></li>
+</ul>
+</li>
+<li>Cleanup:<ul>
+<li><code>docker stop app-instance</code></li>
+<li><code>docker rm app-instance</code></li>
+</ul>
+</li>
+</ol>
+<p><a name="Versions"> </a></p>
+<h2 id="managing-image-versions">Managing Image Versions</h2>
+<p>There is no built-in versioning for container images. 
+However, you may use a tagging convention to version your images. 
+The convention is to use <code>major.minor.patch</code>, such as <code>1.3.5</code>.
+The default tag if you don't specify one is <code>latest</code>.</p>
+<p>Let's assume that the first version we will build for our environment is 1.3.5. (The earlier versions are built in a different environment.) Run the commands to tag the latest <code>app</code> image for our first version:</p>
+<pre class="highlight"><code>docker tag app app:1
+docker tag app app:1.3
+docker tag app app:1.3.5</code></pre>
+
+<p>List the images again:</p>
+<pre class="highlight"><code>docker images</code></pre>
+
+<p>And the output:</p>
+<pre class="highlight"><code>REPOSITORY                 TAG                        IMAGE ID            CREATED             SIZE
+app                        1                          d98cbdf82a0d        21 hours ago        542MB
+app                        1.3                        d98cbdf82a0d        21 hours ago        542MB
+app                        1.3.5                      d98cbdf82a0d        21 hours ago        542MB
+app                        latest                     d98cbdf82a0d        21 hours ago        542MB</code></pre>
+
+<p>Note that all the different tags are currently associated with the same image, as they have the same image ID.
+After tagging, the command <code>docker run app:&lt;version&gt; ...</code> or <code>docker pull app:&lt;version&gt; ...</code> resolves the available versions as follows:</p>
+<ul>
+<li><code>app:1</code> resolves to the latest 1.x.x version, which in this case is <code>1.3.5</code>.</li>
+<li><code>app:1.3</code> resolves to the latest 1.3.x version, which in this case is the <code>1.3.5</code></li>
+<li><code>app:1.3.5</code> resolves to the exact version <code>1.3.5</code>.</li>
+</ul>
+<p>After you build a new patch image containing defect fixes, you want to manage the tags for the new image so that a
+new <code>docker run app:&lt;version&gt; ...</code> or <code>docker pull app:&lt;version&gt; ...</code> command resolves the images as follows:</p>
+<ul>
+<li><code>app:1.3.5</code>: resolves to the existing <code>1.3.5</code> image.</li>
+<li><code>app:1.3.6</code>: resolves to the new image</li>
+<li><code>app:1.3</code>: resolves to the new image.</li>
+<li><code>app:1</code>: resolves to the new image</li>
+</ul>
+<p>Let's simulate a defect fix by building a new image using <code>Containerfile1</code> instead of <code>Containerfile</code>:
+<pre class="highlight"><code>docker build -t app -f Containerfile1 .</code></pre>
+Example output:
+<pre class="highlight"><code>Sending build context to Docker daemon  32.26kB
+Step 1/5 : FROM ibmcom/websphere-liberty:kernel-java8-ibmjava-ubi
+ ---&gt; bb79b9e26fd3
+Step 2/5 : COPY server.xml  /config
+ ---&gt; Using cache
+ ---&gt; f10659bc62b2
+Step 3/5 : COPY ServletApp.war /config/dropins/app.war
+ ---&gt; Using cache
+ ---&gt; 24d85579e404
+Step 4/5 : RUN /liberty/wlp/bin/installUtility install --acceptLicense /config/server.xml
+ ---&gt; Using cache
+ ---&gt; 5e924d776a9c
+Step 5/5 : RUN echo test1 &gt; /config/test1
+ ---&gt; Running in 08e6135b00f5
+Removing intermediate container 08e6135b00f5
+ ---&gt; 69d20332a5e0
+Successfully built 69d20332a5e0
+Successfully tagged app:latest</code></pre></p>
+<p>Tag it as follows :</p>
+<pre class="highlight"><code>docker tag app app:1
+docker tag app app:1.3
+docker tag app app:1.3.6</code></pre>
+
+<p>Verify that these are the same images: <code>app:1</code>, <code>app:1.3</code>, <code>app:1.3.6</code>.</p>
+<p>A new minor version involves compatible changes beyond just bug fixes. After you build a new minor version image, you want to manage the tags such that:</p>
+<ul>
+<li><code>app:1.3.5</code>: resolves to the existing <code>1.3.5</code> image.</li>
+<li><code>app:1.3.6</code>: resolves to the existing <code>1.3.6</code> image</li>
+<li><code>app:1.4.0</code>: resolves to the new image</li>
+<li><code>app:1.3</code>: resolves to the existing <code>1.3.6</code> image.</li>
+<li><code>app:1.4</code>: resolves to the new image.</li>
+<li><code>app:1</code>: resolves to the new image</li>
+</ul>
+<p>Build a new image using <code>Containerfile2</code>:
+<pre class="highlight"><code>docker build -t app -f Containerfile2 .</code></pre></p>
+<pre class="highlight"><code>Sending build context to Docker daemon  32.26kB
+Step 1/6 : FROM ibmcom/websphere-liberty:kernel-java8-ibmjava-ubi
+ ---&gt; bb79b9e26fd3
+Step 2/6 : COPY server.xml  /config
+ ---&gt; Using cache
+ ---&gt; f10659bc62b2
+Step 3/6 : COPY ServletApp.war /config/dropins/app.war
+ ---&gt; Using cache
+ ---&gt; 24d85579e404
+Step 4/6 : RUN /liberty/wlp/bin/installUtility install --acceptLicense /config/server.xml
+ ---&gt; Using cache
+ ---&gt; 5e924d776a9c
+Step 5/6 : RUN echo test1 &gt; /config/test1
+ ---&gt; Using cache
+ ---&gt; 69d20332a5e0
+Step 6/6 : RUN echo test2 &gt; /config/test2
+ ---&gt; Running in 96ea24b9ba66
+Removing intermediate container 96ea24b9ba66
+ ---&gt; 31b27169b3bc
+Successfully built 31b27169b3bc</code></pre>
+
+<p>Tag it as  follows:</p>
+<pre class="highlight"><code>docker tag app app:1
+docker tag app app:1.4
+docker tag app app:1.4.0</code></pre>
+
+<p>Verify that </p>
+<ul>
+<li><code>1</code>, <code>1.4</code>, and <code>1.4.0</code> are the same image</li>
+<li><code>1.3</code> and <code>1.3.6</code> are the same image</li>
+</ul>
+<p><a name="Extra_Credit"> </a></p>
+<h2 id="extra-credit">Extra Credit</h2>
+<ul>
+<li>Search the internet for information about multi-stage build. 
+  In a single stage build, the final image contains both build and runtime artifacts. 
+  A multi-stage build allows you to build with one base image, and copy the result of the build to another base image. 
+  This gives you even more control over the output of the build, and the size of the final image.</li>
+<li>Start another instances of the <code>app</code> image for vertical scaling, but with different port numbers on the host.</li>
+<li>Point your browser to <code>hub.docker.com</code>, click "Explore" and explore the millions of available images.</li>
+<li>Think about how you would tag a new image at a major version, <code>2.0.0</code>.</li>
+<li>Think about what would be required to manage containers across multiple machines to support horizontal scaling.</li>
+</ul>
+<p>Congratulations! You have completed the <strong>Introduction to Containerization</strong> lab.</p>
+<h2 id="next">Next</h2>
+<p>Please follow the link to do the next lab <strong>Introduction to Container Orchestration using Openshift</strong>:
+- <a href="https://github.com/IBM/openshift-workshop-was/tree/master/labs/Openshift/IntroOpenshift">Introduction to Container Orchestration using Openshift</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+
+</body>
+</html>

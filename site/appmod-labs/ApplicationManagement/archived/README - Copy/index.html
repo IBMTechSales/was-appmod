@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>Application Management - WebSphere Application Modernization</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../../../stylesheets/klp.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Application Management";
+    var mkdocs_page_input_path = "appmod-labs\\ApplicationManagement\\archived\\README - Copy.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> WebSphere Application Modernization</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../environments-setup/">Reserve lab environment or workshop</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../basic-labs/">Basic Containerization & App Mod Tools Labs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../">App Modernization Labs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Resources</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../OpenshiftConcepts/">Openshift Concepts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../WebSphereCloud/">Moving WebSphere applications to Cloud</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../resources/">Additional Resources</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">WebSphere Application Modernization</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Application Management</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="application-management">Application Management</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#application-logging-hands-on">Application Logging</a> (Hands-on)</li>
+<li><a href="#application-monitoring-hands-on">Application Monitoring</a> (Hands-on)</li>
+<li><a href="#day-2-operations-hands-on">Day-2 Operations</a> (Hands-on)</li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>In this lab, you'll learn about managing your running applications efficiently using various tools available to you as part of OpenShift and OperatorHub, including the Open Liberty Operator.</p>
+<p><a name="Login_VM"> </a></p>
+<h2 id="login-to-the-vm">Login to the VM</h2>
+<ol>
+<li>If the VM is not already started, start it by clicking the Play button.</li>
+</ol>
+<p><img alt="start VM" src="extras/images/loginvm1.png" /></p>
+<ol>
+<li>After the VM is started, click the <strong>desktop</strong> VM to access it.</li>
+</ol>
+<p><img alt="desktop VM" src="extras/images/loginvm2.png" /></p>
+<ol>
+<li>Login with <strong>ibmuser</strong> ID.</li>
+<li>Click on the <strong>ibmuser</strong> icon on the Ubuntu screen.</li>
+<li>
+<p>When prompted for the password for <strong>ibmuser</strong>, enter "<strong>engageibm</strong>" as the password: \
+     Password: <strong>engageibm</strong></p>
+<p><img alt="login VM" src="extras/images/loginvm3.png" /></p>
+</li>
+<li>
+<p>Resize the Skytap environment window for a larger viewing area while doing the lab. From the Skytap menu bar, click on the "<strong>Fit to Size</strong>" icon. This will enlarge the viewing area to fit the size of your browser window. </p>
+</li>
+</ol>
+<p><img alt="fit to size icon" src="extras/images/loginvm4.png" /></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>
+<p>Open a terminal window from the VM desktop.</p>
+<p><img alt="terminal window" src="extras/images/build1.png" /></p>
+</li>
+<li>
+<p>Login to OpenShift CLI with the <code>oc login</code> command from the web terminal. When prompted for the username and password, enter the following login credentials:</p>
+<ul>
+<li>Username: <strong>ibmadmin</strong></li>
+<li>Password: <strong>engageibm</strong></li>
+</ul>
+<p><img alt="oc login" src="extras/images/build2.png" /></p>
+</li>
+<li>
+<p>If you have not yet cloned the GitHub repo with the lab artifacts, then run the following command on your terminal:
+    <pre class="highlight"><code>git clone https://github.com/IBM/openshift-workshop-was.git</code></pre></p>
+</li>
+</ol>
+<h2 id="build-and-deploy-the-traditional-websphere-application-hands-on">Build and deploy the traditional WebSphere application (Hands-on)</h2>
+<ol>
+<li>
+<p>Change to the lab's directory:
+   <pre class="highlight"><code>cd openshift-workshop-was/labs/Openshift/OperationalModernization</code></pre></p>
+</li>
+<li>
+<p>Create and switch over to the project <code>apps-was</code>. 
+    &gt; Note: The first step <code>oc new-project</code> may fail if the project already exists. If so, proceed to the next command.
+   <pre class="highlight"><code>oc new-project apps-was
+oc project apps-was</code></pre></p>
+</li>
+<li>
+<p>Build and deploy the application by running the commands in the following sequence. Reminder: the <code>.</code> at the end of the first command.
+    <pre class="highlight"><code>docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was .
+docker login -u openshift -p $(oc whoami -t) default-route-openshift-image-registry.apps.demo.ibmdte.net
+docker push default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was
+oc apply -f deploy</code></pre>
+    Example output: 
+    <pre class="highlight"><code>deployment.apps/cos-was created
+route.route.openshift.io/cos-was created
+secret/authdata created
+service/cos-was created</code></pre></p>
+</li>
+<li>
+<p>Wait for the pod to be available, check status via <code>oc get pod</code></p>
+<p>The output should be: 
+<pre class="highlight"><code>NAME                      READY   STATUS    RESTARTS   AGE
+cos-was-7d5ff6945-4hjzr   1/1     Running   0          88s</code></pre></p>
+</li>
+<li>
+<p>Get the URL to the application:
+   <pre class="highlight"><code>echo http://$(oc get route cos-was  --template='{{ .spec.host }}')/CustomerOrderServicesWeb</code></pre>
+   Example output:
+   <pre class="highlight"><code>http://cos-was-apps-was.apps.demo.ibmdte.net/CustomerOrderServicesWeb</code></pre></p>
+</li>
+<li>
+<p>Return to your Firefox browser window, and go to the URL outputted by the command run in the previous step.</p>
+</li>
+<li>
+<p>You will be prompted to login in order to access the application. Enter the following credentials:</p>
+<ul>
+<li>Username: <strong>skywalker</strong></li>
+<li>Password: <strong>force</strong></li>
+</ul>
+<p><img alt="accessapplication1" src="extras/images/accessapplication1.png" /></p>
+</li>
+<li>
+<p>After login, the application page titled <em>Electronic and Movie Depot</em> will be displayed. From the <code>Shop</code> tab, click on an item (a movie) and on the next pop-up panel, drag and drop the item into the shopping cart. </p>
+<p><img alt="accessapplication2" src="extras/images/accessapplication2.png" /></p>
+</li>
+<li>
+<p>Add a few items to the cart. As the items are added, they’ll be shown under <em>Current Shopping Cart</em> (on the upper right) with <em>Order Total</em>.</p>
+<p><img alt="accessapplication3" src="extras/images/accessapplication3.png" /></p>
+</li>
+<li>
+<p>Close the browser.</p>
+</li>
+</ol>
+<h2 id="build-and-deploy-the-liberty-application">Build and deploy the Liberty application</h2>
+<p>(Skip this step if you just finished the previous lab <a href="https://github.com/IBM/openshift-workshop-was/tree/master/labs/Openshift/RuntimeModernization">Runtime Modernization</a> and did not clean up the deployment)</p>
+<blockquote>
+<p>Note: The following steps are to help you re-deploy the Liberty application if the deployment has been deleted from the previous lab Runtime Modernization.  The deployment is required to generate data for the follow-on steps in monitoring.</p>
+</blockquote>
+<ol>
+<li>
+<p>From the top level directory, change to the lab's directory <code>RuntimeModernization</code> folder:
+   <pre class="highlight"><code>cd openshift-workshop-was/labs/Openshift/RuntimeModernization</code></pre></p>
+</li>
+<li>
+<p>Create and switch over to the project <code>apps</code>. Also, enable monitoring for the project. 
+    &gt; Note: The first step <code>oc new-project</code> may fail if the project already exists. If so, proceed to the next command.
+   <pre class="highlight"><code>oc new-project apps
+oc project apps
+oc label namespace apps app-monitoring=true</code></pre></p>
+</li>
+<li>
+<p>Build and deploy the application by running the commands in the following sequence. Reminder: the <code>.</code> at the end of the first command:
+   <pre class="highlight"><code>docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps/cos .
+docker login -u openshift -p $(oc whoami -t) default-route-openshift-image-registry.apps.demo.ibmdte.net
+docker push default-route-openshift-image-registry.apps.demo.ibmdte.net/apps/cos
+oc apply -k deploy/overlay-apps</code></pre>
+   Example output:
+   <pre class="highlight"><code>configmap/cos-config created
+secret/db-creds created
+secret/liberty-creds created
+openlibertyapplication.openliberty.io/cos created</code></pre></p>
+</li>
+<li>
+<p>Verify the route for the application is created:
+   <pre class="highlight"><code>oc get route cos</code></pre>
+   Example output:
+   <pre class="highlight"><code>NAME   HOST/PORT                       PATH   SERVICES   PORT       TERMINATION          WILDCARD
+cos    cos-apps.apps.demo.ibmdte.net          cos        9443-tcp   reencrypt/Redirect   None</code></pre></p>
+</li>
+<li>
+<p>Verify your pod is ready:
+   <pre class="highlight"><code>oc get pod </code></pre>
+   Example output:
+   <pre class="highlight"><code>NAME                   READY   STATUS    RESTARTS   AGE
+cos-54975b94c6-rh6kt   1/1     Running   0          3m11s</code></pre></p>
+</li>
+<li>
+<p>Get the application URL:
+   <pre class="highlight"><code>echo http://$(oc get route cos  --template='{{ .spec.host }}')/CustomerOrderServicesWeb</code></pre>
+   Example output:
+   <pre class="highlight"><code>http://cos-apps.apps.demo.ibmdte.net/CustomerOrderServicesWeb</code></pre></p>
+</li>
+<li>
+<p>Return to your Firefox browser window and go to the URL outputted by the command run in the previous step.</p>
+</li>
+<li>
+<p>You will be prompted to login in order to access the application. Enter the following credentials:</p>
+<ul>
+<li>Username: <strong>skywalker</strong></li>
+<li>Password: <strong>force</strong></li>
+</ul>
+<p><img alt="accessapplication1" src="extras/images/accessapplication1.png" /></p>
+</li>
+<li>
+<p>After login, the application page titled <em>Electronic and Movie Depot</em> will be displayed. From the <code>Shop</code> tab, click on an item (a movie) and on the next pop-up panel, drag and drop the item into the shopping cart. <strong>Add multiple items to the shopping cart to trigger more logging.</strong></p>
+<p><img alt="accessapplication2" src="extras/images/accessapplication2.png" /></p>
+</li>
+<li>
+<p>Add a few items to the cart. As the items are added, they’ll be shown under <em>Current Shopping Cart</em> (on the upper right) with <em>Order Total</em>.</p>
+<p><img alt="accessapplication3" src="extras/images/accessapplication3.png" /></p>
+</li>
+</ol>
+<h2 id="application-logging-hands-on">Application Logging (Hands-on)</h2>
+<p>Pod processes running in OpenShift frequently produce logs. To effectively manage this log data and ensure no loss of log data occurs when a pod terminates, a log aggregation tool should be deployed on the cluster. Log aggregation tools help users persist, search, and visualize the log data that is gathered from the pods across the cluster. Let's look at application logging with log aggregation using EFK (Elasticsearch, Fluentd, and Kibana). Elasticsearch is a search and analytics engine. Fluentd receives, cleans and parses the log data. Kibana lets users visualize data stored in Elasticsearch with charts and graphs.</p>
+<p>If it has been a long time (more than 15 minutes) since the Liberty or WebSphere pods last started, you may want to delete each pod and let a new one start, to ensure that Liberty and WebSphere create some recent logs for Kibana to find.</p>
+<h3 id="launch-kibana-hands-on">Launch Kibana (Hands-on)</h3>
+<ol>
+<li>
+<p>In OpenShift console, from the left-panel, select <strong>Networking</strong> &gt; <strong>Routes</strong>.</p>
+</li>
+<li>
+<p>From the <em>Project</em> drop-down list, select <code>openshift-logging</code>. </p>
+</li>
+<li>
+<p>Click on the route URL (listed under the <em>Location</em> column).</p>
+</li>
+<li>
+<p>Click on <code>Log in with OpenShift</code>. Click on <code>Allow selected permissions</code>.</p>
+</li>
+<li>
+<p>In Kibana console, you'll be prompted to create an index pattern. An index pattern tells Kibana what indices to look for in Elasticsearch. Type <code>app</code> so that the index pattern looks like this screenshot:</p>
+<p><img alt="index pattern app" src="extras/images/create-index-pattern.png" /></p>
+<p>You should see that your pattern matches at least one index. Then click <strong>Next step</strong>.</p>
+</li>
+<li>
+<p>Click the drop-down for <strong>Time Filter field name</strong> and choose <strong>@timestamp</strong>. Then click <strong>Create index pattern</strong>.</p>
+<p><img alt="index pattern time filter" src="extras/images/create-index-pattern-time.png" /></p>
+</li>
+<li>
+<p>You should see a number of fields populated, around 260. To check that the correct fields have been detected, type <code>ibm</code> in the <strong>Filter</strong> text box. You should see many fields beginning with the text <code>ibm</code>. If not, try clicking the refresh button (arrows in a circle) in the top right of the page.</p>
+<p><img alt="ibm index patterns" src="extras/images/ibm-index-patterns.png" /></p>
+</li>
+</ol>
+<h3 id="import-dashboards-hands-on">Import dashboards (Hands-on)</h3>
+<ol>
+<li>
+<p>Download <a href="dashboards/dashboards.zip">this zip file</a> containing dashboards to your computer and unzip to a local directory. (Look for the <code>download</code> button on the page.)</p>
+</li>
+<li>
+<p>Let's import dashboards for Liberty and WAS. From the left-panel, click on <code>Management</code>. Click on <code>Saved Objects</code> tab and then click on <code>Import</code>, then <code>Import</code> at the top of the panel that appears.</p>
+<p><img alt="import saved objects" src="extras/images/import-saved-objects.png" /></p>
+</li>
+<li>
+<p>Navigate to the <em>kibana</em> sub-directory and select <code>ibm-open-liberty-kibana5-problems-dashboard.json</code> file. Then click the <code>Import</code> button at the bottom of the panel. When prompted to resolve pattern conflicts, click select <code>app*</code> as the new index and click <code>Confirm all changes</code>. It'll take few seconds for the dashboard to import. Click <code>Done</code> when it finishes.</p>
+<p><img alt="select index pattern" src="extras/images/select-index-pattern.png" /></p>
+</li>
+<li>
+<p>Repeat the steps to import <code>ibm-open-liberty-kibana5-traffic-dashboard.json</code> and <code>ibm-websphere-traditional-kibana5-dashboard.json</code>.</p>
+</li>
+</ol>
+<h3 id="explore-dashboards-hands-on">Explore dashboards (Hands-on)</h3>
+<p>In Kibana console, from the left-panel, click on <code>Dashboard</code>. You'll see 3 dashboards on the list. The first 2 are for Liberty. The last one is for WAS traditional. Read the description next to each dashboard.</p>
+<h4 id="liberty-applications-hands-on">Liberty applications (Hands-on)</h4>
+<ol>
+<li>
+<p>Click on <em>Liberty-Problems-K5-20191122</em>. This dashboard visualizes message, trace and FFDC information from Liberty applications.</p>
+<p><img alt="Liberty Problems Dashboard" src="extras/images/dashboard-liberty-problems.png" /></p>
+</li>
+<li>
+<p>By default, data from the last 15 minutes are rendered. Adjust the time-range (from the top-right corner), so that it includes data from when you tried the Open Liberty application.</p>
+</li>
+<li>
+<p>Once the data is rendered, you'll see some information about the namespace, pod, containers where events/problems occurred along with a count for each. </p>
+</li>
+<li>
+<p>Scroll down to <code>Liberty Potential Problem Count</code> section which lists the number of ERROR, FATAL, SystemErr and WARNING events. You'll likely see some WARNING events.</p>
+</li>
+<li>
+<p>Below that you'll see <code>Liberty Top Message IDs</code>. This helps to quickly identify most occurring events and their timeline.</p>
+</li>
+<li>
+<p>Scroll-up and click on the number below WARNING. Dashboard will change other panels to show just the events for warnings. Using this, you can determine: whether the failures occurred on one particular pod/server or in multiple instances, whether they occurred around the same or different time.</p>
+</li>
+<li>
+<p>Scroll-down to the actual warning messages. In this case some files from dojo were not found. Even though they are warnings, it'll be good to fix them by updating the application (we won't do that as part of this workshop).</p>
+</li>
+<li>
+<p>Go back to the list of dashboards and click on <em>Liberty-Traffic-K5-20191122</em>. This dashboard helps to identify failing or slow HTTP requests on Liberty applications.</p>
+<p><img alt="Liberty Traffic Dashboard" src="extras/images/dashboard-liberty-traffic.png" /></p>
+</li>
+<li>
+<p>As before, adjust the time-range as necessary if no data is rendered.</p>
+</li>
+<li>
+<p>You'll see some information about the namespace, pod, containers for the traffic along with a count for each. </p>
+</li>
+<li>
+<p>Scroll-down to <code>Liberty Error Response Code Count</code> section which lists the number of requests failed with HTTP response codes in 400s and 500s ranges.</p>
+</li>
+<li>
+<p>Scroll-down to <code>Liberty Top URLs</code> which lists the most frequently accessed URLs</p>
+<ul>
+<li>The <em>/health</em> and <em>/metrics</em> endpoints are running on the same server and are queried frequently for readiness/liveness probes and for scraping metrics information. It's possible to add a filter to include/exclude certain applications.</li>
+</ul>
+</li>
+<li>
+<p>On the right-hand side, you'll see list of endpoints that had the slowest response times.</p>
+</li>
+<li>
+<p>Scroll-up and click on the number listed below 400s. Dashboard will change other panels to show just the traffic with response code in 400s. You can see the timeline and the actual messages below. These are related to warnings from last dashboard about dojo files not being found (response code 404).</p>
+</li>
+</ol>
+<h4 id="traditional-websphere-applications-hands-on">Traditional WebSphere applications (Hands-on)</h4>
+<ol>
+<li>
+<p>Go back to the list of dashboards and click on <em>WAS-traditional-Problems-K5-20190609</em>. Similar to the first dashboard for Liberty, this dashboard visualizes message and trace information for WebSphere Application Server traditional.</p>
+<p><img alt="WebSphere Problems Dashboard" src="extras/images/dashboard-websphere-problems.png" /></p>
+</li>
+<li>
+<p>As before, adjust the time-range as necessary if no data is rendered.</p>
+</li>
+<li>
+<p>Explore the panels and filter through the events to see messages corresponding to just those events.</p>
+</li>
+</ol>
+<h2 id="application-monitoring-hands-on">Application Monitoring (Hands-on)</h2>
+<p>Building observability into applications externalizes the internal status of a system to enable operations teams to monitor systems more effectively. It is important that applications are written to produce metrics. When the Customer Order Services application was modernized, we used MicroProfile Metrics and it provides a <code>/metrics</code> endpoint from where you can access all metrics emitted by the JVM, Open Liberty server and deployed applications. Operations teams can gather the metrics and store them in a database by using tools like Prometheus. The metrics data can then be visualized and analyzed in dashboards, such as Grafana.</p>
+<h3 id="grafana-dashboard-hands-on">Grafana dashboard (Hands-on)</h3>
+<ol>
+<li>
+<p>Custom resource <a href="dashboards/grafana/grafana-dashboard-cos.yaml">GrafanaDashboard</a> defines a set of dashboards for monitoring Customer Order Services application and Open Liberty. In your terminal, run the following command to create the dashboard resource:</p>
+</li>
+<li>
+<p>Before running the command, change directory to /openshift-workshop-was/labs/Openshift/ApplicationManagement if it's not already done.</p>
+<pre class="highlight"><code>oc apply -f dashboards/grafana/grafana-dashboard-cos.yaml</code></pre>
+
+</li>
+<li>
+<p>The following steps to access the created dashboard are illustrated in the screen recording at the end of this section: </p>
+</li>
+<li>
+<p>In OpenShift console, from the left-panel, select <strong>Networking</strong> &gt; <strong>Routes</strong>.</p>
+</li>
+<li>
+<p>From the <em>Project</em> drop-down list, select <code>app-monitoring</code>. </p>
+</li>
+<li>
+<p>Click on the route URL (listed under the <em>Location</em> column).</p>
+</li>
+<li>
+<p>Click on <code>Log in with OpenShift</code>. Click on <code>Allow selected permissions</code>.</p>
+</li>
+<li>
+<p>In Grafana, from the left-panel, hover over the dashboard icon and click on <code>Manage</code>.</p>
+</li>
+<li>
+<p>You should see <code>Liberty-Metrics-Dashboard</code> on the list. Click on it.</p>
+</li>
+<li>
+<p>Explore the dashboards. The first 2 are for Customer Order Services application. The rest are for Liberty.</p>
+</li>
+<li>
+<p>Click on <code>Customer Order Services - Shopping Cart</code>. By default, it'll show the data for the last 15 minutes. Adjust the time-range from the top-right as necessary. </p>
+</li>
+<li>
+<p>You should see the frequency of requests, number of requests, pod information, min/max request times.</p>
+</li>
+<li>
+<p>Scroll-down to expand the <code>CPU</code> section. You'll see information about process CPU time, CPU system load for pods.</p>
+</li>
+<li>
+<p>Scroll-down to expand the <code>Servlets</code> section. You'll see request count and response times for application servlet as well as health and metrics endpoints.</p>
+</li>
+<li>
+<p>Explore the other sections.</p>
+<p><img alt="requesting server dump" src="extras/images/monitoring-dashboard.gif" /></p>
+</li>
+</ol>
+<h2 id="day-2-operations-hands-on">Day-2 Operations (Hands-on)</h2>
+<p>You may need to gather server traces and/or dumps for analyzing some problems. Open Liberty Operator makes it easy to gather these on a server running inside a container.</p>
+<p>A storage must be configured so the generated artifacts can persist, even after the Pod is deleted. This storage can be shared by all instances of the Open Liberty applications. RedHat OpenShift on IBM Cloud utilizes the storage capabilities provided by IBM Cloud. Let's create a request for storage.</p>
+<h3 id="request-storage-hands-on">Request storage (Hands-on)</h3>
+<ol>
+<li>
+<p>In OpenShift console, from the left-panel, select <strong>Storage</strong> &gt; <strong>Persistent Volume Claims</strong>.</p>
+</li>
+<li>
+<p>From the <em>Project</em> drop-down list, select <code>apps</code>. </p>
+</li>
+<li>
+<p>Click on <code>Create Persistent Volume Claim</code> button.</p>
+</li>
+<li>
+<p>Ensure that <code>Storage Class</code> is <code>managed-nfs</code>. If not, make the selection from the list.</p>
+</li>
+<li>
+<p>Enter <code>liberty</code> for <code>Persistent Volume Claim Name</code> field.</p>
+</li>
+<li>
+<p>Request 1 GiB by entering <code>1</code> in the text box for <code>Size</code>.</p>
+</li>
+<li>
+<p>Click on <code>Create</code>.</p>
+</li>
+<li>
+<p>Created Persistent Volume Claim will be displayed. The <code>Status</code> field would display <code>Pending</code>. Wait for it to change to <code>Bound</code>. It may take 1-2 minutes.</p>
+</li>
+<li>
+<p>Once bound, you should see the volume displayed under <code>Persistent Volume</code> field.</p>
+</li>
+</ol>
+<h3 id="enable-serviceability-hands-on">Enable serviceability (Hands-on)</h3>
+<p>Enable serviceability option for the Customer Order Services application. In productions systems, it's recommended that you do this step with the initial deployment of the application - not when you encounter an issue and need to gather server traces or dumps. OpenShift cannot attach volumes to running Pods so it'll have to create a new Pod, attach the volume and then take down the old Pod. If the problem is intermittent or hard to reproduce, you may not be able to reproduce it on the new instance of server running in the new Pod. The volume can be shared by all Liberty applications that are in the same namespace and the volumes wouldn't be used unless you perform day-2 operation on a particular application - so that should make it easy to enable serviceability with initial deployment.</p>
+<ol>
+<li>
+<p>Specify the name of the storage request (Persistent Volume Claim) you made earlier to <code>spec.serviceability.volumeClaimName</code> parameter provided by <code>OpenLibertyApplication</code> custom resource. Open Liberty Operator will attach the volume bound to the claim to each instance of the server. In your terminal, run the following command:</p>
+<pre class="highlight"><code>oc patch olapp cos -n apps --patch '{"spec":{"serviceability":{"volumeClaimName":"liberty"}}}' --type=merge</code></pre>
+
+<p>Above command patches the definition of <code>olapp</code> (shortname for <code>OpenLibertyApplication</code>) instance <code>cos</code> in namespace <code>apps</code> (indicated by <code>-n</code> option). The <code>--patch</code> option specifies the content to patch with. In this case, we set the value of <code>spec.serviceability.volumeClaimName</code> field to <code>liberty</code>, which is the name of the Persistent Volume Claim you created earlier. The <code>--type=merge</code> option specifies to merge the previous content with newly specified field and its value.</p>
+</li>
+<li>
+<p>Run the following command to get the status of <code>cos</code> application, to verify that the changes were reconciled and there is no error:</p>
+<p><pre class="highlight"><code>oc get olapp cos -n apps -o wide</code></pre>
+The value under <code>RECONCILED</code> column should be <em>True</em>. </p>
+<p><em>Note:</em> If it's <em>False</em> then an error occurred. The <code>REASON</code> and <code>MESSAGE</code> columns will display the cause of the failure. A common mistake is creating the Persistent Volume Claim in another namespace. Ensure that it is created in the <code>apps</code> namespace.</p>
+</li>
+<li>
+<p>In OpenShift console, from the left-panel, click on <strong>Workloads</strong> &gt; <strong>Pods</strong>. Wait until there is only 1 pod on the list and its <em>Readiness</em> column changed to <em>Ready</em>.</p>
+</li>
+<li>
+<p>Pod's name is needed for requesting server dump and trace in the next sections. Click on the pod and copy the value under <code>Name</code> field.</p>
+<p><img alt="requesting server dump" src="extras/images/pod-name.png" /></p>
+</li>
+</ol>
+<h3 id="request-server-dump-hands-on">Request server dump (Hands-on)</h3>
+<p>You can request a snapshot of the server status including different types of server dumps, from an instance of Open Liberty server running inside a Pod, using Open Liberty Operator and <code>OpenLibertyDump</code> custom resource (CR). </p>
+<p>The following steps to request a server dump are illustrated in the screen recording below:</p>
+<ol>
+<li>
+<p>From the left-panel, click on <strong>Operators</strong> &gt; <strong>Installed Operators</strong>.</p>
+</li>
+<li>
+<p>From the <code>Open Liberty Operator</code> row, click on <code>Open Liberty Dump</code> (displayed under <code>Provided APIs</code> column).</p>
+</li>
+<li>
+<p>Click on <code>Create OpenLibertyDump</code> button. </p>
+</li>
+<li>
+<p>Replace <code>Specify_Pod_Name_Here</code> with the pod name you copied earlier.</p>
+</li>
+<li>
+<p>The <code>include</code> field specifies the type of server dumps to request. Heap and thread dumps are specified by default. Let's use the default values.</p>
+</li>
+<li>
+<p>Click on <code>Create</code>.</p>
+</li>
+<li>
+<p>Click on <code>example-dump</code> from the list.</p>
+</li>
+<li>
+<p>Scroll-down to the <code>Conditions</code> section and you should see <code>Started</code> status with <code>True</code> value. Wait for the operator to complete the dump operation. You should see status <code>Completed</code> with <code>True</code> value.</p>
+<p><img alt="requesting server dump" src="extras/images/day2-dump-operation.gif" /></p>
+</li>
+</ol>
+<h3 id="request-server-traces-hands-on">Request server traces (Hands-on)</h3>
+<p>You can also request server traces, from an instance of Open Liberty server running inside a Pod, using <code>OpenLibertyTrace</code> custom resource (CR).</p>
+<p>The following steps to request a server trace are illustrated in the screen recording below:</p>
+<ol>
+<li>
+<p>From the left-panel, click on <strong>Operators</strong> &gt; <strong>Installed Operators</strong>.</p>
+</li>
+<li>
+<p>From the <code>Open Liberty Operator</code> row, click on <code>Open Liberty Trace</code>.</p>
+</li>
+<li>
+<p>Click on <code>Create OpenLibertyTrace</code> button.</p>
+</li>
+<li>
+<p>Replace <code>Specify_Pod_Name_Here</code> with the pod name you copied earlier.</p>
+</li>
+<li>
+<p>The <code>traceSpecification</code> field specifies the trace string to be used to selectively enable trace on Liberty server. Let's use the default value. </p>
+</li>
+<li>
+<p>Click on <code>Create</code>.</p>
+</li>
+<li>
+<p>Click on <code>example-trace</code> from the list.</p>
+</li>
+<li>
+<p>Scroll-down to the <code>Conditions</code> section and you should see <code>Enabled</code> status with <code>True</code> value. </p>
+<ul>
+<li><em>Note:</em> Once the trace has started, it can be stopped by setting the <code>disable</code> parameter to true. Deleting the CR will also stop the tracing. Changing the <code>podName</code> will first stop the tracing on the old Pod before enabling traces on the new Pod. Maximum trace file size (in MB) and the maximum number of files before rolling over can be specified using <code>maxFileSize</code> and <code>maxFiles</code> parameters.</li>
+</ul>
+<p><img alt="requesting server trace" src="extras/images/day2-trace-operation.gif" /></p>
+</li>
+</ol>
+<h3 id="accessing-the-generated-files-hands-on">Accessing the generated files (Hands-on)</h3>
+<p>The generated trace and dump files should now be in the persistent volume. You used storage from IBM Cloud and we have to go through a number of steps using a different tool to access those files. Since the volume is attached to the Pod, we can instead use Pod's terminal to easily verify that trace and dump files are present.</p>
+<p>The following steps to access the files are illustrated in the screen recording below:</p>
+<ol>
+<li>Remote shell to your pod via one of two ways:</li>
+<li>From your terminal:
+    <pre class="highlight"><code>oc rsh &lt;pod-name&gt;</code></pre></li>
+<li>
+<p>From console: click on <strong>Workloads</strong> &gt; <strong>Pods</strong>. Click on the pod and then click on <code>Terminal</code> tab. </p>
+</li>
+<li>
+<p>Enter <code>ls -R serviceability/apps</code> to list the files. The shared volume is mounted at <code>serviceability</code> folder. The sub-folder <code>apps</code> is the namespace of the Pod. You should see a zip file for dumps and trace log files. These are produced by the day-2 operations you performed.</p>
+<p><img alt="day-2 files" src="extras/images/day2-files.gif" /></p>
+</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p>Congratulations! You've completed <strong>Application Management</strong> lab! </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+
+</body>
+</html>

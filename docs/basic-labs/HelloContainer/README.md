@@ -7,12 +7,12 @@
   - [Background](#background)
   - [Prerequisites](#prerequisites)
   - [What is a Container](#what-is-a-container)
-  - [Login to the VM](#login-to-the-vm)
-  - [Check your environment](#check-your-environment)
+  - [Accessing the lab environment](#accessing-the-lab-environment)
+  - [Tips for working the in lab environment](#tips-for-working-the-in-lab-environment)
+  - [Check your environment and clone the workshop GitHub project](#check-your-environment-and-clone-the-workshop-github-project)
   - [Run a pre-built image](#run-a-pre-built-image)
   - [Build and Run Your Own Image](#build-and-run-your-own-image)
   - [Managing Image Versions](#managing-image-versions)
-  - [Extra Credit](#extra-credit)
   - [Next](#next)
 
 <a name="Background"> </a>
@@ -54,30 +54,83 @@ For example, docker hub, or registry.access.redhat.com, or your own internal reg
 If you need more background on containers: https://www.docker.com/resources/what-container
 
 <a name="Login_VM"> </a>
-## Login to the VM
+## Accessing the lab environment
 
-1. If the VM is not already started, start it by clicking the Play button.
+
+1.  Access the lab environment from your web browser. 
+    
+    A Published Service is configured to provide access to the **Workstation** VM through the noVNC interface for the lab environment.
+
+    a.  When the environment is provisioned, right-mouse click on the **Published Service** link and open the URL in a new private or incognito browser window, as described below:  
+    
+    - If using **Google Chrome** browser, select **"Open link in incognito window"** from the context menu. 
+
+      ![](./images/chrome-incognito.png)
+    
+    - If using **Firefox** browser, select **"Open link in new private window"** from the context menu. 
+
+      ![](./images/firefox-private.png)
+
+    b. Click on the **"vnc.html"** link to open the lab environment through the **noVNC** interface. 
+
+      ![](./images/vnc-link.png)
+
  
-     ![start VM](images/loginvm1.png)
-   
-2. After the VM is started, click the **desktop** VM to access it.
-   
-     ![desktop VM](images/loginvm2.png)
-   
-3. Login with **ibmuser** ID.
+    c. Click the **Connect** button 
+    
+    ![](./images/vnc-connect.png)
 
-    * Click on the **ibmuser** icon on the Ubuntu screen.
-    * When prompted for the password for **ibmuser**, enter "**engageibm**" as the password.
+    d. Enter the password as:  **passw0rd**. Then click the **Send Credentials** button to access the lab environment. 
+
+    > Note: That is a numeric zero in passw0rd  
+
+    ![](./images/vnc-password.png)
+
+2. Login with ibmuser ID.
+
+    - Click on the **ibmuser** icon on the Ubuntu screen.
+
+    - When prompted for the password for ibmuser, enter **engageibm** as the password.
+    
+    ![](./images/loginvm3.png)
+
+    <br/>
 	
-	  <br>
-     
-      ![login VM](images/loginvm3.png)
-	  
-	  <br>
-     
-4. Resize the Skytap environment window for a larger viewing area while doing the lab. From the Skytap menu bar, click on the "**Fit to Size**" icon. This will enlarge the viewing area to fit the size of your browser window. 
 
-      ![fit to size icon](images/loginvm4.png)
+## Tips for working the in lab environment     
+
+1.  You can use your Browsers **zoom in** and **zoom out** options to resize the virtual desktop to fit your screen.
+
+    The examples below are using Firefox and Chrome browsers. 
+
+    - Firefox example: 
+    
+    ![fit to window](./images//zoom.png)
+
+    - Chrome example: 
+      
+     ![fit to window](./images//zoom-chrome.png)
+
+
+2.  You can copy / paste text from the lab guide into the lab environment using the clipboard in the noVNC viewer. 
+   
+    a. Copy the text from the lab guide that you want to paste into the lab environment
+    
+    b. Click the **Clipboard** icon and **paste** the text into the noVNC clipboard
+
+    ![fit to window](./images/paste.png)
+    
+    c. Paste the tect into the VM, such as to a terminal window, browser window, etc. 
+
+    d. Click on the **clipboard** icon agian to close the clipboard
+
+    > **NOTE:** Sometimes pasting into a Terminal window in the VM does not work consistently. In this case you might try again, or paste the text into a **Text Editor** in the VM, and then paste it into the Terminal window in the VM. 
+
+3. An alternative to using the noVNC Copy / Paste option, you may considr openeing the lab guide in a web browser inside of the VM. Using this method, you can easily copy / paste text from the lab guide wihout having to use the noVNC clipboard. 
+
+
+    <br>
+
 
 <a name="Check_Environment"> </a>
 ## Check your environment and clone the workshop GitHub project 
