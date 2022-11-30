@@ -195,42 +195,74 @@ lab:</p>
 <p>Have a SkyTap App Mod Lab environment ready</p>
 </li>
 </ul>
-<h2 id="4-what-is-already-completed">4. What is Already Completed</h2>
-<p>A six Linux VMs App Mod Lab environment has been provided for this lab.</p>
-<p><img alt="" src="images/media/image2.png" /></p>
+<h2 id="4-accessing-the-lab-environment">4. Accessing the lab environment</h2>
+<ol>
+<li>
+<p>Access the lab environment from your web browser. </p>
+<p>A Published Service is configured to provide access to the <strong>Workstation</strong> VM through the noVNC interface for the lab environment.</p>
+<p>a.  When the environment is provisioned, right-mouse click on the <strong>Published Service</strong> link and open the URL in a new private or incognito browser window, as described below:  </p>
+<ul>
+<li>If using <strong>Google Chrome</strong> browser, select <strong>"Open link in incognito window"</strong> from the context menu. </li>
+</ul>
+<p><img alt="" src="images/media/chrome-incognito.png" /></p>
+<ul>
+<li>If using <strong>Firefox</strong> browser, select <strong>"Open link in new private window"</strong> from the context menu. </li>
+</ul>
+<p><img alt="" src="images/media/firefox-private.png" /></p>
+<p>b. Click on the <strong>"vnc.html"</strong> link to open the lab environment through the <strong>noVNC</strong> interface. </p>
+<p><img alt="" src="images/media/vnc-link.png" /></p>
+<p>c. Click the <strong>Connect</strong> button </p>
+<p><img alt="" src="images/media/vnc-connect.png" /></p>
+<p>d. Enter the password as:  <strong>passw0rd</strong>. Then click the <strong>Send Credentials</strong> button to access the lab environment. </p>
+<blockquote>
+<p>Note: That is a numeric zero in passw0rd  </p>
+</blockquote>
+<p><img alt="" src="images/media/vnc-password.png" /></p>
+</li>
+<li>
+<p>Login with ibmuser ID.</p>
 <ul>
 <li>
-<p>The Red Hat OpenShift Container Platform (OCP) v4.6, is installed in
-    6 VMs with 3 master nodes / compute nodes (the master nodes are
-    serving as computer nodes as well).</p>
+<p>Click on the <strong>ibmuser</strong> icon on the Ubuntu screen.</p>
+</li>
+<li>
+<p>When prompted for the password for ibmuser, enter <strong>engageibm</strong> as the password.</p>
+</li>
+</ul>
+<p><img alt="" src="images/media/ibmuser-login.png" /></p>
+<p><br/></p>
+</li>
+</ol>
+<h2 id="tips-for-working-the-in-lab-environment">Tips for working the in lab environment</h2>
+<ol>
+<li>
+<p>You can use your Browsers <strong>zoom in</strong> and <strong>zoom out</strong> options to resize the virtual desktop to fit your screen.</p>
+<p>The examples below are using Firefox and Chrome browsers. </p>
 <ul>
-<li>
-<p>master1 VM</p>
-</li>
-<li>
-<p>master2 VM</p>
-</li>
-<li>
-<p>master3 VM,</p>
-</li>
-<li>
-<p>dns VM</p>
-</li>
-<li>
-<p>nfs VM, with 3 master nodes / compute nodes (the master nodes
-    are serving as computer nodes as well).</p>
-</li>
+<li>Firefox example: </li>
 </ul>
-</li>
-<li>
-<p>The <strong>desktop VM</strong> is the one you will use to access and work with
-    OCP cluster in this lab.</p>
-</li>
-<li>
-<p>The login credentials for the <strong>desktop VM</strong> are: User ID:
-    <strong>ibmuser</strong> Password: <strong>engageibm</strong></p>
-</li>
+<p><img alt="fit to window" src="images/media/zoom.png" /></p>
+<ul>
+<li>Chrome example: </li>
 </ul>
+<p><img alt="fit to window" src="images/media/zoom-chrome.png" /></p>
+</li>
+<li>
+<p>You can copy / paste text from the lab guide into the lab environment using the clipboard in the noVNC viewer. </p>
+<p>a. Copy the text from the lab guide that you want to paste into the lab environment</p>
+<p>b. Click the <strong>Clipboard</strong> icon and <strong>paste</strong> the text into the noVNC clipboard</p>
+<p><img alt="fit to window" src="images/media/paste.png" /></p>
+<p>c. Paste the tect into the VM, such as to a terminal window, browser window, etc. </p>
+<p>d. Click on the <strong>clipboard</strong> icon agian to close the clipboard</p>
+<blockquote>
+<p><strong>NOTE:</strong> Sometimes pasting into a Terminal window in the VM does not work consistently. In this case you might try again, or paste the text into a <strong>Text Editor</strong> in the VM, and then paste it into the Terminal window in the VM. </p>
+</blockquote>
+</li>
+<li>
+<p>An alternative to using the noVNC Copy / Paste option, you may considr openeing the lab guide in a web browser inside of the VM. Using this method, you can easily copy / paste text from the lab guide wihout having to use the noVNC clipboard. </p>
+<p><br></p>
+</li>
+</ol>
 <h2 id="5-lab-tasks">5. Lab Tasks</h2>
 <p>In this lab, you access WebSphere Application Server to review the
 deployment of the JEE applications. Then you are going to the
@@ -260,45 +292,8 @@ select the migration candidate app.</p>
 </li>
 </ul>
 <h2 id="6-execute-lab-tasks">6. Execute Lab Tasks</h2>
-<h3 id="61-log-in-to-the-desktop-vm-and-get-started">6.1 Log in to the desktop VM and Get Started</h3>
+<h3 id="61-obtain-the-artifacts-required-for-the-lab">6.1 Obtain the artifacts required for the lab</h3>
 <ol>
-<li>
-<p>If the VMs are not already started, start them by clicking the play
-    button for the whole group.</p>
-<p><img alt="" src="images/media/image3.png" /></p>
-<p><br/></p>
-</li>
-<li>
-<p>After the VMs are started, click the <strong>desktop VM</strong> icon to access
-    it.</p>
-<p><img alt="" src="images/media/image4.png" /></p>
-<p>The Desktop Linux Desktop is displayed. You execute all the lab tasks
-on this desktop VM.</p>
-<p><br/></p>
-</li>
-<li>
-<p>Login with <strong>ibmuser</strong> ID.</p>
-<ul>
-<li>
-<p>Click on the <strong>ibmuser</strong> icon on the screen.</p>
-</li>
-<li>
-<p>When prompted for the password for <strong>ibmuser</strong>, enter
-    "<strong>engageibm</strong>" as the password:</p>
-</li>
-</ul>
-<p><br/></p>
-<p><img alt="login VM" src="images/media/image5.png" /></p>
-<p><br/></p>
-</li>
-<li>
-<p>Resize the Skytap environment window for a larger viewing area while
-    doing the lab. From the Skytap menu bar, click on the "<strong>Fit to
-    Size</strong>" icon. This will enlarge the viewing area to fit the size of
-    your browser window.</p>
-<p><img alt="fit to size icon" src="images/media/image6.png" /></p>
-<p><br/></p>
-</li>
 <li>
 <p>Open a terminal window by clicking its icon from the Desktop
     toolbar.</p>
@@ -871,5 +866,5 @@ On-Premises Java Apps with Transformation Advisor”.</strong></p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2022-11-30 20:15:19
+Build Date UTC : 2022-11-30 21:15:04
 -->

@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>Introduction to Container Orchestration using Openshift - WebSphere Application Modernization</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../../../stylesheets/klp.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Introduction to Container Orchestration using Openshift";
+    var mkdocs_page_input_path = "basic-labs\\IntroOpenshift\\archived\\README-skytap.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> WebSphere Application Modernization</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../environments-setup/">Reserve lab environment or workshop</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../">Basic Containerization & App Mod Tools Labs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../appmod-labs/">App Modernization Labs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Resources</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../OpenshiftConcepts/">Openshift Concepts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../WebSphereCloud/">Moving WebSphere applications to Cloud</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../resources/">Additional Resources</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">WebSphere Application Modernization</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Introduction to Container Orchestration using Openshift</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="introduction-to-container-orchestration-using-openshift">Introduction to Container Orchestration using Openshift</h1>
+<p>In this lab, we will introduce you to the basics of container Orchestration using Openshift. We will</p>
+<ul>
+<li>Perform basic navigation using the web console</li>
+<li>Deploy the <code>hello-openshift</code> image through the web console.</li>
+<li>Deploy the <code>hello-openshift</code> image through the command line.</li>
+</ul>
+<h2 id="prerequisite">Prerequisite</h2>
+<ul>
+<li>For background on basic Openshift concepts, read <a href="https://github.com/IBM/openshift-workshop-was/blob/master/OpenshiftConcepts.md">Openshift Concepts for WebSphere Administrators</a></li>
+<li>You have the access to OpenShift Web Console with IBM Cloud account ID login. </li>
+<li>You have cloned the lab into your working directory through the web terminal session. </li>
+</ul>
+<p><a name="Login_VM"> </a></p>
+<h2 id="login-to-the-vm">Login to the VM</h2>
+<ol>
+<li>
+<p>If the VM is not already started, start it by clicking the Play button.</p>
+<p><img alt="start VM" src="images/loginvm1.png" /></p>
+</li>
+<li>
+<p>After the VM is started, click the <strong>desktop</strong> VM to access it.</p>
+<p><img alt="desktop VM" src="images/loginvm2.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Login with <strong>ibmuser</strong> ID.</p>
+<ul>
+<li>Click on the <strong>ibmuser</strong> icon on the Ubuntu screen.</li>
+<li>When prompted for the password for <strong>ibmuser</strong>, enter "<strong>engageibm</strong>" as the password:</li>
+</ul>
+<p><br/></p>
+<p><img alt="login VM" src="images/loginvm3.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Resize the Skytap environment window for a larger viewing area while doing the lab. From the Skytap menu bar, click on the "<strong>Fit to Size</strong>" icon. This will enlarge the viewing area to fit the size of your browser window. </p>
+<p><img alt="fit to size icon" src="images/loginvm4.png" /></p>
+</li>
+</ol>
+<h2 id="deploy-the-hello-openshift-image-through-the-web-console">Deploy the hello-openshift image through the web console</h2>
+<h3 id="login-to-the-web-console">Login to the web console</h3>
+<ol>
+<li>
+<p>Open the Firefox Web Browser from the VM. </p>
+<p><img alt="firefox" src="images/runprebuilt3.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Select the <strong>openshift console</strong> bookmark at the top left of the browser window to access the OpenShift Container Platform web console.</p>
+<p><img alt="console" src="images/loginconsole1.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>This will take you to a login screen. Click on the <strong>htpasswd</strong> login option.</p>
+<p><img alt="console" src="images/loginconsole2.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Log in to the account using the following credentials:</p>
+<ul>
+<li>Username: <strong>ibmadmin</strong></li>
+<li>Password: <strong>engageibm</strong></li>
+</ul>
+<p><img alt="console" src="images/loginconsole3.png" /></p>
+</li>
+</ol>
+<h3 id="overview">Overview</h3>
+<ol>
+<li>
+<p>Click on the <strong>Overview</strong> tab under <strong>Home</strong> in the left menu to view a summary of events:</p>
+<p><img alt="Overview1" src="images/overview1.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Scroll down to view the utilization of cluster resources:</p>
+<p><img alt="Overview2" src="images/overview2.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Scroll further down to view the cluster inventory. Click through each item in the inventory to find out more:</p>
+<p><img alt="Overview3" src="images/overview3.png" /></p>
+<p>Note that:</p>
+<ul>
+<li><strong>Nodes</strong> represent physical or virtual hardware that your Openshift cluster is running.</li>
+<li><strong>Pods</strong> are used to host and run one or more containers. Each node may run multiple pods. Containers in the same pod share the same network and storage.</li>
+<li><strong>Storage classes</strong> represent the different types of storage configured and made available for your Openshift cluster. </li>
+<li><strong>Persistent Volume Claims</strong> (PVCs) represent the usage of storage by the pods. After a pod is removed, data not persistent to persistent storage are gone.</li>
+</ul>
+</li>
+</ol>
+<h3 id="projects">Projects</h3>
+<p>Openshift <code>projects</code> allow you to group related resources together and to assign them separate management policies. 
+It is common for artifacts related to different applications to be assigned to different <code>projects</code>. Resources that belong to the same project are stored in the same Kubernetes <code>namespace</code>.</p>
+<ol>
+<li>
+<p>Click on the <strong>Projects</strong> tab under <strong>Home</strong> in the left menu, followed by <strong>Create Project</strong>:</p>
+<p><img alt="projects1" src="images/projects1.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>In the dialog, enter <code>myproject</code> as project name, then click <strong>Create</strong>:</p>
+<p><img alt="Myproject" src="images/Myproject.jpg" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>After creation, click on each of the tabs of myproject you just created. Note that:</p>
+<ul>
+<li>The <code>YAML</code> tab shows you the YAML representation of your project. Every resource in Openshift is represented as a REST data structure. We'll be working with YAML files a lot more when we interact with Openshift via the command line.</li>
+<li>The <code>Role Bindings</code> tab shows you the security configurations that apply to your project. For now, just take notice that there are many different roles already defined when a project is created. Each of these <strong>roles</strong> is used for a different purpose, and already mapped to different <strong>users</strong> and <strong>groups</strong>, or <strong>service accounts</strong>.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="MyprojectAfterCreate" src="images/MyprojectAftercreate.jpg" /></p>
+<h3 id="first-application">First Application</h3>
+<p>The typical artifacts you will need to run an application in Openshift are:</p>
+<ul>
+<li>A <code>container image</code> containing your application, hosted in a container registry</li>
+<li>One or more <code>pods</code> that specifies where to fetch an image and how it should be hosted. </li>
+<li>A <code>deployment</code> to control the number of instances pods. You don't normally configure a <code>pod</code> directly. Instead, you configure a <code>deployment</code> to manage a set of <code>pods</code>.</li>
+<li>A <code>service</code> that exposes the application within the internal network, and enables the application to be load balanced within the Openshift cluster.</li>
+<li>
+<p>A <code>route</code> or <code>ingress</code> to make the application accessible outside of the Openshift cluster firewall.</p>
+<p><img alt="Typcal Deployment" src="images/TypicalDeployment.jpg" /></p>
+</li>
+</ul>
+<h4 id="first-deployment">First deployment</h4>
+<ol>
+<li>
+<p>Under the <strong>Workloads</strong> tab, click <strong>Deployments</strong>. Then click <strong>Create Deployment</strong>:</p>
+<p><img alt="Create Deployment" src="images/CreateDeployment.jpg" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Note that the console shows you the YAML file for the deployment.  Change the number of replicas from default 3 to <strong>2</strong>, then click <strong>Create</strong>:</p>
+<p><img alt="Deployment Replicas" src="images/DeploymentReplicas.jpg" /></p>
+<p>Here is the specification of the deployment in its entirety:</p>
+<pre class="highlight"><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example
+  namespace: myproject
+spec:
+  selector:
+    matchLabels:
+      app: hello-openshift
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: hello-openshift
+    spec:
+      containers:
+        - name: hello-openshift
+          image: openshift/hello-openshift
+          ports:
+            - containerPort: 8080</code></pre>
+
+</li>
+<li>
+<p>Let's review this resource:</p>
+<ul>
+<li>Every resource in Openshift has a group, version, and kind. For the <code>Deployment</code> resource:<ul>
+<li>The group is <code>apps</code></li>
+<li>The version is <code>v1</code></li>
+<li>The kind is <code>Deployment</code></li>
+</ul>
+</li>
+<li>The <code>metadata</code> specifies data that is needed for the runtime:<ul>
+<li>The name of this instance is <code>example</code></li>
+<li>The namespace where the resource is running is <code>myproject</code></li>
+<li>Though not shown here, any labels associated with the resource. We will see the use of labels later.</li>
+</ul>
+</li>
+<li>The <code>spec</code> section defines the details specific to this kind of resource:<ul>
+<li>The <code>selector</code> defines details of the <code>pods</code> that this <code>deployment</code> will manage. The <code>matchLabels</code> attribute with value <code>app: hello-openshift</code> means this <code>deployment</code> instance will search for and manage all pods whose labels contain <code>app: hello-openshift</code>.</li>
+</ul>
+</li>
+<li>The <code>replicas: 2</code>  field specifies the number of instances to run.</li>
+<li>The <code>template</code> section describes information about how to run the container image and create the <code>pods</code>:<ul>
+<li>The <code>labels</code> section specifies what labels to add to the pods being to be created. Note that it matches the labels defined in the <code>selector</code>.</li>
+<li>The <code>containers</code> section specifies where to fetch the container image and which ports to expose. For our example, the image to run is <code>openshift/hello-openshift</code>.</li>
+</ul>
+</li>
+</ul>
+<p><br/> </p>
+</li>
+<li>
+<p>Wait for both pods to be running:</p>
+<p><img alt="Deployment After Create" src="images/DeploymentAfterCreate.jpg" /></p>
+<p><br/> </p>
+</li>
+<li>
+<p>Click on the <strong>YAML</strong> tab, and note the additions to the original input YAML file.</p>
+<p><img alt="Deployment After Create YAML" src="images/DeploymentAfterCreateYAML.jpg" /></p>
+<p><br/> </p>
+</li>
+<li>
+<p>Here is a sample YAML after the deployment is created :</p>
+<pre class="highlight"><code>kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: example
+  namespace: myproject
+  selfLink: /apis/apps/v1/namespaces/myproject/deployments/example
+  uid: 7c6a339b-385c-41bf-b4bf-3b6a120ef137
+  resourceVersion: '297294'
+  generation: 1
+  creationTimestamp: '2020-01-30T15:45:15Z'
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-openshift
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hello-openshift
+    spec:
+      containers:
+        - name: hello-openshift
+          image: openshift/hello-openshift
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 1
+  replicas: 2
+  updatedReplicas: 2
+  readyReplicas: 2
+  availableReplicas: 2
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2020-01-30T15:45:20Z'
+      lastTransitionTime: '2020-01-30T15:45:20Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2020-01-30T15:45:20Z'
+      lastTransitionTime: '2020-01-30T15:45:15Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "example-75778c488" has successfully progressed.</code></pre>
+
+<p><br/> </p>
+</li>
+<li>
+<p>In the YAML, note that:</p>
+<ul>
+<li>There are quite a bit more <code>metadata</code>. Metadata may be added by any number of controllers as needed to help with their function.</li>
+<li>The <code>spec</code> has more attributes filled in as well. These are default values that were not specified in our original YAML file. But sometimes it is also possible that some values are overridden by background admission controllers.</li>
+<li>The <code>status</code> sub-resource is how Openshift communicates that status of the resource. The <code>status</code> is updated regularly as the underlying state of the resource changes.</li>
+</ul>
+<p><br/> </p>
+</li>
+<li>
+<p>Click on <code>Pods</code>. 
+Note that the pods resources are managed by the controller for your <code>deployment</code>. 
+You do not create the pod resources yourself. 
+That is the reason that <code>Pods</code> tab is under the <code>deployment</code> resource you just created.</p>
+<p><img alt="Create Service" src="images/DeploymentToPods.jpg" /></p>
+<p><br/> </p>
+</li>
+<li>
+<p>Click on one of the pods:</p>
+<p><img alt="Create Service" src="images/Pods.jpg" /></p>
+<p><br/> </p>
+</li>
+<li>
+<p>Explore the various <strong>tabs</strong> for your pod</p>
+<p><img alt="Create Service" src="images/ExplorePod.jpg" /></p>
+<p><br/> </p>
+<ul>
+<li><strong>Overview:</strong> displays the overall resource usage for your pod. Note that for CPU usage, the unit is m, or milli-core, which is 1/1000th of one core.</li>
+<li><strong>YAML:</strong> examine the YAML that describes your pod. This YAML is created by the deployment controller based on the specification you supplied in your deployment. Note that labels associated with your pod are what you had specified in the deployment.</li>
+<li><strong>Environment:</strong> lists the environment variables defined for your pod. For our <code>hello-openshift</code> pod, there is none.</li>
+<li><strong>Logs:</strong> shows the console log for your container. Note that it is the same log as the log from the Introduction to Docker lab, as the same image is being used.</li>
+<li><strong>Terminal:</strong> Opens a remote shell into your container. As with the Introduction to Docker lab, no shell is available within the container for this image. This makes it more secure, but also more difficult to debug.</li>
+</ul>
+</li>
+</ol>
+<h3 id="first-service">First Service</h3>
+<p>A <strong>service</strong> enables the pods we just created to be load balanced within the Openshift cluster. </p>
+<ol>
+<li>
+<p>Scroll down to the <strong>Networking</strong> tab on the left navigation, click <strong>Services</strong>, then click <strong>Create Service</strong>:</p>
+<p><img alt="Create Service" src="images/CreateService.jpg" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Update the YAML parameters as follows:</p>
+<p><strong>(Before update)</strong>
+<img alt="Create Service Params Before" src="images/CreateService_before.jpg" /></p>
+<p>a. Under spec.selector: </p>
+<ul>
+<li>change <code>MyApp</code> to <code>hello-openshift</code>. </li>
+<li>This is how the service will find the pods to load balance. Therefore, it matches the labels (<code>spec.selector.matchLabels</code>) that we used when creating the deployment for the hello-openshift application.</li>
+</ul>
+<p><br/>   </p>
+<p>b. Under spec.ports:</p>
+<ul>
+<li>change <code>80</code> to <code>8080</code> and </li>
+<li>change <code>9376</code> to <code>8080</code> (the same ports we used previously).</li>
+</ul>
+<p><br/></p>
+<p>c. Click <code>Create</code></p>
+<p><strong>(After update)</strong>
+<img alt="Create Service Params After" src="images/CreateService_after.jpg" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>After the service is created, click on the <strong>YAML</strong> tab:</p>
+<p><img alt="Create Service After YAML " src="images/CreateServiceAfterYAML.jpg" /></p>
+<p>The YAML file looks like:
+<pre class="highlight"><code>Kind: Service
+apiVersion: v1
+metadata:
+  name: example
+  namespace: myproject
+  selfLink: /api/v1/namespaces/myproject/services/example
+  uid: 6ca3c2b7-bbfa-432e-8757-c60dbf04b26b
+  resourceVersion: '307351'
+  creationTimestamp: '2020-01-30T16:28:03Z'
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: hello-openshift
+  clusterIP: 172.21.239.191
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}</code></pre></p>
+</li>
+<li>
+<p>Note that for this service, there is a cluster wide IP address created, and that it is being load balanced. Also session affinity is not set for this service.</p>
+</li>
+</ol>
+<h3 id="first-route">First Route</h3>
+<p>A route exposes your internal endpoints outside your cluster's built-in firewall. </p>
+<ol>
+<li>
+<p>Click on the <strong>Route</strong> tab under <strong>Networking</strong> in the left navigation, then click <strong>Create Route</strong>:</p>
+<p><img alt="Create Route" src="images/CreateRoute.jpg" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Supply input to the following parameters:</p>
+<ul>
+<li>Name: <code>example</code></li>
+<li>Service: <code>example</code></li>
+<li>Target Port: <code>8080 --&gt; 8080 (TCP)</code></li>
+<li>Click <code>Create</code></li>
+</ul>
+<p><br/></p>
+<p><img alt="Create Route Parameters" src="images/CreateRouteParams.jpg" /></p>
+<p>Note that we are ignoring TLS configuration just for the purpose of this lab.  Security will be addressed in a different lab.</p>
+<p><br/></p>
+</li>
+<li>
+<p>Access the route at the link provided under Location:</p>
+<p><img alt="Create Route" src="images/CreateRouteAccessRoute.jpg" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>If you have configured everything correctly, the browser will show <code>Hello Openshift!</code>. </p>
+</li>
+</ol>
+<p><img alt="Create Route" src="images/CreateRouteAccessRouteResult.jpg" /></p>
+<p><strong>Congratulations</strong>, you just deployed your first application to Openshift.</p>
+<h3 id="changing-replica-instances">Changing Replica Instances</h3>
+<ol>
+<li>
+<p>Click on the <strong>Projects</strong> tab under <strong>Home</strong> from the left navigation, then click on <code>myproject</code>:</p>
+<p><img alt="Locate Myproject" src="images/LocateMyproject.jpg" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Scroll down to see the resources that were created. Recall that we have created one deployment with 2 pods in the specification. We also created one service, and one route.</p>
+<p><img alt="Locate Myproject Resoruces" src="images/LocateMyprojectResources.jpg" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Under the <strong>Inventory</strong> section, click on the <strong>2 pods</strong> link:</p>
+<p><img alt="Locate Myproject Resoruces" src="images/LocateMyprojectPods.jpg" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Delete one of the pods by clicking on the menu on the right, then selecting <code>Delete pod</code>. When prompted, click <code>Delete</code>.</p>
+<p><img alt="Delete Pod" src="images/DeletePod.jpg" /></p>
+<p>This is not the right way to reduce number of instances. You will notice that as soon as one of the pods is being terminated, another one is being created. The reason is that the controller for the <code>deployment</code> resource knows that your specification is for <strong>2 instances</strong>, and it honors that specification by creating another one. This also gives you automatic failure recovery should one of the pods crashes on its own.</p>
+<p><img alt="Delete Pod" src="images/DeletePodRecreate.jpg" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>To change the number of instances, you will need to change the specification of your deployment. Click on the <strong>Deployments</strong> tab under <strong>Workloads</strong> in the left navigation, then click on <code>example</code> deployment:</p>
+<p><img alt="Locate Deloyment" src="images/LocateDeployment.jpg" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Click on the <strong>down arrow</strong> to reduce the replica size down to 1:</p>
+<p><img alt="Reduce Deployment" src="images/DeploymentReducePod.jpg" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>After the operation is completed, click on the <strong>YAML</strong> tab:</p>
+<p><img alt="Reduce Deployment" src="images/DeploymentReducePod1.jpg" /></p>
+<p>Note that the console had changed the REST specification on your behalf so that the replica count is now 1:</p>
+<p><img alt="Reduce Deployment YAML" src="images/DeploymentReducePod1YAML.jpg" /></p>
+</li>
+</ol>
+<h2 id="deploy-the-hello-openshift-image-through-the-command-line">Deploy the hello-openshift image through the command line</h2>
+<p>You can use both <code>oc</code>, the openshift command line tool, or <code>kubectl</code>, the Kubernetes command line tool, to interact with Openshift. 
+Resources in Openshift are configured via REST data structure. 
+For the command line tools, the REST data structure may be stored either in  a YAML file, or in a JSON file.
+The command line tools may be used to:</p>
+<ul>
+<li>List available resources</li>
+<li>Create resources</li>
+<li>Update existing resources</li>
+<li>Delete resources</li>
+</ul>
+<h3 id="command-line-terminal">Command Line Terminal</h3>
+<p>The <code>oc</code> command is already installed on your VM's terminal.</p>
+<ol>
+<li>
+<p>Open a new terminal window on the Desktop VM:</p>
+<p><img alt="terminal" src="images/checkenv1.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:</p>
+<pre><code>cd /home/ibmuser
+
+git clone https://github.com/IBMTechSales/openshift-workshop-was
+</code></pre>
+</li>
+<li>
+<p>Change directory to:  <code>openshift-workshop-was/labs/Openshift/IntroOpenshift</code></p>
+<pre><code>cd /home/ibmuser/openshift-workshop-was/labs/Openshift/IntroOpenshift
+</code></pre>
+</li>
+</ol>
+<h3 id="login-to-openshift">Login to OpenShift</h3>
+<ol>
+<li>
+<p>Return to the Openshift console, click on the arrow next to your login name and select <code>Copy Login Command</code>.</p>
+<p><img alt="Login1" src="images/login1.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>In the new window that pops up, click on <code>Display Token</code>:</p>
+<p><img alt="Display Token" src="images/DisplayToken.jpg" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Copy the <code>oc login</code> command and paste it into your web terminal.</p>
+<pre class="highlight"><code>oc login --token=&lt;TOKEN&gt; --server=&lt;SERVER Address&gt;</code></pre>
+
+<p><img alt="Login2" src="images/login2.png" /></p>
+</li>
+<li>
+<p>After login, the project last accessed is displayed, and it may or may not be the <code>default</code> project shown below:</p>
+<pre class="highlight"><code>Logged into "&lt;SERVER address" as "&lt;USER&gt;" using the token provided.
+
+You have access to 56 projects, the list has been suppressed. You can list all projects with 'oc projects'
+
+Using project "default".</code></pre>
+
+</li>
+</ol>
+<h3 id="listing-resources">Listing resources</h3>
+<p>Use <code>oc api-resources</code> to list all available resource kinds. 
+<br/>
+Note that resources in Openshift have a <code>group</code>, <code>version</code>, and <code>kind</code>. 
+Some resources are global (not in a namespace), while others are scoped to a <code>namespace</code>.
+<br/>
+Many resources also have short names to save typing when using the command line tool.
+<br/>
+For example, you may use <code>cm</code> instead of ConfigMap as a command line parameter when the parameter is for a <code>KIND</code>.
+<br/><br/>
+<strong>Example output:</strong></p>
+<pre class="highlight"><code>NAME                                  SHORTNAMES       APIGROUP                              NAMESPACED   KIND
+bindings                                                                                     true         Binding
+componentstatuses                     cs                                                     false        ComponentStatu
+s
+configmaps                            cm                                                     true         ConfigMap
+endpoints                             ep                                                     true         Endpoints
+events                                ev                                                     true         Event
+limitranges                           limits                                                 true         LimitRange
+namespaces                            ns                                                     false        Namespace
+nodes                                 no                                                     false        Node</code></pre>
+
+<h3 id="listing-instances-of-a-resource-kind">Listing instances of a resource kind</h3>
+<ol>
+<li>
+<p>List all projects: <code>oc get projects</code></p>
+<pre class="highlight"><code>NAME          DISPLAY NAME   STATUS
+default                      Active
+ibm-cert-store               Active
+ibm-system                   Active
+kube-node-lease              Active
+kube-public                  Active
+kube-system                  Active
+myproject                    Active
+...</code></pre>
+
+</li>
+<li>
+<p>List all pods in all namespaces: <code>oc get pods --all-namespaces</code></p>
+<pre class="highlight"><code>NAMESPACE                                               NAME
+  READY   STATUS      RESTARTS   AGE
+ibm-system                                              ibm-cloud-provider-ip-52-116-182-130-67c44c6d5d-bh9x5
+  1/1     Running     0          24h
+ibm-system                                              ibm-cloud-provider-ip-52-116-182-130-67c44c6d5d-cs5ln
+  1/1     Running     0          24h
+kube-system                                             calico-kube-controllers-549fdb8d79-khkvr
+  1/1     Running     0          25h
+...</code></pre>
+
+</li>
+<li>
+<p>List all pods within a namespace: <code>oc get pods -n kube-system</code></p>
+<pre class="highlight"><code>NAME                                             READY   STATUS    RESTARTS   AGE
+calico-kube-controllers-549fdb8d79-khkvr         1/1     Running   0          25h
+calico-node-jc6ln                                1/1     Running   0          24h
+calico-node-t7zwg                                1/1     Running   0          24h
+...</code></pre>
+
+</li>
+</ol>
+<h3 id="projects_1">Projects</h3>
+<ol>
+<li>
+<p>List all projects: <code>oc get projects</code></p>
+<pre class="highlight"><code>NAME                                                    DISPLAY NAME   STATUS
+default                                                                Active
+ibm-cert-store                                                         Active
+ibm-system                                                             Active
+kube-node-lease                                                        Active</code></pre>
+
+</li>
+<li>
+<p>Get current project: <code>oc project</code> (Note: current project may not be <code>myproject</code> shown below):</p>
+<pre class="highlight"><code>Using project "myproject" on server "https://c100-e.us-south.containers.cloud.ibm.com:32541".</code></pre>
+
+</li>
+<li>
+<p>Create a new project and make it the current project: 
+<pre class="highlight"><code>oc new-project  project1</code></pre></p>
+<p>The output from creating a new project:</p>
+<pre class="highlight"><code>Now using project "project1" on server "https://c100-e.us-south.containers.cloud.ibm.com:32541".</code></pre>
+
+</li>
+<li>
+<p>Switch to the <code>default</code> project: 
+<pre class="highlight"><code>oc project default</code></pre></p>
+</li>
+<li>
+<p>Switch back to <code>project1</code>: 
+<pre class="highlight"><code>oc project project1</code></pre></p>
+</li>
+<li>
+<p>View the REST specification of the project: 
+<pre class="highlight"><code>oc get project project1 -o yaml</code></pre></p>
+<p>The output of the resource specification in <strong>yaml</strong></p>
+<pre class="highlight"><code>apiVersion: project.openshift.io/v1
+kind: Project
+metadata:
+  annotations:
+    openshift.io/description: ""
+    openshift.io/display-name: ""
+    openshift.io/requester: IAM#mcheng@us.ibm.com
+    openshift.io/sa.scc.mcs: s0:c24,c9
+    openshift.io/sa.scc.supplemental-groups: 1000570000/10000
+    openshift.io/sa.scc.uid-range: 1000570000/10000
+  creationTimestamp: "2020-01-30T20:28:13Z"
+  name: project1
+  resourceVersion: "364002"
+  selfLink: /apis/project.openshift.io/v1/projects/project1
+  uid: a817b908-a7fe-4f82-9bfa-e18fa4c12584
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active</code></pre>
+
+</li>
+</ol>
+<h3 id="first-application_1">First Application</h3>
+<h4 id="first-deployment_1">First Deployment</h4>
+<ol>
+<li>
+<p>In your web terminal session, under the directory where you clone the labs repository <code>(.../openshift-workshop-was/labs/Openshift/IntroOpenshift)</code>, you will find <strong>Deployment.yaml</strong>;  </p>
+<p>For example:
+ <pre class="highlight"><code>root@lab-tools-6d4cbb56b6-cn2k5:/openshift-workshop-was/labs/Openshift/IntroOpenshift# ls -lt
+drwxr-xr-x. 2 root root  4096 Apr  9 01:13 images
+-rw-r--r--. 1 root root 32461 Apr  9 01:13 README.md
+-rw-r--r--. 1 root root   171 Apr  9 01:13 Route.yaml
+-rw-r--r--. 1 root root   207 Apr  9 01:13 Service.yaml
+-rw-r--r--. 1 root root   384 Apr  9 01:13 Deployment.yaml</code></pre></p>
+</li>
+<li>
+<p>Review the contents of <code>Deployment.yaml</code> and note that it is identical to the to the deployment from the last section except for the namespace. </p>
+<pre class="highlight"><code>cat Deployment.yaml</code></pre>
+
+<p>This allows us to deploy the same image in a different project. Using the same image customized for different environments is an important concept that will be covered further in future labs.</p>
+<pre class="highlight"><code> apiVersion: apps/v1
+ kind: Deployment
+ metadata:
+   name: example
+   namespace: project1
+ spec:
+   selector:
+     matchLabels:
+       app: hello-openshift
+   replicas: 2
+   template:
+     metadata:
+       labels:
+         app: hello-openshift
+     spec:
+       containers:
+         - name: hello-openshift
+           image: openshift/hello-openshift
+           ports:
+             - containerPort: 8080</code></pre>
+
+</li>
+<li>
+<p>Apply the deployment via the command line: </p>
+<pre class="highlight"><code>oc apply -f Deployment.yaml</code></pre>
+
+<p>After applying the yaml, you will see a message that the deployment resource  was created</p>
+<pre class="highlight"><code>deployment.apps/example created</code></pre>
+
+</li>
+<li>
+<p>Check the status of deployment: </p>
+<pre class="highlight"><code>oc get deployment example -o yaml</code></pre>
+
+<p>If the status does not show available <strong>replica count of 2</strong>, wait a few seconds, then rerun the command.</p>
+<pre class="highlight"><code>apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"example","namespace":"project1"},
+"spec":{"replicas":2,"selector":{"matchLabels":{"app":"hello-openshift"}},"template":{"metadata":{"labels":{"app":"hello
+-openshift"}},"spec":{"containers":[{"image":"openshift/hello-openshift","name":"hello-openshift","ports":[{"containerPo
+rt":8080}]}]}}}}
+  creationTimestamp: "2020-01-30T20:37:28Z"
+  generation: 1
+  name: example
+  namespace: project1
+  resourceVersion: "366251"
+  selfLink: /apis/extensions/v1beta1/namespaces/project1/deployments/example
+  uid: f011a93d-2231-4187-b265-f350ee830971
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: hello-openshift
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hello-openshift
+    spec:
+      containers:
+      - image: openshift/hello-openshift
+        imagePullPolicy: Always
+        name: hello-openshift
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 2
+  conditions:
+  - lastTransitionTime: "2020-01-30T20:37:31Z"
+    lastUpdateTime: "2020-01-30T20:37:31Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2020-01-30T20:37:28Z"
+    lastUpdateTime: "2020-01-30T20:37:31Z"
+    message: ReplicaSet "example-75778c488" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 2
+  replicas: 2
+  updatedReplicas: 2</code></pre>
+
+</li>
+<li>
+<p>List the running pods created by the controller for the deployment: 
+<pre class="highlight"><code>oc get pods</code></pre></p>
+<p>The pods should be in the <strong>Running</strong> state</p>
+<pre class="highlight"><code>NAME                      READY   STATUS    RESTARTS   AGE
+example-75778c488-7k7q2   1/1     Running   0          3m37s
+example-75778c488-c9jhd   1/1     Running   0          3m37s</code></pre>
+
+</li>
+<li>
+<p>List the details for one of the pods: 
+<pre class="highlight"><code>oc get pods &lt;pod name&gt; -o yaml</code></pre></p>
+<p><strong>Note:</strong> <code>&lt;pod name&gt;</code> is listed under <code>NAME</code> in the previous command's output.</p>
+<pre class="highlight"><code>apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/podIP: 172.30.26.229/32
+    openshift.io/scc: restricted
+  creationTimestamp: "2020-01-30T20:37:28Z"
+  generateName: example-75778c488-
+  labels:
+    app: hello-openshift
+    pod-template-hash: 75778c488
+  name: example-75778c488-7k7q2
+  namespace: project1
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: example-75778c488
+    uid: 2b03ef6a-8a1a-4f7e-9502-7249a4dabb98
+  resourceVersion: "366248"
+  selfLink: /api/v1/namespaces/project1/pods/example-75778c488-7k7q2
+  uid: 504c999e-d47d-48f7-afcb-992a5a13fc67
+spec:
+  containers:
+  - image: openshift/hello-openshift
+    imagePullPolicy: Always
+    name: hello-openshift
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    resources: {}
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      runAsUser: 1000570000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-ngv4p
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  imagePullSecrets:
+  - name: default-dockercfg-shjmz
+  nodeName: 10.177.93.14
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000570000
+    seLinuxOptions:
+      level: s0:c24,c9
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-ngv4p
+    secret:
+      defaultMode: 420
+      secretName: default-token-ngv4p
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-30T20:37:28Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-30T20:37:31Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-30T20:37:31Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-30T20:37:28Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: cri-o://42828d4a8333d4fa9d3882805680d7693616610ff78a3e07f4794d91b86862b5
+    image: docker.io/openshift/hello-openshift:latest
+    imageID: docker.io/openshift/hello-openshift@sha256:aaea76ff622d2f8bcb32e538e7b3cd0ef6d291953f3e7c9f556c1ba5baf47e2e
+    lastState: {}
+    name: hello-openshift
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2020-01-30T20:37:30Z"
+  hostIP: 10.177.93.14
+  phase: Running
+  podIP: 172.30.26.229
+  podIPs:
+  - ip: 172.30.26.229
+  qosClass: BestEffort
+  startTime: "2020-01-30T20:37:28Z"</code></pre>
+
+</li>
+<li>
+<p>Show the logs of one of the pods: <code>oc logs &lt;pod name&gt;</code></p>
+<pre class="highlight"><code>serving on 8888
+serving on 8080</code></pre>
+
+</li>
+<li>
+<p>Take a look at <code>Service.yaml</code> and note that it's for the <code>project1</code> namespace:</p>
+<p><pre class="highlight"><code>cat Service.yaml</code></pre>
+Example output:
+<pre class="highlight"><code>apiVersion: v1
+kind: Service
+metadata:
+  name: example
+  namespace: project1
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: hello-openshift
+  type: ClusterIP</code></pre></p>
+</li>
+<li>
+<p>Create the service so that it's accessible and load balanced for pods with label <code>app: hello-openshift</code> within the <code>project1</code> namespace: 
+<pre class="highlight"><code>oc apply -f Service.yaml</code></pre></p>
+<p>The service is created</p>
+<pre class="highlight"><code>service/example created</code></pre>
+
+</li>
+<li>
+<p>Examine Route.yaml:
+    <pre class="highlight"><code>cat Route.yaml</code></pre>
+    Output:
+    <pre class="highlight"><code>apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: example
+  namespace: project1
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: example</code></pre></p>
+</li>
+<li>
+<p>Apply the route to make the service reachable from outside the cluster: 
+<pre class="highlight"><code>oc apply -f Route.yaml</code></pre></p>
+<p>The route is created</p>
+<pre class="highlight"><code>route.route.openshift.io/example created</code></pre>
+
+</li>
+<li>
+<p>Generate the URL for the route, and point your browser to it: 
+   <pre class="highlight"><code>echo http://$(oc get route example --template='{{ .spec.host }}')</code></pre>
+   Output:
+   <pre class="highlight"><code>http://example-project1.apps.demo.ibmdte.net</code></pre></p>
+</li>
+<li>
+<p>Open your Firefox browser again and visit the URL outputted by the previous command. You should see a web page displaying the following message:</p>
+<p><img alt="firstapplication1" src="images/firstapplication1.png" /></p>
+</li>
+</ol>
+<h3 id="changing-replica-instance">Changing Replica Instance</h3>
+<ol>
+<li>
+<p>List pods: <code>oc get pods</code></p>
+<pre class="highlight"><code>NAME                      READY   STATUS    RESTARTS   AGE
+example-75778c488-7k7q2   1/1     Running   0          60m
+example-75778c488-c9jhd   1/1     Running   0          60m</code></pre>
+
+</li>
+<li>
+<p>Delete one of the pods: <code>oc delete pod &lt;pod name&gt;</code></p>
+<pre class="highlight"><code>pod "example-75778c488-7k7q2" deleted</code></pre>
+
+</li>
+<li>
+<p>List pods again and note that a new instance has been created as expected. The deployment specified 2 instances, so the controller tries to maintain 2 instances: <code>oc get pods</code></p>
+<pre class="highlight"><code>NAME                      READY   STATUS    RESTARTS   AGE
+example-75778c488-c9jhd   1/1     Running   0          63m
+example-75778c488-rhjrx   1/1     Running   0          28s</code></pre>
+
+</li>
+<li>
+<p>To reduce the number of pods, we can patch the resource in one of two ways:</p>
+<ul>
+<li>
+<p>Scripted patch using the <code>patch</code> option of the command line:</p>
+<pre class="highlight"><code>oc patch deployment example -p '{ "spec": { "replicas": 1 } }'</code></pre>
+
+</li>
+<li>
+<p>Interactive patch using the <code>edit</code> option of the command line through <code>vi</code> editor:</p>
+<pre class="highlight"><code>oc edit deployment example</code></pre>
+
+</li>
+</ul>
+<p>Under the <code>spec</code> section (not under the <code>status</code> section), change <code>replicas: 2</code> to <code>replicas: 1</code>, and <strong>save</strong> the change in the vi editor (by <code>:wq</code>).</p>
+<p>The output:
+  <pre class="highlight"><code>deployment.extensions/example edited</code></pre></p>
+<p><strong>Note:</strong> The above edits the copy that is stored in Openshift. You may also edit your local copy of <code>Deployment.yaml</code> and re-apply it.</p>
+<p><br/></p>
+</li>
+<li>
+<p>List the pods to show only 1 pod is running: <code>oc get pods</code></p>
+<pre class="highlight"><code>NAME                      READY   STATUS    RESTARTS   AGE
+example-75778c488-c9jhd   1/1     Running   0          65m</code></pre>
+
+</li>
+<li>
+<p>Cleanup:</p>
+<ul>
+<li><code>oc delete route example</code></li>
+<li><code>oc delete service example</code></li>
+<li><code>oc delete deployment example</code></li>
+<li><code>oc get pods</code>  <strong>Note:</strong> You may have to do this a few times, to wait for the pods to be deleted.</li>
+</ul>
+</li>
+</ol>
+<p>Congratulations, you have deployed your first application to Openshift via the command line.</p>
+<h2 id="next">Next</h2>
+<p>Please follow the link to the next lab <strong>Transformation Advisor - Application Assesssment</strong>:</p>
+<ul>
+<li><a href="https://ibmtechsales.github.io/was-appmod/basic-labs/TA/">Transformation Advisor - Application Assesssment</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+
+</body>
+</html>
