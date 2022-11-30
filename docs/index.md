@@ -2,14 +2,13 @@
 
 <h3 style="color:green"> Hands on WebSphere Application Moderinization Journey from VMs to containers on OpenShift</h3>
 
-**Last updated:** September 2021
+**Last updated:** November 2022
 
 This material is designed as a Demo/Lab/Workshop asset that includes the following WebSphere Application Modernization use cases: 
 
   - Containerization Basics
   - Operational Modernization
   - Runtime Modernization
-  - Devops Modernization 
   - Application Management Modernization 
 
 
@@ -33,11 +32,11 @@ There are several approaches to application modernization and provided are key r
 <h3 style="color:green">Application Management</h3>
 - **Monitor the applications** easily using various dashboards such as Kibana and Grafana. Identify potential problems using logging dashboards. Get insights into the performance of your applications using metrics dashboards. Perform Day-2 operations, such as gathering traces and dumps, to debug potential issues easily using Open Liberty Operator. 
 
-
+<!--
 <h3 style="color:green">Devops Modernization</h3>
 
 - **Continuous Integration and Continuous Deployment (CI/CD)** of applications is critical for repeatable and reliable deployments. Modern devops technologies such as Tekton and Argo CD are designed for Kubernetes (OSCP) and provide the CI/CD capabilities, and fully integrated and supported in OSCP via Kubernetes Operators.
-
+--> 
 
 <h1 style="color:green">Hands-on Workshop</h1>
 
@@ -62,8 +61,10 @@ Basic knowledge about containers, OpenShift, and BM Transfromation Advisor is re
 - Lab 6: [Application Management](./appmod-labs/ApplicationManagement/README.md)
 
 
+<!--
 <h3 style="color:green">DevOps Modernization Labs</h3>
 
 - Lab 7: [Openshift Pipelines](./devops-labs/pipelines/README.md)
 - Lab 8: [GitOps with ArgoCD](./devops-labs/argocd/README.md)
-
+ 
+--> 

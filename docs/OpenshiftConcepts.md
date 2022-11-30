@@ -10,7 +10,7 @@
 * [Immutable images](#Immutable_Images)
 * [Automation](#Automation)
 * [Comparision With Kubernetes](#Comparision_Kubernetes)
-* [Cloud Pak For Applications](#CP4A)
+* [WebSphere Hybrid Edition](#WHE)
 
 <a name="Introduction"></a>
 ## <h2 style="color:green">Introduction</h2>
@@ -371,7 +371,7 @@ Providing IDE environments remotely has several advantages:
 |         |             | Codeready Workspaces
 
 
-<a name="CP4A"></a>
+<a name="WHE"></a>
 ## <h2 style="color:green">WebSphere Hybrid Edition<h2>
 
 For those currently using WebSphere, the natural transition is from WebSphere Application Server to WebSphere Hybrid Edition. It enables you to run both traditional WebSphere workload and new containerized workloads on top of Opneshift. Both WebSphere Liberty and WebSphere Traditional Base container images are available.

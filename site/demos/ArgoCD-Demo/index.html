@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Promote application deployment from Dev to Staging environment using GitOps (ArgoCD and Kustomize) - WebSphere Application Modernization</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../stylesheets/klp.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Promote application deployment from Dev to Staging environment using GitOps (ArgoCD and Kustomize)";
+    var mkdocs_page_input_path = "demos\\ArgoCD-Demo\\README.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> WebSphere Application Modernization</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../environments-setup/">Reserve lab environment or workshop</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../basic-labs/">Basic Containerization & App Mod Tools Labs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../appmod-labs/">App Modernization Labs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Resources</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../OpenshiftConcepts/">Openshift Concepts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../WebSphereCloud/">Moving WebSphere applications to Cloud</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../resources/">Additional Resources</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">WebSphere Application Modernization</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Promote application deployment from Dev to Staging environment using GitOps (ArgoCD and Kustomize)</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="promote-application-deployment-from-dev-to-staging-environment-using-gitops-argocd-and-kustomize">Promote application deployment from Dev to Staging environment using GitOps (ArgoCD and Kustomize)</h1>
+<p>This demo covers how to promote (deploy) the application to Red Hat OpenShift <strong>Staging</strong> environment using ArgoCD provided by the Red Hat Operator hub. </p>
+<p>In the Coninuouus integration (CI) demo, you used OpenShift Pipelines (Tekton) to build and deploy the application to the OpenShift <em>Dev</em>* environemnt. </p>
+<p>Once the application is tested and validated, the next logical step is to deploy the same application image to a staging environment for system testing.  </p>
+<p>This domonstration showcases continuous deployment (CD) of the Liberty application via the Open Liberty Operator, Argo CD and a Kustomize. Kustomize allows you to define the deployment diferences between Dev and staging environments. These differeces are YAML snippts and stored in the GitOps git repo as <strong>overlays</strong> over the <strong>base</strong> depoyment configuration. </p>
+<h2 id="summary">Summary</h2>
+<p>This demo has the following steps:</p>
+<ul>
+<li>Pre-reqs to complete before the demo starts
+Configure the GitOps git repo</li>
+<li>Create the application in Git</li>
+<li>Clone the application code locally</li>
+<li>Create the application namespace in OpenShift</li>
+<li>Register the application with the Toolkit pipeline</li>
+<li>Push container imaage to staging namespace</li>
+<li>Configure Argo CD to monitor the GitOps repo</li>
+<li>Synch the repo with Argo CD to deploy the application</li>
+<li>Verify the application resources and deployed application</li>
+<li>Deploy version 2 of the applicaion using GitOps (Argo CD and Kustomize)</li>
+<li>Verify Version 2 deployment</li>
+<li>Review and Next Steps</li>
+</ul>
+<h2 id="pre-reqs-to-complete-before-the-demonstration">Pre-reqs to complete before the demonstration</h2>
+<p>It is assumed that you are using the <strong>Teaching your monolith to dance</strong> workshop environment for the demonstration. 
+The environment runs in Skytap. </p>
+<p>Follow the instructions in the URL below to reserve an environment. </p>
+<ol>
+<li>
+<p>Using the link below, open a new Browser window or tab. Then, follow the instructions to <strong>reserve single environment</strong> for the demonstration:</p>
+<p><a href="https://ibmtechsales.github.io/was-appmod/environments-setup/">https://ibmtechsales.github.io/was-appmod/environments-setup/</a></p>
+<p><br></p>
+</li>
+<li>
+<p>Start the Skytap environment if it is no already started</p>
+</li>
+<li>
+<p>After the VMs are started, click the <strong>desktop VM</strong> icon to access
+    it.</p>
+<p><img alt="" src="images/media/image4.png" /></p>
+<p>The Desktop Linux Desktop is displayed. You execute all the lab tasks
+on this desktop VM.</p>
+<p><br/></p>
+</li>
+<li>
+<p>Login with <strong>ibmuser</strong> ID.</p>
+<ul>
+<li>
+<p>Click on the <strong>ibmuser</strong> icon on the screen.</p>
+</li>
+<li>
+<p>When prompted for the password for <strong>ibmuser</strong>, enter
+    "<strong>engageibm</strong>" as the password:</p>
+</li>
+</ul>
+<p><br/></p>
+<p><img alt="login VM" src="images/media/image5.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Resize the Skytap environment window for a larger viewing area while
+    doing the lab. From the Skytap menu bar, click on the "<strong>Fit to
+    Size</strong>" icon. This will enlarge the viewing area to fit the size of
+    your browser window.</p>
+<p><img alt="fit to size icon" src="images/media/image6.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Open a terminal window by clicking its icon from the Desktop
+    toolbar.</p>
+<p><img alt="terminal icon" src="images/media/image7.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Login to the GitLab platform in the demo environment. </p>
+<p>a. From the Firefox browser, click the <strong>Gitlab</strong> bookmark on the bookmark toolbar, or go to the following URL:</p>
+<pre><code>http://gitlab.demo.ibmdte.net/users/sign_in
+</code></pre>
+<p>b. Login to Gitlab. Username: <strong>gitlabUser@mail.com</strong> and Password: <strong>passw0rd</strong>. Then click <strong>sign-in</strong></p>
+<p><img alt="" src="images/media/image8.png" /></p>
+</li>
+<li>
+<p>Create a new project in Gitlab to serve as the gitOps repo </p>
+<p>a. Click the <strong>Create a project</strong> option</p>
+<p>b. Click <strong>Import project</strong>  </p>
+<p>c. Click the <strong>Repo by URL</strong> option as the <em>import from</em> source repo</p>
+<p>d. Complete the <strong>import repo details</strong> using the following values:  </p>
+<ul>
+<li>Git repository URL: <strong>https://github.com/IBMTechSales/openshift-workshop-was.git</strong></li>
+<li>Project name: <strong>cos-gitops-repo</strong></li>
+<li>Visibility leve: <strong>Public</strong></li>
+</ul>
+<p><img alt="" src="images/media/gitlab-import1.png" /></p>
+<p><img alt="" src="images/media/gitlab-import2.png" /></p>
+<p>e. click the <strong>Create Project</strong> button.</p>
+<p><br></p>
+</li>
+<li>
+<p>Login to OpenShift. Type <code>oc login</code> to login to OpenShift. Use <strong>ibmadmin</strong> for the username and <strong>engageibm</strong> for the password.</p>
+<p><img alt="" src="images/media/ocpLoginCLI.png" /></p>
+<p><br/></p>
+</li>
+<li>
+<p>Login to OpenShift Console UI. </p>
+<ul>
+<li>From the browser, click the <strong>openshift console bookmark</strong> located on the bookmark toolbar and login with the <strong>htpasswd</strong> option.</li>
+</ul>
+<p><img alt="OSCP UI Login" src="images/media/htOption.png" /></p>
+<ul>
+<li>Login to the OpenShift account with username <strong>ibmadmin</strong> and password <strong>engageibm</strong></li>
+</ul>
+<p><img alt="OSCP UI Login" src="images/media/ocplogin.png" /></p>
+<p><br/></p>
+</li>
+<li></li>
+<li>
+<p>Change to the cloned github directory where the pipelines materials are downloaded </p>
+<pre class="highlight"><code>cd /home/ibmuser/openshift-workshop-was/labs/Openshift/DevopsManagement/tekton-pipeline
+</code></pre>
+
+<p><br>    </p>
+</li>
+</ol>
+<h1 id="the-demonstration-steps">The Demonstration Steps</h1>
+<h2 id="configure-the-gitops-repo">Configure the GitOps repo</h2>
+<p>Create an instance of the <code>template GitHub GitOops repository</code> in your own GitHub account using the following steps:</p>
+<ol>
+<li>
+<p>Click <a href="https://github.com/IBM/template-argocd-gitops/generate">here</a> to create an instance of the template (not that if a <code>404</code> error is displayed you will need to sign in to your GitHub account and then reload the page)</p>
+</li>
+<li>
+<p>Ensure that the <code>owner</code> field is set correctly, and then enter a unique <code>repository name</code></p>
+</li>
+<li>
+<p>Leave the repository as a <code>public</code> repository and click <strong>Create repository from this template</strong></p>
+</li>
+</ol>
+<p><img alt="template" src="images/gitops-repo.jpg" /></p>
+<h3 id="clone-the-application-code-locally">Clone the application code locally</h3>
+<p>The newly created repository will be shown in your browser. In order to clone the code locally, use the following steps</p>
+<ol>
+<li>
+<p>In the browser, click the green <strong>Code</strong> button and use the *<em>copy</em> icon to copy the <code>https://github.com/...</code> URL</p>
+</li>
+<li>
+<p>Navigate to a <code>directory/folder</code> on your local machine where you want to clone the code</p>
+</li>
+<li>
+<p>Enter the following command, pasting the copied URL after the <code>git clone</code>:</p>
+</li>
+</ol>
+<pre class="highlight"><code>git clone &lt;URL&gt;</code></pre>
+
+<ol>
+<li>Navigate in to the cloned code. The <code>folder</code> will have the same name as the <code>repository</code></li>
+</ol>
+<pre class="highlight"><code>cd &lt;REPO_NAME&gt;</code></pre>
+
+<h3 id="create-the-required-branch-in-the-repo">Create the required branch in the repo</h3>
+<p>In this section you will create a branch named <code>test</code> and push the code back up to GitHub</p>
+<ol>
+<li>Enter the following commands to create a new branch and push the changes back to GitHub:</li>
+</ol>
+<pre class="highlight"><code>git checkout -b test
+git push -u origin test</code></pre>
+
+<h3 id="configure-a-new-test-namespace">Configure a new <code>test</code> namespace</h3>
+<p>Create a new OpenShift project for the <code>test</code> namespace using the following steps</p>
+<ol>
+<li>Issue the following command</li>
+</ol>
+<pre class="highlight"><code>igc namespace cos-with-toolkit-test</code></pre>
+
+<ol>
+<li>Issue the following command to allow the application image to be pulled from the <code>dev</code> namespace</li>
+</ol>
+<pre class="highlight"><code>oc policy add-role-to-group system:image-puller system:serviceaccounts:cos-with-toolkit-test -n cos-with-toolkit-dev</code></pre>
+
+<h3 id="configure-the-pipeline-for-gitops">Configure the pipeline for GitOps</h3>
+<ol>
+<li>Issue the following command to switch back to the <code>dev</code> namespace</li>
+</ol>
+<pre class="highlight"><code>oc project cos-with-toolkit-dev</code></pre>
+
+<ol>
+<li>Issue the following command to configure the required <code>ConfigMap</code> that will be used by the Pipeline</li>
+</ol>
+<pre class="highlight"><code>igc gitops</code></pre>
+
+<h3 id="rerun-the-pipeline">Rerun the pipeline</h3>
+<p>Now that the GitOps repo is configured, you can rerun the pipeline and it will update the repo in the final step.</p>
+<ol>
+<li>
+<p>In the <strong>OpenShift Container Platform UI</strong>, select the <code>cos-with-toolkit-dev</code> project and navigate to <strong>Pipelines --&gt; Pipeline Runs</strong></p>
+</li>
+<li>
+<p>Click the right-hand side menu button on the most recent Pipeline Run and select <code>Rerun</code>
+  <img alt="template" src="images/rerun.jpg" /></p>
+</li>
+<li>
+<p>Once the run has completed, check the <strong>Log</strong> for the <code>gitops</code> step to verify that it updated <code>test</code> branch ofthe GitOps repo
+  <img alt="template" src="images/log.jpg" /></p>
+</li>
+</ol>
+<h3 id="configure-argocd-to-monitor-the-gitops-repo">Configure ArgoCD to monitor the GitOps repo</h3>
+<p>Now that the Pipeline has been validated, it is necessary to configure ArgoCD to monitor the GitOps repo</p>
+<ol>
+<li>Issue the following command to bring up the Cloud Native Toolkit Dashboard:</li>
+</ol>
+<pre class="highlight"><code>igc dashboard</code></pre>
+
+<ol>
+<li>
+<p>Click <strong>ArgoCD</strong>
+  <img alt="template" src="images/dashboard.jpg" /></p>
+</li>
+<li>
+<p>Log in to ArgoCD using the <strong>LOGIN VIA OPENSHIFT</strong> button</p>
+</li>
+<li>
+<p>Click <strong>New App</strong></p>
+</li>
+<li>
+<p>Enter the following information:</p>
+</li>
+<li>Application Name: appmod-wiab-test</li>
+<li>Project: default</li>
+<li>Sync Policy: Manual</li>
+<li>Repository URL: <YOUR GITOPS REPO URL></li>
+<li>Revision: test</li>
+<li>Path: cos-with-toolkit</li>
+<li>Cluster: https://kubernetes.default.svc</li>
+<li>
+<p>Namespace: cos-with-toolkit-test</p>
+</li>
+<li>
+<p>Click Create</p>
+</li>
+</ol>
+<h3 id="sync-the-gitops-repo">Sync the GitOps repo</h3>
+<p>Now that the application has been configured it can be synchronized with the Cluster.</p>
+<ol>
+<li>
+<p>Click the <strong>Sync</strong> button and <strong>Synchronize</strong> all of the resources
+  <img alt="template" src="images/sync.jpg" /></p>
+</li>
+<li>
+<p>ArgoCD will now create and synchronize the required resources in the cluster
+  <img alt="template" src="images/synced.jpg" /></p>
+</li>
+</ol>
+<h3 id="validate-the-application">Validate the application</h3>
+<p>Now that the pipeline is complete, validate the Customer Order Services application is deployed and running in <code>cos-with-tekton-test</code> project</p>
+<ul>
+<li>
+<p>In the OpenShift Console, navigate to <strong>Workloads --&gt; Deployments</strong> view and click on the <code>cos-with-toolkit</code> Deployment to view deployment details
+  <img alt="template" src="images/deployment.jpg" /></p>
+</li>
+<li>
+<p>Next, navigate to the <strong>Networking --&gt; Routes</strong> view and click on the <strong>Location</strong> to open a browser session for the application
+  <img alt="template" src="images/route.jpg" /></p>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2022-11-30 20:15:19
+-->

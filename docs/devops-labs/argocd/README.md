@@ -499,9 +499,9 @@ in a Kubernetes secret in the argocd namespace.
     b.  Run the following commands to export the Argo CD admin account's
         password and display it. 
         
-          export ARGOCD\_PASSWORD=$(oc -n argocd get secret example-argocd-cluster -o jsonpath='{.data.admin\\.password}' | base64 -d)
+          export ARGOCD_PASSWORD=$(oc -n argocd get secret example-argocd-cluster -o jsonpath='{.data.admin\.password}' | base64 -d)
         
-          echo $ARGOCD\_PASSWORD
+          echo $ARGOCD_PASSWORD
 		  
 	![](./images/outpics/11.png)
 	  
@@ -960,7 +960,7 @@ examples of these functions:
         
         export ARGOCD_PASSWORD=$(oc -n argocd get secret example-argocd-cluster -o jsonpath='{.data.admin\.password}' | base64 -d)
         
-        echo $ARGOCD\_PASSWORD
+        echo $ARGOCD_PASSWORD
 		
 	![](./images/outpics/19.png)	
 	

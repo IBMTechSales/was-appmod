@@ -4,8 +4,6 @@ nav:
 - Reserve lab environment or workshop: ./environments-setup/index.md
 - Basic Containerization & App Mod Tools Labs: ./basic-labs/index.md
 - App Modernization Labs: ./appmod-labs/index.md
-- DevOps Labs: ./devops-labs/index.md
-- Usecase Demos: ./demos/index.md
 - Resources:
   - Openshift Concepts: OpenshiftConcepts.md
   - Moving WebSphere applications to Cloud: WebSphereCloud.md
