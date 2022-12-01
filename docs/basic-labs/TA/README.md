@@ -73,10 +73,16 @@ lab:
 
 ## 4. Accessing the lab environment
 
+The lab environment contains six (6) Linux VMs. 
+
+![](./images/media/env-list.png)
+
+ A Published Service is configured to provide access to the **Desktop** VM through the noVNC interface for the lab environment.
+
+<br/>
+
 1.  Access the lab environment from your web browser. 
     
-    A Published Service is configured to provide access to the **Workstation** VM through the noVNC interface for the lab environment.
-
     a.  When the environment is provisioned, right-mouse click on the **Published Service** link and open the URL in a new private or incognito browser window, as described below:  
     
     - If using **Google Chrome** browser, select **"Open link in incognito window"** from the context menu. 
